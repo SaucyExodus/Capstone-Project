@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config(); // Load environment variables from .env
 
 const app = express();
-const port = 80;
+const port = 5000;
 
 const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 
