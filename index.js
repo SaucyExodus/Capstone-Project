@@ -11,15 +11,11 @@ const port = 80;
 const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 const slackEvents = createEventAdapter(process.env.SLACK_SIGNING_SECRET)
 
-
+// Use the slackEvents middleware to handle Slack events
 app.use('/slack/events', slackEvents.expressMiddleware());
 
+// Body parser
 app.use(express.json());
-
-app.post('/slack/events', (req, res) => {
-  const data = req.body;
-  res.send(`Received POST data: ${JSON.stringify(data)}`);
-});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
@@ -37,7 +33,7 @@ async function sendMessage(channel, message) {
       channel: channel,
       text: message,
     });
-    console.log('Message sent: ', response);
+    console.log('Welcome message sent: ', response);
   } catch (error) {
     // Handle Slack API errors
     console.error('Error sending message:', error);
