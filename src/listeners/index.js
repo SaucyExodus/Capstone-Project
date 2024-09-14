@@ -1,13 +1,12 @@
 export function registerListeners(slackEvents, web) {
     slackEvents.on('app_home_opened', async (event) => {
         try {
-            // Ensure you use the correct channel ID or name
-            await web.chat.postMessage({
-                channel: '#test-bot', // Use a valid channel ID or name
-                text: "You clicked the home tab!"
-            });
-            console.log("YAYA");
+            // Print Users name in console log when user opens app home
+            const userInfo = await web.users.info({ user: event.user });
+            const userName = userInfo.user.real_name || userInfo.user.name;
+            console.log(`App Home opened by user: `, userName);
         } catch (error) {
+            // Catch errors
             console.log(error);
         }
     });
