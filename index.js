@@ -24,3 +24,16 @@ app.listen(port, () => {
   sendMessage('#test-bot', "I'm Online");
 });
 
+//Function to send a message to a Slack channel
+async function sendMessage(channel, message) {
+  try {
+    const response = await web.chat.postMessage({
+      channel: channel,
+      text: message,
+    });
+    console.log('Message sent: ', response);
+  } catch (error) {
+    // Handle Slack API errors
+    console.error('Error sending message:', error);
+  }
+}
