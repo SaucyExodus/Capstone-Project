@@ -1,4 +1,4 @@
-import { appOnlineMessageUI } from '../../user-interface/messages/app_online_message'
+import { appOnlineMessageUI } from '../../user-interface/messages/app_online_message.js'
 
 let setAppPresence = false;
 
