@@ -14,7 +14,7 @@ export function appOnlineMessageUI() {
                 "type": "plain_text",
                 "text": "Go to App"
               },
-              "url": "https://slack.com/app_redirect?channel=D07KJRL5SSK" // Deep link to your Slack channel
+              "url": "https://slack.com/app_redirect?channel=D07KGPEBBFC" // Deep link to your Slack channel
             }
           }
         ]
