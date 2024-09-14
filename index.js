@@ -11,8 +11,10 @@ const port = 80;
 const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 const slackEvents = createEventAdapter(process.env.SLACK_SIGNING_SECRET)
 
-app.use(express.json());
+
 app.use('/slack/events', slackEvents.expressMiddleware());
+
+app.use(express.json());
 
 app.post('/slack/events', (req, res) => {
   const data = req.body;
