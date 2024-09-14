@@ -8,7 +8,7 @@ export async function appOnlineEvent(slackEvents, web) {
             await web.chat.postMessage({
                 channel: '#test-bot',
                 text: 'Bot is now online!',
-                blocks: appOnlineMessageUI().blocks
+                blocks: appOnlineMessageUI(),
             });
             console.log('App is online!');
             setAppPresence = true;
