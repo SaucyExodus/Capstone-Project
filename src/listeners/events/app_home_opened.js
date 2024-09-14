@@ -6,12 +6,13 @@ export function appHomeOpenedEvent(slackEvents, web) {
             // Print Users name in console log when user opens app home
             const userName = await web.users.info({ user: event.user });
             console.log('App Home opened by user:', userName.user.real_name);
-            client.views.publish({
-            user_id: event.user,
+            await web.views.publish({
 
-            view: {
-                type: 'home',
-                callback_id: 'home_view',
+                user_id: event.user,
+
+                view: {
+                    type: 'home',
+                    callback_id: 'home_view',
 
                 blocks: [
                     {
