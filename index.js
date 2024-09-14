@@ -1,7 +1,9 @@
 import express from 'express';
-import { WebClient } from '@slack/web-api';
-import { createEventAdapter } from '@slack/events-api'
 import dotenv from 'dotenv';
+import { WebClient } from '@slack/web-api';
+import { createEventAdapter } from '@slack/events-api';
+
+const { registerListeners } = require('./src/listeners')
 
 dotenv.config(); // Load environment variables from .env
 
@@ -22,9 +24,7 @@ app.listen(port, () => {
   sendMessage('#test-bot', "I'm Online");
 });
 
-slackEvents.on('app_home_opened', async (event) => {
-  console.log(`App Home opened by user ${event.user}`);
-});
+registerListeners(slackEvents);
 
 //Function to send a message to a Slack channel
 async function sendMessage(channel, message) {
