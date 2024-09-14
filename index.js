@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import { WebClient } from '@slack/web-api';
 import { createEventAdapter } from '@slack/events-api';
 
-import { registerListeners } from './src/listeners';
+import { registerListeners } from './src/listeners/index';
 
 dotenv.config(); // Load environment variables from .env
 
