@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.post('/slack/events', (req, res) => {
   const data = req.body;
-  console.log(`Received POST data: ${data}`);
+  console.log(`Received POST data: `, JSON.stringify(data, null, 2));
   res.send(`Received POST data: ${JSON.stringify(data)}`);
 });
 
