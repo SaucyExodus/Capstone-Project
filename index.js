@@ -24,6 +24,10 @@ app.listen(port, () => {
   sendMessage('#test-bot', "I'm Online");
 });
 
+slackEvents.on('app_home_opened', async (event) => {
+  console.log(`App Home opened by user ${event.user}`);
+});
+
 //Function to send a message to a Slack channel
 async function sendMessage(channel, message) {
   try {
