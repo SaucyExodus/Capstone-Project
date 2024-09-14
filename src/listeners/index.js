@@ -1,5 +1,7 @@
-const eventsListener = require('./events');
+const { eventsListener } = require('./events');
 
-module.exports.registerListeners = (slackEvents) => {
-    eventsListener.register(slackEvents);
-};
+function register(slackEvents) {
+    eventsListener(slackEvents);
+}
+
+module.exports = { register };

@@ -1,5 +1,7 @@
 const { appHomeOpenedEvent } = require('./app_home_opened');
 
-module.exports.register = (slackEvents) => {
-    appHomeOpenedEvent.register(slackEvents);
-};
+function register(slackEvents) {
+    appHomeOpenedEvent(slackEvents);
+}
+
+module.exports = { register };
