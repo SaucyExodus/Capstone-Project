@@ -10,6 +10,7 @@ dotenv.config(); // Load environment variables from .env
 const app = express();
 const port = 80;
 
+// Slack OAuth tokens asnd Signing Secret
 const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 const slackEvents = createEventAdapter(process.env.SLACK_SIGNING_SECRET)
 
@@ -19,6 +20,7 @@ app.use('/slack/events', slackEvents.expressMiddleware());
 // Body parser
 app.use(express.json());
 
+// Starts Server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
