@@ -1,7 +1,7 @@
-const { eventsListener } = require('./events');
-
-function register(slackEvents) {
-    eventsListener(slackEvents);
+export function appHomeOpenedEvent(slackEvents) {
+    slackEvents.on('app_home_opened', async (event) => {
+        try {
+            console.log("YAYA")
+        } 
+    });
 }
-
-module.exports = { register };
