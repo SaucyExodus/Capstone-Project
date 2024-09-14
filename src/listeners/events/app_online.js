@@ -1,7 +1,7 @@
 let setAppPresence = false;
 
 export function appOnlineEvent(slackEvents, web){
-    async () => {
+    (async () => {
         if(!setAppPresence) {
             try {
                 await web.chat.postMessage({
@@ -14,5 +14,5 @@ export function appOnlineEvent(slackEvents, web){
                 console.error('Error: ', error);
             }        
         }
-    };
+    });
 }
