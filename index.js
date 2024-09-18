@@ -15,7 +15,8 @@ const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 const slackEvents = createEventAdapter(process.env.SLACK_SIGNING_SECRET)
 
 app.post('/', async (req, res) => {
-  console.log("JSON data: ", JSON.parse(req.body));
+  const data = JSON.parse(req.body);
+  console.log("JSON data: ", data);
 });
 // Use the slackEvents middleware to handle Slack events
 app.use('/slack/events', slackEvents.expressMiddleware());
