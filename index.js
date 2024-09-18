@@ -18,8 +18,10 @@ app.post('/', async (req, res) => {
   try {
     const data = JSON.parse(req.body);
     console.log("JSON data: ", data);
+    res.sendStatus(200);
   } catch(error) {
     console.error("Error parsing JSON: ", error);
+    res.sendStatus(400);
   }
   
 });
