@@ -16,7 +16,7 @@ const slackEvents = createEventAdapter(process.env.SLACK_SIGNING_SECRET)
 
 app.post('/', async (req, res) => {
   try {
-    const data = JSON.parse(req.body);
+    const data = req.body;
     console.log("JSON data: ", data);
     res.sendStatus(200);
   } catch(error) {
