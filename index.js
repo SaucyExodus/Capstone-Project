@@ -20,16 +20,10 @@ app.use('/slack/events', slackEvents.expressMiddleware());
 // Body parser
 app.use(express.json());
 
-app.post('/', async (req, res) => {
-  try {
-    const data = req.body;
-    console.log("JSON data: ", data);
-    res.sendStatus(200);
-  } catch(error) {
-    console.error("Error parsing JSON: ", error);
-    res.sendStatus(400);
-  }
-  
+app.post('/', (req, res) => {
+  const data = req.body;
+  console.log(`Received POST data: `, JSON.stringify(data, null, 2));
+  res.send(`Received POST data: ${JSON.stringify(data)}`);
 });
 
 // Starts Server
