@@ -11,7 +11,7 @@ export async function appHomeOpenedEvent(slackActivity, web) {
     // Print home tab view for user
     await web.views.publish({
       user_id: event.user,
-      view: appHomeOpenedUI(),
+      view: appHomeOpenedUI()
     });
   } catch (error) {
     console.error(error); // Catch errors
