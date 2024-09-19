@@ -10,9 +10,6 @@ export async function createTaskSubmission(slackActivity, web) {
     };
 
     console.log("Extracted Task Data:", taskData);
-
-    await slackActivity.ack();
-
     // Save task data (implement the `saveTaskData` function in your database module)
 
 
