@@ -3,7 +3,7 @@ import { WebClient } from "@slack/web-api";
 import dotenv from "dotenv";
 
 import { registerListeners } from "./src/listeners/index.js";
-import { createAppChannel } from "./src/functions/create_app_channel.js";
+import { createApp } from "./src/functions/create_app.js";
 import { inviteAppChannel } from "./src/functions/invite_app_channel.js";
 dotenv.config(); // Load environment variables from .env
 
@@ -16,7 +16,8 @@ const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const channelID = createAppChannel(web);
+const channelID = createApp(web);
+
 inviteAppChannel(web, channelID);
 
 // Handle Slack events
