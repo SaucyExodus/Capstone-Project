@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.post('/', (req, res) => {
   const data = req.body;
-  console.log(`Received POST data: ${JSON.stringify(data)}`);
+  console.log(`Received POST data: `, JSON.stringify(data, null, 2));
   res.send(`Received POST data: ${JSON.stringify(data)}`);
 });
 
