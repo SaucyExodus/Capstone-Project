@@ -1,4 +1,4 @@
-async function createAppChannel(web) {
+export async function createAppChannel(web) {
   const channelName = "task-simply";
 
   try {
