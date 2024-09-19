@@ -3,7 +3,8 @@ import { WebClient } from "@slack/web-api";
 import dotenv from "dotenv";
 
 import { registerListeners } from "./src/listeners/index.js";
-import { createAppChannel } from "./src/functions/create_app_channel.js"
+import { createAppChannel } from "./src/functions/create_app_channel.js";
+import { inviteAppChannel } from "./src/functions/invite_app_channel.js";
 dotenv.config(); // Load environment variables from .env
 
 const app = express();
@@ -41,4 +42,5 @@ app.post("/slack/interactions", (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
   createAppChannel(web);
+  inviteAppChannel(web);
 });
