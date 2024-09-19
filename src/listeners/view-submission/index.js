@@ -1,12 +1,12 @@
 import { createTaskSubmission } from './create_task_submission.js'; 
 
-export async function viewSubmissionListener(slackActivity, web) {
+export function viewSubmissionListener(slackActivity, web) {
   // Correctly access the callback_id from slackActivity.view
   const callbackId = slackActivity.view.callback_id;
 
   switch (callbackId) {
     case "create_task_modal":
-      await createTaskSubmission(slackActivity, web);
+      createTaskSubmission(slackActivity, web);
       break;
 
     default:
