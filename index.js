@@ -17,7 +17,7 @@ app.post('/', (req, res) => {
 
   const data = req.body;
   console.log(`Received POST data: `, JSON.stringify(data, null, 2));
-  res.sendStatus(200);
+  //res.sendStatus(200);
 });
 
 app.listen(port, () => {
