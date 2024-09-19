@@ -34,8 +34,8 @@ app.post("/slack/events", (req, res) => {
 
 // Handle Slack interactions
 app.post("/slack/interactions", async (req, res) => {
-  console.log(req.body);
-  const { trigger_id } = req.body.payload;
+  console.log(req.body.payload);
+  const { trigger_id } = req.body.payload.trigger_id;
 
   const modal = {
     type: 'modal',
