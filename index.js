@@ -1,5 +1,5 @@
 import express from "express";
-import bodyParser from 'body-parser';
+import bodyParser from "body-parser";
 import { WebClient } from "@slack/web-api";
 import dotenv from "dotenv";
 
@@ -15,7 +15,6 @@ const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 // Middleware to parse incoming JSON and URL-encoded data
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 
 //createApp(web);
 
@@ -34,17 +33,14 @@ app.post("/slack/events", (req, res) => {
 
 // Handle Slack interactions
 app.post("/slack/interactions", async (req, res) => {
-  
   const payload = JSON.parse(req.body.payload);
 
   console.log(`Received Slack Interaction data: `, JSON.stringify(payload, null, 2));
   registerListeners(payload, web);
-  res.send('');
+  res.send("");
 });
 
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-

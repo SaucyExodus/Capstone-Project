@@ -1,9 +1,6 @@
-export async function createNewTaskModal(slackActivity, web) {
-    try {
-        await web.views.open({
-            trigger_id: slackActivity.trigger_id,
-            view: {
-                "type": "modal",
+export function createNewTaskModal() {
+    const modal = {
+        "type": "modal",
                 "callback_id": "create_task_modal",
                 "title": {
                     "type": "plain_text",
@@ -97,9 +94,6 @@ export async function createNewTaskModal(slackActivity, web) {
                         "optional": true
                     }
                 ]
-            }
-        });
-    } catch (error) {
-        console.error("Error opening view:", error);
-    }
+    };
+    return modal;
 }

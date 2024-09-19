@@ -1,5 +1,12 @@
 import { createNewTaskModal } from "../../user-interface/modules/new_task_ui.js";
 
-export function globalCreateTask(slackActivity, web) {
-    createNewTaskModal(slackActivity, web);
+export async function globalCreateTask(slackActivity, web) {
+    try {
+        await web.views.open({
+            trigger_id: slackActivity.trigger_id,
+            view: createNewTaskModal
+        });
+    } catch(error){
+        console.error("Error opening view:", error);
+    }
 }
