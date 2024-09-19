@@ -2,7 +2,7 @@ export async function inviteAppChannel(web) {
   const channelName = "task-simply";
   const userList = web.users.list;
   const users = userList.members;
-    console.log(JSON.stringify(users));
+  console.log(JSON.stringify(userList));
     
   try {
     for (const user of users) {

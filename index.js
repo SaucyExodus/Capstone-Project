@@ -16,6 +16,9 @@ const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+createAppChannel(web);
+inviteAppChannel(web);
+
 // Handle Slack events
 app.post("/slack/events", (req, res) => {
   const data = req.body;
@@ -41,6 +44,4 @@ app.post("/slack/interactions", (req, res) => {
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-  createAppChannel(web);
-  inviteAppChannel(web);
 });
