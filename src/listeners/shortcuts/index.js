@@ -1,6 +1,6 @@
 import { gloabalCreateTask } from './global_create_task';
 
-export function shortcutListnerListener(slackActivity, web) {
+export function shortcutListener(slackActivity, web) {
     switch (slackActivity.callback_id) {
         case 'global_create_task':
             gloabalCreateTask(slackActivity, web);
