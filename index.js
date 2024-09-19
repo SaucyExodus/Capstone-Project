@@ -25,7 +25,7 @@ app.post("/slack/events", (req, res) => {
 });
 
 app.post("/slack/interactions", (req, res) => {
-  const payload = req.body.payload;
+  const payload = JSON.parse(req.body.payload);
 
   console.log(`Received POST data: `, JSON.stringify(payload, null, 2));
   res.sendStatus(200);
