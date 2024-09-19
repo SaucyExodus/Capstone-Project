@@ -14,7 +14,7 @@ export async function createTaskSubmission(slackActivity, web) {
     // Save task data (implement the `saveTaskData` function in your database module)
 
     // Send a response back to Slack (optional)
-    await web.views.update({
+    const result = await web.views.update({
         view_id: view.id,
         view: {
           type: "modal",
@@ -34,12 +34,14 @@ export async function createTaskSubmission(slackActivity, web) {
               block_id: "confirmation",
               text: {
                 type: "mrkdwn",
-                text: `Task created successfully:\n*Task Name:* ${taskData.taskName}\n*Assigned Users:* ${taskData.assignedUsers.join(', ')}\n*Due Date:* ${taskData.dueDate}\n*Due Time:* ${taskData.dueTime}`
+                text: `Task created successfully:\n*Task Name:* ${taskData.taskName}\n*Assigned Users:* ${taskData.assignedUsers.join(', ')}\n*Due Date:* ${taskData.dueDate || 'None'}\n*Due Time:* ${taskData.dueTime || 'None'}`
               }
             }
           ]
         }
       });
+  
+      console.log("API Response:", result);
 
   } catch (error) {
     console.error("Error handling view submission:", error);
