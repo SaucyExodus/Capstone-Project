@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 import { WebClient } from '@slack/web-api';
 import { createEventAdapter } from '@slack/events-api';
 
@@ -15,10 +16,10 @@ const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 const slackEvents = createEventAdapter(process.env.SLACK_SIGNING_SECRET)
 
 // Body parser
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/', (req, res) => {
-  const data = req.header;
+  const data = JSON.parse(req.body.payload);
   console.log(`Received POST data: `, JSON.stringify(data, null, 2));
   res.send(`Received POST data: ${JSON.stringify(data)}`);
 });
