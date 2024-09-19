@@ -43,7 +43,7 @@ async function inviteAppChannel(web, channelID) {
   
       for (const user of users) {
         console.log(user);
-        if (!user.is_bot && !user.deleted && !userList.has(user.id)) {
+        if (!user.is_bot && !user.deleted && !(user.id == 'USLACKBOT')) {
           await web.conversations.invite({
             channel: channelID,
             users: user.id,
