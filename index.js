@@ -32,7 +32,7 @@ app.post("/slack/events", (req, res) => {
 });
 
 // Handle Slack interactions
-app.post("/slack/interactions", async (req, res) => {
+app.post("/slack/interactions", (req, res) => {
   const payload = JSON.parse(req.body.payload);
 
   console.log(`Received Slack Interaction data: `, JSON.stringify(payload, null, 2));
