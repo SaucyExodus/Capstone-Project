@@ -12,8 +12,6 @@ export async function createTaskSubmission(slackActivity, web) {
     console.log("Slack Activity Payload:", JSON.stringify(slackActivity, null, 2));
     console.log("Extracted Task Data:", taskData);
 
-
-    web.ack();
     // Save task data (implement the `saveTaskData` function in your database module)
 
     // Send a response back to Slack (optional)
