@@ -4,7 +4,7 @@ export async function globalCreateTask(slackActivity, web) {
     try {
         await web.views.open({
             trigger_id: slackActivity.trigger_id,
-            view: createNewTaskModal
+            view: createNewTaskModal()
         });
     } catch(error){
         console.error("Error opening view:", error);
