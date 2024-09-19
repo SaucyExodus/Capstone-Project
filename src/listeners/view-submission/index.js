@@ -1,5 +1,8 @@
 export function viewSubmissionListener(slackActivity, web) {
-  switch (slackActivity.callback_id) {
+  // Correctly access the callback_id from slackActivity.view
+  const callbackId = slackActivity.view.callback_id;
+
+  switch (callbackId) {
     case "create_task_modal":
       console.log("Yay you submitted it");
       break;
