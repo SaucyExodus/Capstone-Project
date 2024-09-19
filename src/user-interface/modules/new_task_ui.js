@@ -1,6 +1,6 @@
 export async function createNewTaskModal(slackActivity, web) {
     try {
-        const result = await web.views.open({
+        await web.views.open({
             trigger_id: slackActivity.trigger_id,
             view: {
                 "type": "modal",
@@ -99,8 +99,6 @@ export async function createNewTaskModal(slackActivity, web) {
                 ]
             }
         });
-
-        console.log("API Response:", result);
     } catch (error) {
         console.error("Error opening view:", error);
     }
