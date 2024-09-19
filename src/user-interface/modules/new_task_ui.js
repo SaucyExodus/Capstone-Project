@@ -101,4 +101,4 @@ export async function createNewTaskModal(slackActivity, web) {
     } catch (error) {
         console.error(error);
     }
-};
+}
