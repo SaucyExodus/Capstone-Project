@@ -1,6 +1,4 @@
-export async function inviteAppChannel(web) {
-  const channelName = "#task-simply";
-
+export async function inviteAppChannel(web, channelID) {
   try {
     const userList = await web.users.list();
     const users = userList.members;
@@ -8,7 +6,7 @@ export async function inviteAppChannel(web) {
     for (const user of users) {
       if (!user.is_bot && !user.deleted) {
         await web.conversations.invite({
-          channel: channelName,
+          channel: channelID,
           users: user.id,
         });
       }

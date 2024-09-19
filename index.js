@@ -16,8 +16,8 @@ const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-createAppChannel(web);
-inviteAppChannel(web);
+const channelID = createAppChannel(web);
+inviteAppChannel(web, channelID);
 
 // Handle Slack events
 app.post("/slack/events", (req, res) => {
