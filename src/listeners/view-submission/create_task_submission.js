@@ -10,6 +10,11 @@ export async function createTaskSubmission(slackActivity, web) {
     };
 
     console.log("Extracted Task Data:", taskData);
+
+    await web.chat.postMessage({
+        channel: user.id,
+        text: "Your task has been created successfully!",
+    });
     // Save task data (implement the `saveTaskData` function in your database module)
 
 
