@@ -1,4 +1,5 @@
 import express from "express";
+import bodyParser from 'body-parser';
 import { WebClient } from "@slack/web-api";
 import dotenv from "dotenv";
 
@@ -12,8 +13,9 @@ const port = 80;
 const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 
 // Middleware to parse incoming JSON and URL-encoded data
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 
 //createApp(web);
 
@@ -31,12 +33,46 @@ app.post("/slack/events", (req, res) => {
 });
 
 // Handle Slack interactions
-app.post("/slack/interactions", (req, res) => {
-  const payload = JSON.parse(req.body.payload);
+app.post("/slack/interactions", async (req, res) => {
+  const { trigger_id } = req.body;
 
-  console.log(`Received Slack Interaction data: `, JSON.stringify(payload, null, 2));
-  registerListeners(payload, web);
-  res.sendStatus(200);
+  const modal = {
+    type: 'modal',
+    callback_id: 'modal-identifier',
+    title: {
+      type: 'plain_text',
+      text: 'My Modal'
+    },
+    submit: {
+      type: 'plain_text',
+      text: 'Submit'
+    },
+    close: {
+      type: 'plain_text',
+      text: 'Close'
+    },
+    blocks: [
+      {
+        type: 'input',
+        block_id: 'input_block',
+        element: {
+          type: 'plain_text_input',
+          action_id: 'input_action'
+        },
+        label: {
+          type: 'plain_text',
+          text: 'Enter something'
+        }
+      }
+    ]
+  };
+
+  await web.views.open({
+    trigger_id: trigger_id,
+    view: modal
+  });
+
+  res.send('');
 });
 
 // Start the server
