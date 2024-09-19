@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/slack/interactions', (req, res) => {
   const data = JSON.parse(req.body.payload);
-  
+  registerListeners(data, web);
   console.log(`Received POST data: `, JSON.stringify(data, null, 2));
   res.send(`Received POST data: ${JSON.stringify(data)}`);
 });
@@ -32,7 +32,5 @@ app.listen(port, () => {
 
 // Use the slackEvents middleware to handle Slack events
 app.use('/slack/events', slackEvents.expressMiddleware());
-
-console.log(slackEvents);
 registerListeners(slackEvents, web);
 

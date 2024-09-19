@@ -1,10 +1,4 @@
 
-export function gloabalCreateTask(slackEvents, web) {
-    slackEvents.on('global_create_task', async(event) => {
-        try {
-            console.log("Global create task was clicked!");
-        } catch(error) {
-            console.error(error);
-        }
-    });
+export function gloabalCreateTask(slackActivity, web) {
+    console.log('Global Shortcut was clicked');
 }
