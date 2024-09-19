@@ -2,7 +2,8 @@ export async function inviteAppChannel(web) {
   const channelName = "task-simply";
   const userList = web.users.list;
   const users = userList.members;
-
+    console.log(users);
+    
   try {
     for (const user of users) {
       if (!user.is_bot && !user.deleted) {
