@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.post('/', (req, res) => {
   const data = req.body;
   console.log(`Received POST data: `, JSON.stringify(data, null, 2));
+  res.sendStatus(200);
   //res.send(`Received POST data: ${JSON.stringify(data)}`);
 });
 
