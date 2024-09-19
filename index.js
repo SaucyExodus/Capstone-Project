@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 
 import { registerListeners } from "./src/listeners/index.js";
 import { createApp } from "./src/functions/create_app.js";
-import { inviteAppChannel } from "./src/functions/invite_app_channel.js";
 dotenv.config(); // Load environment variables from .env
 
 const app = express();
