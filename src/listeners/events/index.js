@@ -1,7 +1,14 @@
-import { appHomeOpenedEvent } from './app_home_opened.js';
-import { appOnlineEvent } from './app_online.js';
+import { appHomeOpenedEvent } from "./app_home_opened.js";
+import { appOnlineEvent } from "./app_online.js";
 
-export function eventListener(slackEvents, web) {
-    appHomeOpenedEvent(slackEvents, web);
-    appOnlineEvent(slackEvents, web);
+export function eventListener(slackActivity, web) {
+  switch (slackActivity.event.type) {
+    case "app_home_opened":
+      appHomeOpenedEvent(slackActivity, web);
+      break;
+
+    default:
+      console.log("Couldn't find slack event type!");
+      break;
+  }
 }
