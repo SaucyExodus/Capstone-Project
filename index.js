@@ -20,6 +20,7 @@ app.post("/slack/events", (req, res) => {
     res.send({ challenge: data.challenge });
   } else {
     console.log(`Received POST data: `, JSON.stringify(data, null, 2));
+    registerListeners(data, web);
     res.sendStatus(200);
   }
 });
@@ -28,6 +29,7 @@ app.post("/slack/interactions", (req, res) => {
   const payload = JSON.parse(req.body.payload);
 
   console.log(`Received POST data: `, JSON.stringify(payload, null, 2));
+  registerListeners(payload, web);
   res.sendStatus(200);
 });
 
