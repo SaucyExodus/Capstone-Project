@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import { WebClient } from '@slack/web-api';
 import dotenv from 'dotenv';
 
@@ -10,7 +9,8 @@ const port = 80;
 
 const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 
-//app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.post('/', (req, res) => {
   const data = req.body;
