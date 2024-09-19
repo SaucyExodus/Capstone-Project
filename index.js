@@ -13,7 +13,7 @@ const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post('/slack/events', (req, res) => {
+app.post('/', (req, res) => {
   const data = req.body;
   console.log(`Received POST data: `, JSON.stringify(data, null, 2));
   //res.send(`Received POST data: ${JSON.stringify(data)}`);
