@@ -17,20 +17,30 @@ export async function createTaskSubmission(slackActivity, web) {
     await web.views.update({
         view_id: view.id,
         view: {
-            ...view,
-            blocks: [
-                {
-                    "type": "section",
-                    "block_id": "confirmation",
-                    "text": {
-                        "type": "mrkdwn",
-                        "text": `Task created successfully:\n*Task Name:* ${taskData.taskName}\n*Assigned Users:* ${taskData.assignedUsers.join(', ')}\n*Due Date:* ${taskData.dueDate}\n*Due Time:* ${taskData.dueTime}`
-                    }
-                }
-            ]
+          type: "modal",
+          title: {
+            type: "plain_text",
+            text: "Task Created",
+            emoji: true
+          },
+          close: {
+            type: "plain_text",
+            text: "Close",
+            emoji: true
+          },
+          blocks: [
+            {
+              type: "section",
+              block_id: "confirmation",
+              text: {
+                type: "mrkdwn",
+                text: `Task created successfully:\n*Task Name:* ${taskData.taskName}\n*Assigned Users:* ${taskData.assignedUsers.join(', ')}\n*Due Date:* ${taskData.dueDate}\n*Due Time:* ${taskData.dueTime}`
+              }
+            }
+          ]
         }
-    });
-    
+      });
+
   } catch (error) {
     console.error("Error handling view submission:", error);
   }
