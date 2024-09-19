@@ -18,8 +18,9 @@ const slackEvents = createEventAdapter(process.env.SLACK_SIGNING_SECRET)
 // Body parser
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/', (req, res) => {
+app.post('/slack/interactions', (req, res) => {
   const data = JSON.parse(req.body.payload);
+  
   console.log(`Received POST data: `, JSON.stringify(data, null, 2));
   res.send(`Received POST data: ${JSON.stringify(data)}`);
 });
@@ -30,7 +31,8 @@ app.listen(port, () => {
 });
 
 // Use the slackEvents middleware to handle Slack events
-//app.use('/slack/events', slackEvents.expressMiddleware());
+app.use('/slack/events', slackEvents.expressMiddleware());
 
-//registerListeners(slackEvents, web);
+console.log(slackEvents);
+registerListeners(slackEvents, web);
 
