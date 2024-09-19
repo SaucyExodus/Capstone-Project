@@ -39,7 +39,7 @@ app.post("/slack/interactions", async (req, res) => {
 
   console.log(`Received Slack Interaction data: `, JSON.stringify(payload, null, 2));
   registerListeners(payload, web);
-  res.send('');
+  res.sendStatus(200);
 });
 
 // Start the server
