@@ -1,5 +1,6 @@
 import { eventListener } from "./events/index.js";
 import { shortcutListener } from "./shortcuts/index.js";
+import { viewSubmissionListener } from "./view-submission/index.js";
 
 export function registerListeners(slackActivity, web) {
   switch (slackActivity.type) {
