@@ -13,11 +13,15 @@ const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post('/', (req, res) => {
-
+app.post('/slack/events', (req, res) => {
   const data = req.body;
-  console.log(`Received POST data: `, JSON.stringify(data, null, 2));
-  //res.sendStatus(200);
+
+  if(data.type === 'url_verification') {
+    res.send({ challenge: data.challenge});
+  } else {
+    console.log(`Received POST data: `, JSON.stringify(data, null, 2));
+    res.sendStatus(200);
+  }
 });
 
 app.listen(port, () => {
