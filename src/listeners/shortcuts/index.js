@@ -8,6 +8,7 @@ export function shortcutListener(slackActivity, web) {
 
         case 'test_callback':
             console.log("please");
+            break;
 
         default:
             console.log(`Couldn't find callback id.`);
