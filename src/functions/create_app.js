@@ -1,6 +1,5 @@
 export async function createApp(web) {
-  const channelID = createAppChannel(web);
-  console.log(channelID);
+  const channelID = await createAppChannel(web);
   inviteAppChannel(web, channelID)
 }
 
