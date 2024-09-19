@@ -1,5 +1,5 @@
 export async function createAppChannel(web) {
-  const channelName = "#task-simply";
+  const channelName = "task-simply";
 
   try {
     await web.conversations.create({

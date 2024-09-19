@@ -1,5 +1,5 @@
 export async function inviteAppChannel(web) {
-  const channelName = "#task-simply";
+  const channelName = "task-simply";
   const userList = web.users.list;
   const users = userList.members;
 
