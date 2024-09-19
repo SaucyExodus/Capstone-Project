@@ -1,3 +1,5 @@
+import { createNewTaskModal } from "../../user-interface/modules/new_task_ui";
+
 export function globalCreateTask(slackActivity, web) {
-    console.log('Global Shortcut was clicked');
+    createNewTaskModal(slackActivity, web);
 }
