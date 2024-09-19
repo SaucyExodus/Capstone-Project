@@ -1,7 +1,7 @@
 export async function createNewTaskModal(slackActivity, web) {
     try {
         await web.views.open({
-            user_id: slackActivity.user,
+            trigger_id: slackActivity.trigger_id,
 
             view: {
                 "type": "modal",
