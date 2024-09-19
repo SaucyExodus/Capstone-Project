@@ -7,7 +7,7 @@ export function shortcutListener(slackActivity, web) {
             break;
 
         case 'test_callback':
-            console.log("please");
+            console.log(slackActivity);
             break;
 
         default:
