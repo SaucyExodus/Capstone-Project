@@ -43,5 +43,6 @@ app.post("/slack/interactions", (req, res) => {
 
 // Start the server
 app.listen(port, () => {
+  console.log(web.users.list());
   console.log(`Server is running on port ${port}`);
 });
