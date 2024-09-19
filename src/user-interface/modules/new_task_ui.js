@@ -2,103 +2,103 @@ export async function createNewTaskModal(slackActivity, web) {
     try {
         await web.views.open({
             trigger_id: slackActivity.trigger_id,
-
             view: {
                 "type": "modal",
-            "title": {
-                "type": "plain_text",
-                "text": "Create new task",
-                "emoji": true
-            },
-            "submit": {
-                "type": "plain_text",
-                "text": "Submit",
-                "emoji": true
-            },
-            "close": {
-                "type": "plain_text",
-                "text": "Cancel",
-                "emoji": true
-            },
-            "blocks": [
-                {
-                    "type": "divider"
+                "title": {
+                    "type": "plain_text",
+                    "text": "Create new task",
+                    "emoji": true
                 },
-                {
-                    "type": "input",
-                    "element": {
-                        "type": "plain_text_input",
-                        "action_id": "plain_text_input-action",
-                        "placeholder": {
+                "submit": {
+                    "type": "plain_text",
+                    "text": "Submit",
+                    "emoji": true
+                },
+                "close": {
+                    "type": "plain_text",
+                    "text": "Cancel",
+                    "emoji": true
+                },
+                "blocks": [
+                    { "type": "divider" },
+                    {
+                        "type": "input",
+                        "block_id": "task_name_input",
+                        "label": {
                             "type": "plain_text",
-                            "text": "Enter your task here",
+                            "text": "New task",
                             "emoji": true
+                        },
+                        "element": {
+                            "type": "plain_text_input",
+                            "action_id": "task_name_action",
+                            "placeholder": {
+                                "type": "plain_text",
+                                "text": "Enter your task here",
+                                "emoji": true
+                            }
                         }
                     },
-                    "label": {
-                        "type": "plain_text",
-                        "text": "New task",
-                        "emoji": true
+                    {
+                        "type": "input",
+                        "block_id": "assign_user_input",
+                        "label": {
+                            "type": "plain_text",
+                            "text": "Assign user",
+                            "emoji": true
+                        },
+                        "element": {
+                            "type": "multi_users_select",
+                            "action_id": "assign_user_action",
+                            "placeholder": {
+                                "type": "plain_text",
+                                "text": "Select users",
+                                "emoji": true
+                            }
+                        }
+                    },
+                    {
+                        "type": "input",
+                        "block_id": "due_date_input",
+                        "label": {
+                            "type": "plain_text",
+                            "text": "Due date",
+                            "emoji": true
+                        },
+                        "element": {
+                            "type": "datepicker",
+                            "action_id": "due_date_action",
+                            "placeholder": {
+                                "type": "plain_text",
+                                "text": "Select a date",
+                                "emoji": true
+                            }
+                        },
+                        "optional": true
+                    },
+                    {
+                        "type": "input",
+                        "block_id": "time_input",
+                        "label": {
+                            "type": "plain_text",
+                            "text": "Time",
+                            "emoji": true
+                        },
+                        "element": {
+                            "type": "timepicker",
+                            "action_id": "time_action",
+                            "placeholder": {
+                                "type": "plain_text",
+                                "text": "Select time",
+                                "emoji": true
+                            }
+                        },
+                        "optional": true
                     }
-                },
-                {
-                    "type": "input",
-                    "element": {
-                        "type": "multi_users_select",
-                        "placeholder": {
-                            "type": "plain_text",
-                            "text": "Select users",
-                            "emoji": true
-                        },
-                        "action_id": "multi_users_select-action"
-                    },
-                    "label": {
-                        "type": "plain_text",
-                        "text": "Assign user",
-                        "emoji": true
-                    }
-                },
-                {
-                    "type": "input",
-                    "element": {
-                        "type": "datepicker",
-                        "placeholder": {
-                            "type": "plain_text",
-                            "text": "Select a date",
-                            "emoji": true
-                        },
-                        "action_id": "datepicker-action"
-                    },
-                    "label": {
-                        "type": "plain_text",
-                        "text": "Due date ",
-                        "emoji": true
-                    },
-                    "optional": true
-                },
-                {
-                    "type": "input",
-                    "element": {
-                        "type": "timepicker",
-                        "placeholder": {
-                            "type": "plain_text",
-                            "text": "Select time",
-                            "emoji": true
-                        },
-                        "action_id": "timepicker-action"
-                    },
-                    "label": {
-                        "type": "plain_text",
-                        "text": "Time",
-                        "emoji": true
-                    },
-                    "optional": true
-                }
-            ]
-        }
-    });
-    
+                ]
+            }
+        });
     } catch (error) {
-        console.error(error);
+        console.error("Error opening view:", error);
     }
 }
