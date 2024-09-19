@@ -1,9 +1,9 @@
-import { gloabalCreateTask } from './global_create_task';
+import { globalCreateTask } from './global_create_task.js';
 
 export function shortcutListener(slackActivity, web) {
     switch (slackActivity.callback_id) {
         case 'global_create_task':
-            gloabalCreateTask(slackActivity, web);
+            globalCreateTask(slackActivity, web);
             break;
         default:
             console.log(`Couldn't find callback id.`);
