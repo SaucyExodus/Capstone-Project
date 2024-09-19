@@ -35,7 +35,7 @@ app.post("/slack/events", (req, res) => {
 // Handle Slack interactions
 app.post("/slack/interactions", async (req, res) => {
   console.log(req.body.payload);
-  const  trigger_id  = req.body.payload.trigger_id;
+  const payload = JSON.parse(req.body.payload);
 
   const modal = {
     type: 'modal',
@@ -69,7 +69,7 @@ app.post("/slack/interactions", async (req, res) => {
   };
 
   await web.views.open({
-    trigger_id: trigger_id,
+    trigger_id: payload.trigger_id,
     view: modal
   });
 
