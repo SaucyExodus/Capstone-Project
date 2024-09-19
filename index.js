@@ -10,7 +10,7 @@ const port = 80;
 
 const web = new WebClient(process.env.SLACK_OAUTH_TOKEN);
 
-app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/', (req, res) => {
   const data = req.body;
