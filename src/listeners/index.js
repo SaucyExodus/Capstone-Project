@@ -11,6 +11,10 @@ export function registerListeners(slackActivity, web) {
       shortcutListener(slackActivity, web);
       break;
 
+    case "view_submission": // View Submission
+      viewSubmissionListener(slackActivity, web);
+      break;
+
     default:
       console.log("Couldn't find slack type!");
       break;

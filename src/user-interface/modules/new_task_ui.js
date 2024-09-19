@@ -4,6 +4,7 @@ export async function createNewTaskModal(slackActivity, web) {
             trigger_id: slackActivity.trigger_id,
             view: {
                 "type": "modal",
+                "callback_id": "create_task_modal",
                 "title": {
                     "type": "plain_text",
                     "text": "Create new task",
