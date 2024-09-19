@@ -29,9 +29,8 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-
 // Use the slackEvents middleware to handle Slack events
-app.use('/slack/events', slackEvents.expressMiddleware());
+//app.use('/slack/events', slackEvents.expressMiddleware());
 
-registerListeners(slackEvents, web);
+//registerListeners(slackEvents, web);
 
