@@ -18,7 +18,7 @@ const slackEvents = createEventAdapter(process.env.SLACK_SIGNING_SECRET)
 app.use(express.json());
 
 app.post('/', (req, res) => {
-  const data = req.body;
+  const data = req.header;
   console.log(`Received POST data: `, JSON.stringify(data, null, 2));
   res.send(`Received POST data: ${JSON.stringify(data)}`);
 });
