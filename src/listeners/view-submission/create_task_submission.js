@@ -15,7 +15,7 @@ export async function createTaskSubmission(slackActivity, web) {
     // Save task data (implement the `saveTaskData` function in your database module)
 
     // Send a response back to Slack (optional)
-    await web.views.update({
+    await web.views.push({
         trigger_id: slackActivity.trigger_id,
         view: {
           type: "modal",
