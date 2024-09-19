@@ -34,45 +34,11 @@ app.post("/slack/events", (req, res) => {
 
 // Handle Slack interactions
 app.post("/slack/interactions", async (req, res) => {
-  console.log(req.body.payload);
+  
   const payload = JSON.parse(req.body.payload);
 
-  const modal = {
-    type: 'modal',
-    callback_id: 'modal-identifier',
-    title: {
-      type: 'plain_text',
-      text: 'My Modal'
-    },
-    submit: {
-      type: 'plain_text',
-      text: 'Submit'
-    },
-    close: {
-      type: 'plain_text',
-      text: 'Close'
-    },
-    blocks: [
-      {
-        type: 'input',
-        block_id: 'input_block',
-        element: {
-          type: 'plain_text_input',
-          action_id: 'input_action'
-        },
-        label: {
-          type: 'plain_text',
-          text: 'Enter something'
-        }
-      }
-    ]
-  };
-
-  await web.views.open({
-    trigger_id: payload.trigger_id,
-    view: modal
-  });
-
+  console.log(`Received Slack Interaction data: `, JSON.stringify(payload, null, 2));
+  registerListeners(payload, web);
   res.send('');
 });
 
