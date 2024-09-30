@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'; // Import dayjs for date formatting
+
 export async function createTaskSubmission(slackActivity, web) {
   try {
     const { view, user } = slackActivity;
@@ -10,6 +12,8 @@ export async function createTaskSubmission(slackActivity, web) {
     };
 
     console.log("Extracted Task Data:", taskData);
+
+    const formattedDueDateTime = dayjs.unix(taskData.dueDateTime).format('MMMM D, YYYY h:mm A');
 
     // Format the message using Block Kit
     const taskMessage = {
@@ -34,7 +38,7 @@ export async function createTaskSubmission(slackActivity, web) {
             },
             {
               type: 'mrkdwn',
-              text: `*Due Date & Time:*\n${taskData.dueDateTime}`
+              text: `*Due Date & Time:*\n${formattedDueDateTime}`
             },
             {
               type: 'mrkdwn',
@@ -42,13 +46,7 @@ export async function createTaskSubmission(slackActivity, web) {
             }
           ]
         },
-        {
-          type: 'section',
-          text: {
-            type: 'mrkdwn',
-            text: `*Task Notes:*\n${taskData.taskNotes}`
-          }
-        }
+        taskData.taskNotes,
       ]
     };
 
