@@ -41,7 +41,7 @@ export function createNewTaskModal() {
         block_id: "due_datetime_input",
         label: {
           type: "plain_text",
-          text: "Due Date (optional)",
+          text: "Due Date",
           emoji: true,
         },
         element: {
@@ -55,7 +55,7 @@ export function createNewTaskModal() {
         block_id: "assign_user_input",
         label: {
           type: "plain_text",
-          text: "Add Contributors (optional)",
+          text: "Add Contributors",
           emoji: true,
         },
         element: {
@@ -74,7 +74,7 @@ export function createNewTaskModal() {
         block_id: "notes_input",
         label: {
           type: "plain_text",
-          text: "Notes (optional)",
+          text: "Notes",
           emoji: true,
         },
         element: {
