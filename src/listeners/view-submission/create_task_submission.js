@@ -17,7 +17,7 @@ export async function createTaskSubmission(slackActivity, web) {
 
     // Format the message using Block Kit
     const taskMessage = {
-      channel: '#task-simply', // Replace with your Slack channel ID
+      channel: '#task-simply', 
       blocks: [
         {
           type: 'section',
@@ -45,6 +45,13 @@ export async function createTaskSubmission(slackActivity, web) {
               text: `*Assigned Users:*\n${taskData.assignedUsers.map(user => `<@${user}>`).join(', ')}`
             }
           ]
+        },
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: `*Notes:*`
+          }
         },
         taskData.taskNotes,
       ]
