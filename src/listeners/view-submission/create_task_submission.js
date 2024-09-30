@@ -10,6 +10,50 @@ export async function createTaskSubmission(slackActivity, web) {
     };
 
     console.log("Extracted Task Data:", taskData);
+
+    // Format the message using Block Kit
+    const taskMessage = {
+      channel: '#task-simply', // Replace with your Slack channel ID
+      blocks: [
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: `*New Task Created by <@${taskData.userId}>*`
+          }
+        },
+        {
+          type: 'divider'
+        },
+        {
+          type: 'section',
+          fields: [
+            {
+              type: 'mrkdwn',
+              text: `*Task Name:*\n${taskData.taskName}`
+            },
+            {
+              type: 'mrkdwn',
+              text: `*Due Date & Time:*\n${taskData.dueDateTime}`
+            },
+            {
+              type: 'mrkdwn',
+              text: `*Assigned Users:*\n${taskData.assignedUsers.map(user => `<@${user}>`).join(', ')}`
+            }
+          ]
+        },
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: `*Task Notes:*\n${taskData.taskNotes}`
+          }
+        }
+      ]
+    };
+
+    // Send the message to Slack
+    await web.chat.postMessage(taskMessage);
     
     // Save task data (implement the `saveTaskData` function in your database module)
 
