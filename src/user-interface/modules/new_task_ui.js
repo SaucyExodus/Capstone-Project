@@ -48,6 +48,7 @@ export function createNewTaskModal() {
           type: "datetimepicker",
           action_id: "due_datetime_action",
         },
+        optional: true,
       },
       {
         type: "input",
