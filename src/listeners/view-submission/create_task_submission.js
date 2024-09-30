@@ -4,9 +4,9 @@ export async function createTaskSubmission(slackActivity, web) {
     const taskData = {
       userId: user.id,
       taskName: view.state.values["task_name_input"]["task_name_action"].value,
-      dueDateTime: view.state.values["due_datetime_input"]["due_datetime_action"].selected_date,
+      dueDateTime: view.state.values["due_datetime_input"]["due_datetime_action"].selected_date_time,
       assignedUsers: view.state.values["assign_user_input"]["assign_user_action"].selected_users,
-      taskNotes: 1,
+      taskNotes: view.state.values["notes_input"]["notes_action"].rich_text_value,
     };
 
     console.log("Extracted Task Data:", taskData);

@@ -1,6 +1,7 @@
 export function createNewTaskModal() {
   const modal = {
     type: "modal",
+    callback_id: "create_task_modal",
     title: {
       type: "plain_text",
       text: "Create New Task",
