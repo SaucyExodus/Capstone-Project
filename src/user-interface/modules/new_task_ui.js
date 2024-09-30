@@ -67,6 +67,7 @@ export function createNewTaskModal() {
             emoji: true,
           },
         },
+        optional: true,
       },
       {
         type: "input",
@@ -80,6 +81,7 @@ export function createNewTaskModal() {
           type: "rich_text_input",
           action_id: "notes_action",
         },
+        optional: true,
       },
     ],
   };
