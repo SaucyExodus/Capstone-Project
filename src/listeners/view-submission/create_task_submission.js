@@ -12,6 +12,11 @@ export async function createTaskSubmission(slackActivity, web) {
     };
 
     console.log("Extracted Task Data:", taskData);
+    
+    const unixTimestamp = taskData.dueDateTime;
+    const date = new Date(unixTimestamp * 1000);
+
+    console.log(date.toString());
 
     const formattedDueDateTime = dayjs.unix(taskData.dueDateTime).format('MMMM D, YYYY h:mm A');
 
