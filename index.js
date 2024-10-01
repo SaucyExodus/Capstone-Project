@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 
 import { registerListeners } from "./src/listeners/index.js";
 import { createApp } from "./src/functions/create_app.js";
-import db from './db.js';  // Import the MySQL connection from db.js
+import db from './src/config/db.js';  // Import the MySQL connection from db.js
 
 dotenv.config(); // Load environment variables from .env
 
