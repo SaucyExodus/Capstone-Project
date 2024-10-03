@@ -1,11 +1,12 @@
 import mysql from 'mysql';
+import dotenv from 'dotenv';
 
 // Create a connection to the database
 const connection = mysql.createConnection({
-  host: 'taskdata.cxgkmsyiki77.us-east-2.rds.amazonaws.com',      // MySQL host
-  user: 'admin',                                                  // MySQL username
-  password: 'TaskApp2024!',                                       // MySQL password
-  database: 'userinfo'                                            // MySQL database name
+  host: process.env.DB_HOST,      
+  user: process.env.DB_USER,                                                  
+  password: process.env.DB_PASSWORD,                                       
+  database: process.env.DB_NAME                                            
 });
 
 // Connect to the database
