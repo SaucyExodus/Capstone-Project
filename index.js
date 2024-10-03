@@ -3,11 +3,11 @@ import bodyParser from "body-parser";
 import { WebClient } from "@slack/web-api";
 import dotenv from "dotenv";
 
+dotenv.config(); // Load environment variables from .env
+
 import { registerListeners } from "./src/listeners/index.js";
 import { createApp } from "./src/functions/create_app.js";
 import db from './src/config/db.js';  // Import the MySQL connection from db.js
-
-dotenv.config(); // Load environment variables from .env
 
 const app = express();
 const port = 80;
