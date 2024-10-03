@@ -3,7 +3,8 @@ export function createdTaskMessage(taskData){
     const date = new Date(unixTimestamp * 1000);
 
     const taskMessage = {
-        channel: '#task-simply', 
+        channel: '#task-simply',
+        text: `New Task Created by <@${taskData.userId}>: ${taskData.taskName}`,
         blocks: [
           {
             type: 'section',
