@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'; // Import dayjs for date formatting
-import { createdTaskMessage } from '../../user-interface/messages/created_task_message';
+import { createdTaskMessage } from '../../user-interface/messages/created_task_message.js';
 
 export async function createTaskSubmission(slackActivity, web) {
   try {
