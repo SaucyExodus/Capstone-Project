@@ -1,7 +1,4 @@
 export function createdTaskMessage(taskData){
-    const unixTimestamp = taskData.dueDateTime;
-    const date = new Date(unixTimestamp * 1000);
-
     const taskMessage = {
         channel: '#task-simply',
         text: `New Task Created by <@${taskData.userId}>: ${taskData.taskName}`,
@@ -25,7 +22,7 @@ export function createdTaskMessage(taskData){
               },
               {
                 type: 'mrkdwn',
-                text: `*Due Date & Time:*\n${date}`
+                text: `*Due Date & Time:*\n${formattedDate}`
               },
               {
                 type: 'mrkdwn',

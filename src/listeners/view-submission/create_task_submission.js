@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { createdTaskMessage } from '../../user-interface/messages/created_task_message.js';
 import { TODO, IN_PROGRESS, DONE } from '../../constants/taskStatus.js';
 import { saveTaskData } from '../../functions/saveTaskData.js';
@@ -21,9 +22,20 @@ export async function createTaskSubmission(slackActivity, web) {
 
     // Send the message to Slack
     for (const assignedUser of taskData.assignedUsers) {
+      // Retrieve user info including timezone offset
+      const userInfo = await web.users.info({ user: assignedUser });
+      const timezoneOffset = userInfo.user.tz_offset;
+
+      // Adjust the timestamp based on the timezone offset
+      const adjustedTimestamp = dayjs.unix(taskData.dueDateTime).add(timezoneOffset, 'second');
+
+      // Format the adjusted timestamp
+      const formattedDate = adjustedTimestamp.format('ddd, MMM D, YYYY h:mm A');
+      
+
       await web.chat.postEphemeral({
         user: assignedUser,
-        ...createdTaskMessage(taskData)
+        ...createdTaskMessage(taskData, formattedDate)
       });
     }
 
