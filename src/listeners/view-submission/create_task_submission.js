@@ -1,5 +1,6 @@
 import { createdTaskMessage } from '../../user-interface/messages/created_task_message.js';
 import { TODO, IN_PROGRESS, DONE } from '../../constants/taskStatus.js';
+import { saveTaskData } from '../../functions/saveTaskData.js';
 
 export async function createTaskSubmission(slackActivity, web) {
   try {
@@ -15,11 +16,11 @@ export async function createTaskSubmission(slackActivity, web) {
 
     console.log("Extracted Task Data:", taskData);
     
+    // Save task data
+    await saveTaskData(taskData);
 
     // Send the message to Slack
     await web.chat.postMessage(createdTaskMessage(taskData));
-    
-    // Save task data (implement the `saveTaskData` function in your database module)
 
   } catch (error) {
     console.error("Error handling view submission:", error);
