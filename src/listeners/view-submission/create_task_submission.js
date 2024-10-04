@@ -21,8 +21,8 @@ export async function createTaskSubmission(slackActivity, web) {
 
     // Send the message to Slack
     for (const assignedUser of taskData.assignedUsers) {
-      await web.chat.postMessage({
-        channel: assignedUser,
+      await web.chat.postEphemeral({
+        user: assignedUser,
         ...createdTaskMessage(taskData)
       });
     }
