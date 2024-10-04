@@ -42,7 +42,7 @@ export function createNewTaskModal() {
         block_id: "assign_user_input",
         label: {
           type: "plain_text",
-          text: "Add Contributors",
+          text: "Assign Users",
           emoji: true,
         },
         element: {

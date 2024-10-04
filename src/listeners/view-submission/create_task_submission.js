@@ -20,7 +20,12 @@ export async function createTaskSubmission(slackActivity, web) {
     await saveTaskData(taskData);
 
     // Send the message to Slack
-    await web.chat.postMessage(createdTaskMessage(taskData));
+    for (const assignedUser of taskData.assignedUsers) {
+      await web.chat.postMessage({
+        channel: assignedUser,
+        ...createdTaskMessage(taskData)
+      });
+    }
 
   } catch (error) {
     console.error("Error handling view submission:", error);
