@@ -54,7 +54,6 @@ export function createNewTaskModal() {
             emoji: true,
           },
         },
-        optional: true,
       },
       {
         type: "input",
