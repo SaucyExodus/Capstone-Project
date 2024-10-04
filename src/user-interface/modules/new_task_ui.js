@@ -39,20 +39,6 @@ export function createNewTaskModal() {
       },
       {
         type: "input",
-        block_id: "due_datetime_input",
-        label: {
-          type: "plain_text",
-          text: "Due Date",
-          emoji: true,
-        },
-        element: {
-          type: "datetimepicker",
-          action_id: "due_datetime_action",
-        },
-        optional: true,
-      },
-      {
-        type: "input",
         block_id: "assign_user_input",
         label: {
           type: "plain_text",
@@ -67,6 +53,20 @@ export function createNewTaskModal() {
             text: "Select users",
             emoji: true,
           },
+        },
+        optional: true,
+      },
+      {
+        type: "input",
+        block_id: "due_datetime_input",
+        label: {
+          type: "plain_text",
+          text: "Due Date",
+          emoji: true,
+        },
+        element: {
+          type: "datetimepicker",
+          action_id: "due_datetime_action",
         },
         optional: true,
       },

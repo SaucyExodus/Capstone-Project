@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'; // Import dayjs for date formatting
 import { createdTaskMessage } from '../../user-interface/messages/created_task_message.js';
+import { TODO, IN_PROGRESS, DONE } from '../../constants/taskStatus.js';
 
 export async function createTaskSubmission(slackActivity, web) {
   try {
@@ -10,6 +11,7 @@ export async function createTaskSubmission(slackActivity, web) {
       dueDateTime: view.state.values["due_datetime_input"]["due_datetime_action"].selected_date_time,
       assignedUsers: view.state.values["assign_user_input"]["assign_user_action"].selected_users,
       taskNotes: view.state.values["notes_input"]["notes_action"].rich_text_value,
+      taskStatus: TODO,
     };
 
     console.log("Extracted Task Data:", taskData);
