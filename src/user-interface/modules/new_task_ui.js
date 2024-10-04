@@ -34,6 +34,7 @@ export function createNewTaskModal() {
             text: "Enter your task here",
             emoji: true,
           },
+          max_length: 75, // Set character limit for Task Name
         },
       },
       {
@@ -80,6 +81,7 @@ export function createNewTaskModal() {
         element: {
           type: "rich_text_input",
           action_id: "notes_action",
+          max_length: 500, // Set character limit for Notes
         },
         optional: true,
       },
