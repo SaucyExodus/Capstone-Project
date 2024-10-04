@@ -1,4 +1,4 @@
-export function createdTaskMessage(taskData){
+export function createdTaskMessage(taskData, formattedDate){
     const taskMessage = {
         channel: '#task-simply',
         text: `New Task Created by <@${taskData.userId}>: ${taskData.taskName}`,
