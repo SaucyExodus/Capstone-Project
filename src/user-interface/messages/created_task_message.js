@@ -16,7 +16,7 @@ export function createdTaskMessage(taskData) {
       {
         type: "section",
         action_id: "view_task_button",
-        value: taskData.taskId.toString(),
+        value: taskData.taskId,
         text: {
           type: "mrkdwn",
           text: `*Task Name:*\n${taskData.taskName}`,
