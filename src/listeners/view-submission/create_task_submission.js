@@ -7,6 +7,7 @@ export async function createTaskSubmission(slackActivity, web) {
   try {
     const { view, user } = slackActivity;
     const taskData = {
+      taskId: null,
       userId: user.id,
       taskName: view.state.values["task_name_input"]["task_name_action"].value,
       assignedUsers: view.state.values["assign_user_input"]["assign_user_action"].selected_users,
@@ -14,25 +15,12 @@ export async function createTaskSubmission(slackActivity, web) {
       taskNotes: view.state.values["notes_input"]["notes_action"].rich_text_value,
       taskStatus: TODO,
     };
-
+    // Save task data
+    taskData.taskId = await saveTaskData(taskData);
     console.log("Extracted Task Data:", taskData);
     
-    // Save task data
-    const taskID = await saveTaskData(taskData);
-
     // Send the message to Slack
     for (const assignedUser of taskData.assignedUsers) {
-      // Retrieve user info including timezone offset
-      const userInfo = await web.users.info({ user: assignedUser });
-      const timezoneOffset = userInfo.user.tz_offset;
-
-      // Adjust the timestamp based on the timezone offset
-      const adjustedTimestamp = dayjs.unix(taskData.dueDateTime).add(timezoneOffset, 'second');
-
-      // Format the adjusted timestamp
-      const formattedDate = adjustedTimestamp.format('ddd, MMM D, YYYY h:mm A');
-      
-
       await web.chat.postEphemeral({
         user: assignedUser,
         ...createdTaskMessage(taskData, taskID)

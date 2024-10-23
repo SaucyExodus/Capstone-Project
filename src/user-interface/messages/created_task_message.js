@@ -11,9 +11,6 @@ export function createdTaskMessage(taskData, taskID) {
         },
       },
       {
-        type: "divider",
-      },
-      {
         type: "section",
         text: {
           type: "mrkdwn",
