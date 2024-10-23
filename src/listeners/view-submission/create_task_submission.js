@@ -18,7 +18,8 @@ export async function createTaskSubmission(slackActivity, web) {
     console.log("Extracted Task Data:", taskData);
     
     // Save task data
-    await saveTaskData(taskData);
+    const taskID = await saveTaskData(taskData);
+    console.log(taskID);
 
     // Send the message to Slack
     for (const assignedUser of taskData.assignedUsers) {
