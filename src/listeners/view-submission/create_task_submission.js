@@ -35,7 +35,7 @@ export async function createTaskSubmission(slackActivity, web) {
 
       await web.chat.postEphemeral({
         user: assignedUser,
-        ...createdTaskMessage(taskData, formattedDate)
+        ...createdTaskMessage(taskData)
       });
     }
 
