@@ -7,6 +7,7 @@ export async function createTaskSubmission(slackActivity, web) {
   try {
     const { view, user } = slackActivity;
     const taskData = {
+      taskID: null,
       userId: user.id,
       taskName: view.state.values["task_name_input"]["task_name_action"].value,
       assignedUsers: view.state.values["assign_user_input"]["assign_user_action"].selected_users,
@@ -19,7 +20,7 @@ export async function createTaskSubmission(slackActivity, web) {
     
     // Save task data
     const taskID = await saveTaskData(taskData);
-    console.log(taskID);
+    taskData.taskID = taskID;
 
     // Send the message to Slack
     for (const assignedUser of taskData.assignedUsers) {

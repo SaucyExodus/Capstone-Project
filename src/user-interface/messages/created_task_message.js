@@ -15,6 +15,8 @@ export function createdTaskMessage(taskData) {
       },
       {
         type: "section",
+        action_id: "view_task_button",
+        value: taskData.taskId.toString(),
         text: {
           type: "mrkdwn",
           text: `*Task Name:*\n${taskData.taskName}`,
@@ -25,7 +27,6 @@ export function createdTaskMessage(taskData) {
             type: "plain_text",
             text: "View Task",
           },
-          url: "https://youtube.com",
         },
       },
     ],
