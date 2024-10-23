@@ -15,14 +15,14 @@ export function createdTaskMessage(taskData, taskID) {
       },
       {
         type: "section",
-        action_id: "view_task_button",
-        value: taskID.toString(),
         text: {
           type: "mrkdwn",
           text: `*Task Name:*\n${taskData.taskName}`,
         },
         accessory: {
           type: "button",
+          action_id: "view_task_button",
+          value: taskID.toString(),
           text: {
             type: "plain_text",
             text: "View Task",
