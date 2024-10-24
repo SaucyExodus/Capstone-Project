@@ -1,12 +1,13 @@
 export function createdTaskMessage(taskData) {
   const taskMessage = {
     channel: "#task-simply",
+    text: "🚨 *You have just been assigned a task!* 🚨",
     block: [
       {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `"🚨 *You have just been assigned a task!* 🚨"`,
+          text: `*New Task Created by <@${taskData.userId}>*`,
         },
       },
       {
