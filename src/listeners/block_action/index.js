@@ -2,7 +2,7 @@ import { createTaskAction } from "./create_task_action.js";
 
 export function blockActionListener(slackActivity, web) {
 
-  const actionId = slackActivity.actions.action_id;
+  const actionId = slackActivity.actions[0]?.action_id;
   console.log(slackActivity)
 
   switch (actionId) {

@@ -30,7 +30,7 @@ export function appHomeOpenedUI() {
               text: "Open Kanban Board",
               emoji: true,
             },
-            value: "create_project",
+            value: "open_kanban",
           },
           {
             type: "button",
