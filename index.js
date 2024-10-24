@@ -2,13 +2,13 @@ import express from "express";
 import bodyParser from "body-parser";
 import { WebClient } from "@slack/web-api";
 import dotenv from "dotenv";
+import { App } from '@slack/bolt';
 
 dotenv.config(); // Load environment variables from .env
 
 import { registerListeners } from "./src/listeners/index.js";
 import { createApp } from "./src/functions/create_app.js";
-import { appHomeOpenedEvent } from "./src/listeners/events/app_home_opened.js";
-import { createTaskSubmission } from "./src/listeners/view-submission/create_task_submission.js";
+import { setupEventListeners } from "./src/listeners/events/index.js"; // Import the setup function
 
 const expressApp = express();
 const port = 80;
@@ -49,18 +49,16 @@ expressApp.post("/slack/interactions", (req, res) => {
   res.send("");
 });
 
-// Listen for the app_home_opened event
-app.event('app_home_opened', async ({ event, client, context }) => {
-  await appHomeOpenedEvent({ event, client, context });
-});
-
-// Listen for the create_task_modal view submission
-app.view('create_task_modal', async ({ ack, body, view, client, context }) => {
-  await ack();
-  await createTaskSubmission({ view, user: body.user }, client);
-});
+// Set up event listeners
+setupEventListeners(app);
 
 // Start the server
 expressApp.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+// Start your Slack app
+(async () => {
+  await app.start(process.env.PORT || 3000);
+  console.log('⚡️ Bolt app is running!');
+})();
