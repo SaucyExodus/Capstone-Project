@@ -17,7 +17,7 @@ export function registerListeners(slackActivity, web) {
       viewSubmissionListener(slackActivity, web);
       break;
 
-    case "block_action": // View Submission
+    case "block_actions": // View Submission
       blockActionListener(slackActivity, web);
       break;
 
