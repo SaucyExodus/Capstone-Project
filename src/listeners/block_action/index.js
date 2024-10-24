@@ -2,6 +2,7 @@ import { createTaskAction } from "./create_task_action.js";
 
 export function blockActionListener(slackActivity, web) {
   const actionId = slackActivity.actions.action_id;
+  console.log(actionId)
 
   switch (actionId) {
     case "new_task":
