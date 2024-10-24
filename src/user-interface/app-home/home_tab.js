@@ -1,63 +1,62 @@
 export function appHomeOpenedUI() {
-  const view = 
-  {
-      "type": "home",
-      "blocks": [
-        {
-          "type": "header",
-          "text": {
-            "type": "plain_text",
-            "text": "Task Tracker"
-          }
+  const view = {
+    type: "home",
+    blocks: [
+      {
+        type: "header",
+        text: {
+          type: "plain_text",
+          text: "Task Tracker",
         },
-        {
-          "type": "actions",
-          "elements": [
-            {
-              "type": "button",
-              "text": {
-                "type": "plain_text",
-                "text": "Create New Task",
-                "emoji": true
-              },
-              "style": "primary",
-              "value": "create_task",
-              "callback_id": "new_task"
+      },
+      {
+        type: "actions",
+        elements: [
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              text: "Create New Task",
+              emoji: true,
             },
-            {
-              "type": "button",
-              "text": {
-                "type": "plain_text",
-                "text": "Open Kanban Board",
-                "emoji": true
-              },
-              "value": "create_project"
+            style: "primary",
+            value: "create_task",
+            action_id: "new_task",
+          },
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              text: "Open Kanban Board",
+              emoji: true,
             },
-            {
-              "type": "button",
-              "text": {
-                "type": "plain_text",
-                "text": "Help",
-                "emoji": true
-              },
-              "value": "help"
-            }
-          ]
+            value: "create_project",
+          },
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              text: "Help",
+              emoji: true,
+            },
+            value: "help",
+          },
+        ],
+      },
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: "*Your Tasks*",
         },
-        {
-          "type": "section",
-          "text": {
-            "type": "mrkdwn",
-            "text": "*Your Tasks*"
-          }
-        },
-        {
-          "type": "divider"
-        },
-        {
-          "type": "divider"
-        },
-      ]
-    }
-  return view; 
+      },
+      {
+        type: "divider",
+      },
+      {
+        type: "divider",
+      },
+    ],
+  };
+  return view;
 }

@@ -23,7 +23,7 @@ export async function createTaskSubmission(slackActivity, web) {
     for (const assignedUser of taskData.assignedUsers) {
       await web.chat.postEphemeral({
         user: assignedUser,
-        attachments: [ createdTaskMessage(taskData) ]
+        ...createdTaskMessage(taskData) 
       });
     }
 

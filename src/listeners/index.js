@@ -16,6 +16,10 @@ export function registerListeners(slackActivity, web) {
       viewSubmissionListener(slackActivity, web);
       break;
 
+    case "block_action": // View Submission
+      blockActionListener(slackActivity, web);
+      break;
+
     default:
       console.log("Couldn't find slack type!");
       break;
