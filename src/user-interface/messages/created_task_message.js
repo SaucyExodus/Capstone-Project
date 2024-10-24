@@ -2,7 +2,7 @@ export function createdTaskMessage(taskData) {
   const taskMessage = {
     channel: "#task-simply",
     color: "#f2c744",
-    text: `You have just been assigned a task!`,
+    text: '🚨 *You have just been assigned a task!* 🚨',
     attachments: [
       {
         color: "#f2c744",
