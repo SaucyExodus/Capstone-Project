@@ -3,7 +3,7 @@ import db from "../config/db.js";
 // Function to fetch saved tasks
 export async function getSavedTasks() {
   const query = `
-    SELECT task_id, task_name, created_by, due_date, assigned_users, task_notes, task_status
+    SELECT id AS task_id, name AS task_name, creator AS created_by, due_date, assigned_users, notes AS task_notes, status AS task_status
     FROM task_card
   `;
 
