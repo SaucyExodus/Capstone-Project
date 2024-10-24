@@ -21,7 +21,8 @@ export function appHomeOpenedUI() {
                 "emoji": true
               },
               "style": "primary",
-              "value": "create_task"
+              "value": "create_task",
+              "callback_id": "new_task"
             },
             {
               "type": "button",
@@ -56,21 +57,6 @@ export function appHomeOpenedUI() {
         {
           "type": "divider"
         },
-        {
-          "type": "actions",
-          "elements": [
-            {
-              "type": "button",
-              "text": {
-                "type": "plain_text",
-                "text": "Create New Task",
-                "emoji": true
-              },
-              "value": "new_task",
-              "action_id": "new_task"
-            }
-          ]
-        }
       ]
     }
   return view; 
