@@ -1,6 +1,7 @@
 export function createdTaskMessage(taskData) {
   const taskMessage = {
     channel: "#task-simply",
+    color: "#f2c744",
     text: `New Task Created by <@${taskData.userId}>: ${taskData.taskName}`,
     blocks: [
       {
