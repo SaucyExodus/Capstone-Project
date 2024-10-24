@@ -53,9 +53,6 @@ export function appHomeOpenedUI() {
       {
         type: "divider",
       },
-      {
-        type: "divider",
-      },
     ],
   };
   return view;

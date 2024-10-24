@@ -46,6 +46,12 @@ export async function createTaskSubmission(slackActivity, web) {
           text: "View Task",
         },
       },
+      
+    });
+
+    // Add a divider block
+    homeView.blocks.push({
+      type: "divider"
     });
 
     await web.views.publish({
