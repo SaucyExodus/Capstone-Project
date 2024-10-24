@@ -1,13 +1,16 @@
 import { createTaskAction } from "./create_task_action.js";
+import { viewTaskAction } from "./view_task_action.js";
 
 export function blockActionListener(slackActivity, web) {
-
   const actionId = slackActivity.actions[0]?.action_id;
-  console.log(slackActivity)
 
   switch (actionId) {
     case "new_task":
       createTaskAction(slackActivity, web);
+      break;
+
+    case "view_task_button":
+      viewTaskAction(slackActivity, web);
       break;
 
     default:
