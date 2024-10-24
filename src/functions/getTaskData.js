@@ -2,7 +2,7 @@ import connection from '../config/db.js';
 
 export async function getTaskData(taskId) {
   return new Promise((resolve, reject) => {
-    connection.query('SELECT * FROM tasks WHERE id = ?', [taskId], (error, results) => {
+    connection.query('SELECT * FROM task_card WHERE id = ?', [taskId], (error, results) => {
       if (error) {
         return reject(error);
       }
