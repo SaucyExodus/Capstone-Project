@@ -4,7 +4,6 @@ import { TODO, IN_PROGRESS, DONE } from '../../constants/taskStatus.js';
 import { saveTaskData } from '../../functions/saveTaskData.js';
 import { appHomeOpenedUI } from '../../user-interface/app-home/home_tab.js';
 
-
 export async function createTaskSubmission(slackActivity, web) {
   try {
     const { view, user } = slackActivity;
@@ -30,30 +29,7 @@ export async function createTaskSubmission(slackActivity, web) {
     }
 
     // Update the home tab
-    const homeView = appHomeOpenedUI();
-    homeView.blocks.push({
-      type: "section",
-      text: {
-        type: "mrkdwn",
-        text: `*New Task Created by <@${taskData.userId}>*\n*Task Name:*\n${taskData.taskName}`,
-      },
-      accessory: {
-        type: "button",
-        action_id: "view_task_button",
-        value: taskData.taskId.toString(),
-        text: {
-          type: "plain_text",
-          text: "View Task",
-        },
-      },
-      
-    });
-
-    // Add a divider block
-    homeView.blocks.push({
-      type: "divider"
-    });
-
+    const homeView = await appHomeOpenedUI(); // Fetch updated home view
     await web.views.publish({
       user_id: user.id,
       view: homeView,
