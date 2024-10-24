@@ -19,7 +19,7 @@ export function createdTaskMessage(taskData) {
         accessory: {
           type: "button",
           action_id: "view_task_button",
-          value: taskID.toString(),
+          value: taskData.taskID.toString(),
           text: {
             type: "plain_text",
             text: "View Task",
