@@ -6,7 +6,7 @@ export function createdTaskMessage(taskData) {
     attachments: [
       {
         color: "#f2c744",
-        blocks: [
+        fields: [
           {
             type: "section",
             text: {
