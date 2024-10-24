@@ -2,7 +2,7 @@ export function createdTaskMessage(taskData) {
   const taskMessage = {
     channel: "#task-simply",
     text: "🚨 *You have just been assigned a task!* 🚨",
-    block: [
+    blocks: [
       {
         type: "section",
         text: {

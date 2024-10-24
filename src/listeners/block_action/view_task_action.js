@@ -1,4 +1,7 @@
+import { getTaskData } from "../../functions/getTaskData.js"
+
 export async function viewTaskAction(slackActivity, web) {
-    console.log("In view task");
+    const taskId = slackActivity.actions[0]?.value;
+    console.log(getTaskData(taskId));
 
 }
