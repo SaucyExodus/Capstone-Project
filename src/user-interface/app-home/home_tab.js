@@ -141,5 +141,5 @@ export function appHomeOpenedUI() {
       }
     ]
   }
-    
+  return view; 
 }
