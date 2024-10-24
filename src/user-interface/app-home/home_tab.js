@@ -51,12 +51,12 @@ export async function appHomeOpenedUI() {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `*Task Created by <@${task.userId}>*\n*Task Name:*\n${task.taskName}`,
+        text: `*Task Created by <@${task.created_by}>*\n*Task Name:*\n${task.task_name}`,
       },
       accessory: {
         type: "button",
         action_id: "view_task_button",
-        value: task.taskId.toString(),
+        value: task.task_id.toString(), // Use task_id instead of taskId
         text: {
           type: "plain_text",
           text: "View Task",
