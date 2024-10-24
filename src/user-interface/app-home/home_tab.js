@@ -66,7 +66,8 @@ export function appHomeOpenedUI() {
                 "text": "Create New Task",
                 "emoji": true
               },
-              "value": "new_task"
+              "value": "new_task",
+              "action_id": "new_task"
             }
           ]
         }
