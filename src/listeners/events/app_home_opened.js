@@ -8,8 +8,8 @@ export async function appHomeOpenedEvent(slackActivity, web) {
     const userInfo = await web.users.info({ user: event.user });
     console.log("App Home opened by user:", userInfo.user.real_name);
 
-    // Fetch the updated home tab view
-    const homeView = await appHomeOpenedUI();
+    // Fetch the updated home tab view for the user
+    const homeView = await appHomeOpenedUI(event.user);
 
     // Publish the updated home tab view for the user
     await web.views.publish({
