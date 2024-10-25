@@ -3,12 +3,12 @@ import { createViewTaskModal } from "../../user-interface/modules/task_view_ui.j
 
 export async function viewTaskAction(slackActivity, web) {
     const taskId = slackActivity.actions[0]?.value;
-    console.log(await getTaskData(taskId));
+    const taskData = await getTaskData(taskId);
 
     try {
         await web.views.open({
             trigger_id: slackActivity.trigger_id,
-            view: createViewTaskModal(await getTaskData(taskId))
+            view: createViewTaskModal(taskData)
         });
     } catch(error){
         console.error("Error opening view:", error);
