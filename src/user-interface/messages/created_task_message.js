@@ -7,7 +7,7 @@ export function createdTaskMessage(taskData) {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `*New Task Created by <@${taskData.userId}>*`,
+          text: ":rotating_light: You have just been assigned a task! :rotating_light:",
         },
       },
       {
