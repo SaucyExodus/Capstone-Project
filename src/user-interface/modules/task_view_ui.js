@@ -103,5 +103,6 @@ export function createViewTaskModal(taskData, web) {
 
 async function getUserInfo(userID, web) {
   const userInfo = await web.users.info({ user: userID });
+  console.log(userInfo.user.real_name); // Add this line to see the result
   return userInfo.user.real_name;
 }
