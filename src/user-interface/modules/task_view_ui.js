@@ -23,6 +23,7 @@ export function createViewTaskModal(taskData) {
   const modal = {
     type: "modal",
     callback_id: "open_edit_task_modal",
+    private_metadata: taskData.id,
     title: {
       type: "plain_text",
       text: "Task Overview",
