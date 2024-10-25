@@ -2,8 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import { WebClient } from "@slack/web-api";
 import dotenv from "dotenv";
-import pkg from '@slack/bolt'; // Import the default export
-const { App } = pkg; // Destructure the App class
+//import pkg from '@slack/bolt'; // Import the default export
+//const { App } = pkg; // Destructure the App class
 
 dotenv.config(); // Load environment variables from .env
 
