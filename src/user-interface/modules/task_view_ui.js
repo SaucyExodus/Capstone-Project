@@ -18,7 +18,7 @@ export function createViewTaskModal(taskData) {
 
   const modal = {
     type: "modal",
-    callback_id: "edit_task_modal",
+    callback_id: "view_task_modal", // Ensure this callback_id is unique
     title: {
       type: "plain_text",
       text: "Task Overview",
@@ -27,8 +27,7 @@ export function createViewTaskModal(taskData) {
     submit: {
       type: "plain_text",
       text: "Edit Task",
-      emoji: true,
-      action_id: "edit_task"
+      emoji: true
     },
     close: {
       type: "plain_text",
