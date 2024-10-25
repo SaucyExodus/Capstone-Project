@@ -1,9 +1,9 @@
 export function createViewTaskModal(taskData) {
-    const taskNameText = `*${taskData.task_name}*`;
+    const taskNameText = taskData.task_name;
     const dueDateText = taskData.due_date ? `Due date: *${taskData.dueDate}*` : "No Due Date";
     const assignedUsersText = JSON.parse(taskData.assigned_users).map(user => `<@${user}>`).join('\n');
 
-    console.log("Assigned Users:", assignedUsersText);
+    console.log("Due Date Text:", dueDateText);
 
     const modal = {
         "type": "modal",
@@ -27,7 +27,7 @@ export function createViewTaskModal(taskData) {
                 "type": "header",
                 "text": {
                     "type": "plain_text",
-                    "text": taskNameText,
+                    "text": `*${taskNameText}*`,
                     "emoji": true
                 }
             },
