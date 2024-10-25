@@ -73,7 +73,7 @@ export function createViewTaskModal(taskData) {
                         "type": "rich_text_preformatted",
                         "elements": [
                             {
-                                ...taskNotesText
+                                taskNotesText
                             }
                         ]
                     }
