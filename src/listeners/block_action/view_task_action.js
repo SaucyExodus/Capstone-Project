@@ -4,6 +4,7 @@ import { createViewTaskModal } from "../../user-interface/modules/task_view_ui.j
 export async function viewTaskAction(slackActivity, web) {
     const taskId = slackActivity.actions[0]?.value;
     const taskData = await getTaskData(taskId);
+    console.log("Task Data:", taskData.RowDataPacket);
 
     try {
         await web.views.open({
