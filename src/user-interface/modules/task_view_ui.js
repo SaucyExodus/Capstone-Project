@@ -1,11 +1,10 @@
 export function createViewTaskModal(taskData) {
   const taskNameText = `${taskData.task_name}`;
-  //const taskAuthorText = `Author @${JSON.parse(taskData.created_by)}`;
+  const taskAuthorText = `Author @${JSON.parse(taskData.created_by)}`;
   const dueDateText = taskData.due_date ? `Due date: *${taskData.due_date}*` : "No Due Date";
   const assignedUsersText = JSON.parse(taskData.assigned_users).map((user) => `<@${user}>`).join("\n");
   const taskNotesText = JSON.parse(taskData.task_notes);
 
-  console.log(JSON.parse(taskData.created_by));
 
   const modal = {
     type: "modal",
@@ -34,13 +33,11 @@ export function createViewTaskModal(taskData) {
         },
       },
       {
-        type: "context",
-        elements: [
-          {
-            type: "plain_text",
-            text: "taskAuthorText",
-          },
-        ],
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: taskAuthorText,
+        },
       },
       {
         type: "section",
