@@ -31,6 +31,12 @@ export function setupEventListeners(app) {
     await ack();
     // Handle the view submission here
   });
+
+  // Listen for the view_task_modal view submission
+  app.view('view_task_modal', async ({ ack, body, view, client, context }) => {
+    await ack();
+    // Handle the view submission here
+  });
 }
 
 export function eventListener(slackActivity, web) {
