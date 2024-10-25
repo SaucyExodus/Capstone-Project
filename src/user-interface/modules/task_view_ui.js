@@ -1,7 +1,8 @@
 export function createViewTaskModal(taskData) {
-    const dueDateText = taskData.dueDate ? `Due date: *${taskData.dueDate}*` : "No Due Date";
+    const jsonTaskData = JSON.parse(taskData);
+    const dueDateText = jsonTaskData.dueDate ? `Due date: *${jsonTaskData.dueDate}*` : "No Due Date";
 
-    const assignedUsersText = taskData.assigned_users.map(user => `<@${user}>`).join('\n');
+    const assignedUsersText = jsonTaskData.assigned_users.map(user => `<@${user}>`).join('\n');
 
     const modal = {
         "type": "modal",
