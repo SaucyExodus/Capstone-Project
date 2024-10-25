@@ -24,11 +24,6 @@ export function createViewTaskModal(taskData) {
       text: "Task Overview",
       emoji: true,
     },
-    submit: {
-      type: "plain_text",
-      text: "Edit Task",
-      emoji: true
-    },
     close: {
       type: "plain_text",
       text: "Back",
@@ -108,6 +103,20 @@ export function createViewTaskModal(taskData) {
           text: "`{Status}`",
         },
       },
+      {
+        type: "actions",
+        elements: [
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              text: "Edit Task",
+              emoji: true
+            },
+            action_id: "edit_task_button" // Set action_id for the button
+          }
+        ]
+      }
     ],
   };
   return modal;

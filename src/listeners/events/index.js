@@ -16,8 +16,8 @@ export function setupEventListeners(app) {
     await createTaskSubmission({ view, user: body.user }, client);
   });
 
-  // Listen for the edit_task button action
-  app.action('edit_task', async ({ ack, body, client }) => {
+  // Listen for the edit_task_button action
+  app.action('edit_task_button', async ({ ack, body, client }) => {
     await ack();
     const modal = editTaskModal();
     await client.views.open({
