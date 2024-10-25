@@ -1,5 +1,5 @@
 export function createViewTaskModal(taskData) {
-  const taskId = taskData.id;
+  const taskId = taskData.id.toString();
   const taskNameText = `${taskData.task_name}`;
   const taskAuthorText = `Author <@${taskData.created_by}>`;
   const dueDateText = taskData.due_date ? `Due date: *${taskData.due_date}*` : "No Due Date";
