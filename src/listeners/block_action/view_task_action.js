@@ -8,7 +8,7 @@ export async function viewTaskAction(slackActivity, web) {
     try {
         await web.views.open({
             trigger_id: slackActivity.trigger_id,
-            view: createViewTaskModal(taskData, web)
+            view: createViewTaskModal(taskData)
         });
     } catch(error){
         console.error("Error opening view:", error);
