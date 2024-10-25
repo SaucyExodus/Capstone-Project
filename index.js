@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import { WebClient } from "@slack/web-api";
 import dotenv from "dotenv";
-import { App } from '@slack/bolt';
+//import { App } from '@slack/bolt';
 
 dotenv.config(); // Load environment variables from .env
 
