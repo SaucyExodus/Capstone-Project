@@ -1,3 +1,5 @@
+import { text } from "body-parser";
+
 export function createViewTaskModal(taskData) {
   const taskNameText = `${taskData.task_name}`;
   const taskAuthorText = `Author <@${taskData.created_by}>`;
@@ -32,10 +34,10 @@ export function createViewTaskModal(taskData) {
         },
       },
       {
-        type: "context",
-        elements: [
+        type: "section",
+        text: [
           {
-            type: "plain_text",
+            type: "mrkdwn",
             text: taskAuthorText,
           },
         ],
