@@ -1,6 +1,7 @@
-export async function createViewTaskModal(taskData, web) {
+export function createViewTaskModal(taskData, web) {
   const taskNameText = `${taskData.task_name}`;
-  const taskAuthorText = `Author ${await getUserInfo(taskData.created_by, web)}`;
+  const userName = getUserInfo(taskData.created_by, web);
+  const taskAuthorText = `Author ${userName}`;
   const dueDateText = taskData.due_date ? `Due date: *${taskData.due_date}*` : "No Due Date";
   const assignedUsersText = JSON.parse(taskData.assigned_users).map((user) => `<@${user}>`).join("\n");
   const taskNotesText = taskData.task_notes ? JSON.parse(taskData.task_notes) : { type: "section", text: {type: "mrkdwn", text: "No notes", }, };
