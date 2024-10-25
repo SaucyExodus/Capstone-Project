@@ -1,4 +1,8 @@
-export function createViewTaskModal() {
+export function createViewTaskModal(taskData) {
+    const dueDateText = taskData.dueDate ? `Due date: *${taskData.dueDate}*` : "No Due Date";
+
+    const assignedUsersText = taskData.assignedUsers.map(user => `<@${user}>`).join('\n');
+
     const modal = {
         "type": "modal",
         "title": {
@@ -21,7 +25,7 @@ export function createViewTaskModal() {
                 "type": "header",
                 "text": {
                     "type": "plain_text",
-                    "text": "{Task Name}",
+                    "text": `${taskData.taskName}`,
                     "emoji": true
                 }
             },
@@ -29,7 +33,7 @@ export function createViewTaskModal() {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "Due date: *{Due Date}*"
+                    "text": dueDateText
                 }
             },
             {
@@ -46,7 +50,7 @@ export function createViewTaskModal() {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "<{link}|@{user1}>\n<@{user2}>\n<@{user3}>"
+                    "text": assignedUsersText
                 }
             },
             {
@@ -82,6 +86,15 @@ export function createViewTaskModal() {
                     "type": "mrkdwn",
                     "text": "`{Status}`"
                 }
+            },
+            {
+                "type": "context",
+                "elements": [
+                    {
+                        "type": "plain_text",
+                        "text": "Author: @user",
+                    }
+                ]
             }
         ]
     };
