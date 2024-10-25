@@ -39,7 +39,7 @@ export async function createViewTaskModal(taskData, web) {
         elements: [
           {
             type: "plain_text",
-            text: taskAuthorText,
+            text: "taskAuthorText",
           },
         ],
       },
