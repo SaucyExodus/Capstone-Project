@@ -1,5 +1,5 @@
 export function createViewTaskModal(taskData) {
-    const dueDateText = taskData.dueDate ? `Due date: *${taskData.dueDate}*` : "No Due Date";
+    const dueDateText = taskData.due_date ? `Due date: *${taskData.dueDate}*` : "No Due Date";
 
     //const assignedUsersText = taskData.assigned_users.map(user => `<@${user}>`).join('\n');
 
