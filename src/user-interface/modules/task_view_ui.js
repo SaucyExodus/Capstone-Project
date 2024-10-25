@@ -1,6 +1,6 @@
 export function createViewTaskModal(taskData) {
     const taskNameText = `${taskData.task_name}`;
-    const dueDateText = taskData.due_date ? `Due date: *${taskData.dueDate}*` : "No Due Date";
+    const dueDateText = taskData.due_date ? `Due date: *${taskData.due_date}*` : "No Due Date";
     const assignedUsersText = JSON.parse(taskData.assigned_users).map(user => `<@${user}>`).join('\n');
 
     console.log(taskData.due_date);
@@ -52,7 +52,7 @@ export function createViewTaskModal(taskData) {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "assignedUsersText"
+                    "text": assignedUsersText
                 }
             },
             {
