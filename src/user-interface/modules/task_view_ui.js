@@ -27,7 +27,8 @@ export function createViewTaskModal(taskData) {
     submit: {
       type: "plain_text",
       text: "Edit Task",
-      emoji: true
+      emoji: true,
+      action_id: "edit_task"
     },
     close: {
       type: "plain_text",
