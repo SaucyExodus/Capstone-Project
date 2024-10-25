@@ -2,7 +2,7 @@ export function createViewTaskModal(taskData) {
     const taskNameText = `${taskData.task_name}`;
     const dueDateText = taskData.due_date ? `Due date: *${taskData.due_date}*` : "No Due Date";
     const assignedUsersText = JSON.parse(taskData.assigned_users).map(user => `<@${user}>`).join('\n');
-    const taskNotesText = JSON.parse(taskData.task_notes);
+    const taskNotesText = taskData.task_notes;
 
     console.log(taskNotesText);
 
