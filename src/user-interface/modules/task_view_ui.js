@@ -1,7 +1,6 @@
-export function createViewTaskModal(taskData, web) {
+export function createViewTaskModal(taskData) {
   const taskNameText = `${taskData.task_name}`;
-  const userName = getUserInfo(taskData.created_by, web);
-  const taskAuthorText = `Author ${userName}`;
+  const taskAuthorText = `Author @${taskData.created_by}`;
   const dueDateText = taskData.due_date ? `Due date: *${taskData.due_date}*` : "No Due Date";
   const assignedUsersText = JSON.parse(taskData.assigned_users).map((user) => `<@${user}>`).join("\n");
   const taskNotesText = taskData.task_notes ? JSON.parse(taskData.task_notes) : { type: "section", text: {type: "mrkdwn", text: "No notes", }, };
@@ -37,13 +36,11 @@ export function createViewTaskModal(taskData, web) {
         },
       },
       {
-        type: "context",
-        elements: [
-          {
-            type: "plain_text",
-            text: taskAuthorText,
-          },
-        ],
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: taskAuthorText,
+        },
       },
       {
         type: "section",
@@ -100,10 +97,4 @@ export function createViewTaskModal(taskData, web) {
     ],
   };
   return modal;
-}
-
-async function getUserInfo(userID, web) {
-  const userInfo = await web.users.info({ user: userID });
-  console.log(userInfo.user.real_name); // Add this line to see the result
-  return userInfo.user.real_name;
 }
