@@ -35,12 +35,10 @@ export function createViewTaskModal(taskData) {
       },
       {
         type: "section",
-        text: [
-          {
-            type: "mrkdwn",
-            text: taskAuthorText,
-          },
-        ],
+        text: {
+          type: "mrkdwn",
+          text: taskAuthorText,
+        },
       },
       {
         type: "section",
