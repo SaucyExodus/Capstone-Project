@@ -1,8 +1,8 @@
 import { appHomeOpenedEvent } from "./app_home_opened.js";
 import { teamJoinedEvent } from "./team_join.js";
 import { appOnlineEvent } from "./app_online.js";
-import { createTaskSubmission } from "../view-submission/create_task_submission.js"; // Adjust the path as needed
-import { editTaskModal } from "../../user-interface/modules/edit_task_ui.js"; // Adjust the path as needed
+import { createTaskSubmission } from "../view-submission/create_task_submission.js"; 
+import { editTaskModal } from "../../user-interface/modules/edit_task_ui.js"; 
 
 export function setupEventListeners(app) {
   // Listen for the app_home_opened event
