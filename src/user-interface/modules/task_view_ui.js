@@ -22,6 +22,7 @@ export function createViewTaskModal(taskData) {
 
   const modal = {
     type: "modal",
+    callback_id: "open_edit_task_modal",
     title: {
       type: "plain_text",
       text: "Task Overview",
@@ -32,7 +33,6 @@ export function createViewTaskModal(taskData) {
       text: "Edit Task",
       emoji: true,
     },
-    callback_id: "open_edit_task_modal",
     close: {
       type: "plain_text",
       text: "Back",
