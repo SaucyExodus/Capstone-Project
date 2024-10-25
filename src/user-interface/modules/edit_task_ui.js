@@ -1,7 +1,7 @@
-export function createNewTaskModal() {
+export function editTaskModal() {
     const modal = {
         "type": "modal",
-        "callback_id": "create_task_modal",
+        "callback_id": "edit_task_modal",
         "title": {
             "type": "plain_text",
             "text": "Edit Task",
