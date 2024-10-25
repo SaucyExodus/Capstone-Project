@@ -25,6 +25,12 @@ export function setupEventListeners(app) {
       view: modal
     });
   });
+
+  // Listen for the edit_task_modal view submission
+  app.view('edit_task_modal', async ({ ack, body, view, client, context }) => {
+    await ack();
+    // Handle the view submission here
+  });
 }
 
 export function eventListener(slackActivity, web) {

@@ -18,6 +18,7 @@ export function createViewTaskModal(taskData) {
 
   const modal = {
     type: "modal",
+    callback_id: "edit_task_modal",
     title: {
       type: "plain_text",
       text: "Task Overview",
@@ -87,7 +88,7 @@ export function createViewTaskModal(taskData) {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: taskNotesText, // Ensure this is a string
+          text: taskNotesText, 
         },
       },
       {
