@@ -1,24 +1,32 @@
 export function createViewTaskModal(taskData) {
+  const taskId = taskData.id.toString();
   const taskNameText = `${taskData.task_name}`;
-  const taskAuthorText = `Author @${taskData.created_by}`;
+  const taskAuthorText = `Author <@${taskData.created_by}>`;
   const dueDateText = taskData.due_date ? `Due date: *${taskData.due_date}*` : "No Due Date";
   const assignedUsersText = JSON.parse(taskData.assigned_users).map((user) => `<@${user}>`).join("\n");
-
-  // Extract text from task_notes
-  const taskNotesObject = JSON.parse(taskData.task_notes);
-  let taskNotesText = "";
-  if (taskNotesObject.type === "rich_text" && Array.isArray(taskNotesObject.elements)) {
-    taskNotesText = taskNotesObject.elements.map(element => {
-      if (element.type === "rich_text_section" && Array.isArray(element.elements)) {
-        return element.elements.map(subElement => subElement.text).join("");
-      }
-      return "";
-    }).join("\n");
+  const taskNotesText = taskData.task_notes ? JSON.parse(taskData.task_notes) : { type: "section", text: {type: "mrkdwn", text: "No notes", }, };
+  
+  let taskStatusText;
+  switch (taskData.task_status) {
+    case 'TODO':
+      taskStatusText = "`To Do`";
+      break;
+    case 'IN_PROGRESS':
+      taskStatusText = "`In Progress`";
+      break;
+    case 'DONE':
+      taskStatusText = "`Done`";
+      break;
+    default:
+      taskStatusText = 'Unknown Status';
   }
 
   const modal = {
     type: "modal",
-    callback_id: "view_task_modal", // Ensure this callback_id is unique
+
+    callback_id: "open_edit_task_modal",
+    private_metadata: taskId,
+
     title: {
       type: "plain_text",
       text: "Task Overview",
@@ -84,13 +92,7 @@ export function createViewTaskModal(taskData) {
           text: "*Notes*",
         },
       },
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: taskNotesText, 
-        },
-      },
+      taskNotesText,
       {
         type: "divider",
       },
@@ -105,7 +107,7 @@ export function createViewTaskModal(taskData) {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: "`{Status}`",
+          text: taskStatusText,
         },
       },
     ],
