@@ -5,8 +5,6 @@ export function createViewTaskModal(taskData) {
   const dueDateText = taskData.due_date ? `Due date: *${taskData.due_date}*` : "No Due Date";
   const assignedUsersText = JSON.parse(taskData.assigned_users).map((user) => `<@${user}>`).join("\n");
   const taskNotesText = taskData.task_notes ? JSON.parse(taskData.task_notes) : { type: "section", text: {type: "mrkdwn", text: "No notes", }, };
-
-  console.log("Task Data:", taskId);
   
   let taskStatusText;
   switch (taskData.task_status) {
@@ -25,8 +23,10 @@ export function createViewTaskModal(taskData) {
 
   const modal = {
     type: "modal",
+
     callback_id: "open_edit_task_modal",
     private_metadata: taskId,
+
     title: {
       type: "plain_text",
       text: "Task Overview",
@@ -35,7 +35,7 @@ export function createViewTaskModal(taskData) {
     submit: {
       type: "plain_text",
       text: "Edit Task",
-      emoji: true,
+      emoji: true
     },
     close: {
       type: "plain_text",
