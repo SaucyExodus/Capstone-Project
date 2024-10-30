@@ -1,3 +1,5 @@
+import e from "express";
+
 export function createViewTaskModal(taskData) {
   const taskId = taskData.id.toString();
   const taskNameText = `${taskData.task_name}`;
@@ -26,6 +28,7 @@ export function createViewTaskModal(taskData) {
 
     callback_id: "open_edit_task_modal",
     private_metadata: taskId,
+    external_id: taskId, 
 
     title: {
       type: "plain_text",
