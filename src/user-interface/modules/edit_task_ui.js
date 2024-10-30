@@ -73,7 +73,7 @@ export function editTaskModal(taskData) {
         element: {
           type: "datetimepicker",
           action_id: "datetimepicker-action",
-          initial_date_time: taskData.due_date,
+          initial_date_time: JSON.parse(taskData.due_date),
         },
         label: {
           type: "plain_text",
