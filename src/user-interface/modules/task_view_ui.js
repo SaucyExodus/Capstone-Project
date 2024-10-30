@@ -55,13 +55,6 @@ export function createViewTaskModal(taskData) {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: taskAuthorText,
-        },
-      },
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
           text: dueDateText,
         },
       },
@@ -108,6 +101,16 @@ export function createViewTaskModal(taskData) {
         text: {
           type: "mrkdwn",
           text: taskStatusText,
+        },
+      },
+      {
+        type: "divider",
+      },
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: taskAuthorText,
         },
       },
     ],

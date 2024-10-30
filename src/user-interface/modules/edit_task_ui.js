@@ -5,10 +5,6 @@ export function editTaskModal(taskData) {
   const dueDateInteger = taskData.due_date;
   const assignedUsersArray = JSON.parse(taskData.assigned_users);
   const taskNotesText = JSON.parse(taskData.task_notes);
-
-  
-  console.log(taskData);
-
   
   let taskStatusText, taskStatusValue;
   switch (taskData.task_status) {
@@ -28,8 +24,6 @@ export function editTaskModal(taskData) {
       taskStatusText = 'Unknown Status';
       taskStatusValue = "null";
   }
-
-  console.log(taskStatusText, taskStatusValue);
 
   const modal = {
     type: "modal",
