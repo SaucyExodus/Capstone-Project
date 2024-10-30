@@ -4,25 +4,29 @@ export function editTaskModal(taskData) {
   const taskAuthorText = `Author <@${taskData.created_by}>`;
   const dueDateInteger = taskData.due_date;
   const assignedUsersArray = JSON.parse(taskData.assigned_users);
-  const taskNotesText = taskData.task_notes ? JSON.parse(taskData.task_notes) : { type: "section", text: {type: "mrkdwn", text: "No notes", }, };
+  const taskNotesText = JSON.parse(taskData.task_notes);
 
   
   console.log(taskData);
 
   
-  let taskStatusText;
+  let taskStatusText, taskStatusValue;
   switch (taskData.task_status) {
     case 'TODO':
       taskStatusText = "`To Do`";
+      taskStatusValue = "value-0";
       break;
     case 'IN_PROGRESS':
       taskStatusText = "`In Progress`";
+      taskStatusValue = "value-1";
       break;
     case 'DONE':
       taskStatusText = "`Done`";
+      taskStatusValue = "value-2";
       break;
     default:
       taskStatusText = 'Unknown Status';
+      taskStatusValue = "null";
   }
 
 
@@ -91,10 +95,7 @@ export function editTaskModal(taskData) {
         element: {
           type: "rich_text_input",
           action_id: "rich_text_input-action",
-          placeholder: {
-            type: "plain_text",
-            text: "Current task notes",
-          },
+          ...(taskNotesText && { initial_value: taskNotesText }),
         },
         label: {
           type: "plain_text",
@@ -107,16 +108,19 @@ export function editTaskModal(taskData) {
         type: "input",
         element: {
           type: "static_select",
-          placeholder: {
-            type: "plain_text",
-            text: "Select an item",
-            emoji: true,
+          initial_option: {
+            text: {
+              type: "plain_text",
+              text: taskStatusText,
+              emoji: true,
+            },
+            value: taskStatusValue,
           },
           options: [
             {
               text: {
                 type: "plain_text",
-                text: "To-Do",
+                text: "To Do",
                 emoji: true,
               },
               value: "value-0",
