@@ -1,6 +1,6 @@
 export function editTaskModal(taskData) {
   const taskId = taskData.id.toString();
-  const taskNameText = `${taskData.task_name}`;
+  const taskNameText = taskData.task_name;
   const taskAuthorText = `Author <@${taskData.created_by}>`;
   const dueDateText = taskData.due_date ? `Due date: *${taskData.due_date}*` : "No Due Date";
   const assignedUsersArray = JSON.parse(taskData.assigned_users);
@@ -73,7 +73,7 @@ export function editTaskModal(taskData) {
         element: {
           type: "datetimepicker",
           action_id: "datetimepicker-action",
-          initial_date: taskData.due_date,
+          initial_date_time: taskData.due_date,
         },
         label: {
           type: "plain_text",
