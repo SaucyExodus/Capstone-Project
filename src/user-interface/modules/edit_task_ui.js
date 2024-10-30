@@ -1,4 +1,27 @@
-export function editTaskModal() {
+export function editTaskModal(taskData) {
+  const taskId = taskData.id.toString();
+  const taskNameText = `${taskData.task_name}`;
+  const taskAuthorText = `Author <@${taskData.created_by}>`;
+  const dueDateText = taskData.due_date ? `Due date: *${taskData.due_date}*` : "No Due Date";
+  const assignedUsersText = JSON.parse(taskData.assigned_users).map((user) => `<@${user}>`).join("\n");
+  const taskNotesText = taskData.task_notes ? JSON.parse(taskData.task_notes) : { type: "section", text: {type: "mrkdwn", text: "No notes", }, };
+  
+  let taskStatusText;
+  switch (taskData.task_status) {
+    case 'TODO':
+      taskStatusText = "`To Do`";
+      break;
+    case 'IN_PROGRESS':
+      taskStatusText = "`In Progress`";
+      break;
+    case 'DONE':
+      taskStatusText = "`Done`";
+      break;
+    default:
+      taskStatusText = 'Unknown Status';
+  }
+
+
   const modal = {
     type: "modal",
     callback_id: "edit_task_modal",
@@ -25,7 +48,7 @@ export function editTaskModal() {
           action_id: "plain_text_input-action",
           placeholder: {
             type: "plain_text",
-            text: "Current Name",
+            text: taskNameText,
           },
         },
         label: {
