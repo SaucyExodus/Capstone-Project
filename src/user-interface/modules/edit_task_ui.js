@@ -3,11 +3,8 @@ export function editTaskModal(taskData) {
   const taskNameText = `${taskData.task_name}`;
   const taskAuthorText = `Author <@${taskData.created_by}>`;
   const dueDateText = taskData.due_date ? `Due date: *${taskData.due_date}*` : "No Due Date";
-  const assignedUsersText = JSON.parse(taskData.assigned_users).map((user) => `<@${user}>`).join("\n");
+  const assignedUsersArray = JSON.parse(taskData.assigned_users);
   const taskNotesText = taskData.task_notes ? JSON.parse(taskData.task_notes) : { type: "section", text: {type: "mrkdwn", text: "No notes", }, };
-
-  console.log(assignedUsersText);
-  console.log(JSON.parse(taskData.assigned_users));
   
   let taskStatusText;
   switch (taskData.task_status) {
@@ -62,7 +59,7 @@ export function editTaskModal(taskData) {
         element: {
           type: "multi_users_select",
           action_id: "multi_users_select-action",
-          initial_users: taskData.assigned_users,          
+          initial_users: assignedUsersArray,          
         },
         label: {
           type: "plain_text",
