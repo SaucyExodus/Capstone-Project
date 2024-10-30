@@ -1,6 +1,6 @@
 export function editTaskModal(taskData) {
   const taskId = taskData.id.toString();
-  const taskNameText = `${taskData.task_name}`;
+  const taskNameText = taskData.task_name;
   const taskAuthorText = `Author <@${taskData.created_by}>`;
   const dueDateText = taskData.due_date ? `Due date: *${taskData.due_date}*` : "No Due Date";
   const assignedUsersArray = JSON.parse(taskData.assigned_users);
@@ -24,6 +24,7 @@ export function editTaskModal(taskData) {
 
   const modal = {
     type: "modal",
+    private_metadata: taskId,
     callback_id: "edit_task_modal",
     title: {
       type: "plain_text",
@@ -72,6 +73,7 @@ export function editTaskModal(taskData) {
         element: {
           type: "datetimepicker",
           action_id: "datetimepicker-action",
+          initial_date: taskData.due_date,
         },
         label: {
           type: "plain_text",
