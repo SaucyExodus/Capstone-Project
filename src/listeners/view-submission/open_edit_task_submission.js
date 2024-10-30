@@ -7,7 +7,7 @@ export async function openEditTaskSubmission(slackActivity, web) {
     const taskData = await getTaskData(taskId);
 
     try {
-        await web.views.open({
+        await web.views.update({
             trigger_id: slackActivity.trigger_id,
             view: editTaskModal(taskData)
         });
