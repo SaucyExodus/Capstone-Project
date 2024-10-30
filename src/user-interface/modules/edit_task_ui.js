@@ -75,9 +75,10 @@ export function editTaskModal() {
         },
         label: {
           type: "plain_text",
-          text: "Notes (optional)",
+          text: "Notes",
           emoji: true,
         },
+        optional: true,
       },
       {
         type: "input",
