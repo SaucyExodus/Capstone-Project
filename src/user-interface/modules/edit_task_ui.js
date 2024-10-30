@@ -13,15 +13,15 @@ export function editTaskModal(taskData) {
   let taskStatusText, taskStatusValue;
   switch (taskData.task_status) {
     case 'TODO':
-      taskStatusText = "`To Do`";
+      taskStatusText = "To Do";
       taskStatusValue = "value-0";
       break;
     case 'IN_PROGRESS':
-      taskStatusText = "`In Progress`";
+      taskStatusText = "In Progress";
       taskStatusValue = "value-1";
       break;
     case 'DONE':
-      taskStatusText = "`Done`";
+      taskStatusText = "Done";
       taskStatusValue = "value-2";
       break;
     default:
