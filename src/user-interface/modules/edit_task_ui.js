@@ -18,7 +18,6 @@ export function editTaskModal() {
       emoji: true,
     },
     blocks: [
-      /*
       {
         type: "input",
         element: {
@@ -123,7 +122,6 @@ export function editTaskModal() {
           emoji: true,
         },
       },
-      */
     ],
   };
   return modal;
