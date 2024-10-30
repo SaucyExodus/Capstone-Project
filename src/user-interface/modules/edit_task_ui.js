@@ -7,7 +7,7 @@ export function editTaskModal(taskData) {
   const taskNotesText = taskData.task_notes ? JSON.parse(taskData.task_notes) : { type: "section", text: {type: "mrkdwn", text: "No notes", }, };
 
   console.log(assignedUsersText);
-  console.log(taskData.assigned_users);
+  console.log(JSON.parse(taskData.assigned_users));
   
   let taskStatusText;
   switch (taskData.task_status) {
