@@ -1,5 +1,3 @@
-import e from "express";
-
 export function createViewTaskModal(taskData) {
   const taskId = taskData.id.toString();
   const taskNameText = `${taskData.task_name}`;
