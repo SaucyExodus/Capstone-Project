@@ -37,18 +37,6 @@ export function editTaskModal() {
       {
         type: "input",
         element: {
-          type: "datetimepicker",
-          action_id: "datetimepicker-action",
-        },
-        label: {
-          type: "plain_text",
-          text: "Change Due Date (optional)",
-          emoji: true,
-        },
-      },
-      {
-        type: "input",
-        element: {
           type: "multi_users_select",
           placeholder: {
             type: "plain_text",
@@ -59,9 +47,22 @@ export function editTaskModal() {
         },
         label: {
           type: "plain_text",
-          text: "Add Contributors (optional)",
+          text: "Select Contributor(s)",
           emoji: true,
         },
+      },
+      {
+        type: "input",
+        element: {
+          type: "datetimepicker",
+          action_id: "datetimepicker-action",
+        },
+        label: {
+          type: "plain_text",
+          text: "Select Due Date",
+          emoji: true,
+        },
+        optional: true,
       },
       {
         type: "input",
