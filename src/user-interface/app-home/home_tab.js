@@ -49,6 +49,7 @@ export async function appHomeOpenedUI(userId) {
   tasks.forEach(task => {
     blocks.push({
       type: "section",
+      external_id: task.task_id.toString(),
       text: {
         type: "mrkdwn",
         text: `*Task Created by <@${task.created_by}>*\n*Task Name:*\n${task.task_name}`,
