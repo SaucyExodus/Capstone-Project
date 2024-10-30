@@ -29,6 +29,7 @@ export function editTaskModal(taskData) {
       taskStatusValue = "null";
   }
 
+  console.log(taskStatusText, taskStatusValue);
 
   const modal = {
     type: "modal",
@@ -109,12 +110,12 @@ export function editTaskModal(taskData) {
         element: {
           type: "static_select",
           initial_option: {
+            value: taskStatusValue,
             text: {
               type: "plain_text",
               text: taskStatusText,
               emoji: true,
             },
-            value: taskStatusValue,
           },
           options: [
             {
