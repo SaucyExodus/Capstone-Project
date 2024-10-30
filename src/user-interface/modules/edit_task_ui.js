@@ -2,13 +2,13 @@ export function editTaskModal(taskData) {
   const taskId = taskData.id.toString();
   const taskNameText = taskData.task_name;
   const taskAuthorText = `Author <@${taskData.created_by}>`;
-  const dueDateText = taskData.due_date ? `Due date: *${taskData.due_date}*` : "No Due Date";
+  const dueDateInteger = taskData.due_date;
   const assignedUsersArray = JSON.parse(taskData.assigned_users);
   const taskNotesText = taskData.task_notes ? JSON.parse(taskData.task_notes) : { type: "section", text: {type: "mrkdwn", text: "No notes", }, };
 
   
   console.log(taskData);
-  console.log(taskData.due_date);
+
   
   let taskStatusText;
   switch (taskData.task_status) {
@@ -77,7 +77,7 @@ export function editTaskModal(taskData) {
         element: {
           type: "datetimepicker",
           action_id: "datetimepicker-action",
-          //initial_date_time: JSON.parse(taskData.due_date),
+          ...(dueDateInteger && { initial_date_time: dueDateInteger }),
         },
         label: {
           type: "plain_text",
