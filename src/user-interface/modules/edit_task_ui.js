@@ -46,10 +46,7 @@ export function editTaskModal(taskData) {
         element: {
           type: "plain_text_input",
           action_id: "plain_text_input-action",
-          placeholder: {
-            type: "plain_text",
-            text: taskNameText,
-          },
+          initial_value: taskNameText,
         },
         label: {
           type: "plain_text",
@@ -61,12 +58,8 @@ export function editTaskModal(taskData) {
         type: "input",
         element: {
           type: "multi_users_select",
-          placeholder: {
-            type: "plain_text",
-            text: "Select users",
-            emoji: true,
-          },
           action_id: "multi_users_select-action",
+          initial_users: taskData.assigned_users,          
         },
         label: {
           type: "plain_text",
