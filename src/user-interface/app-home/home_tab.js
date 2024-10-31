@@ -97,7 +97,7 @@ export async function appHomeOpenedUI(userId) {
       },
       accessory: {
         type: "button",
-        action_id: "edit_task_button",
+        action_id: "view_task_button",
         value: task.task_id.toString(), // Use task_id instead of taskId
         text: {
           type: "plain_text",
@@ -106,21 +106,20 @@ export async function appHomeOpenedUI(userId) {
       },
     };
 
-    switch (task.task_status) {
+    console.log(`Task ID: ${task.task_id}, Status: ${task.task_status}`); // Log task ID and status
+
+    switch (task.task_status) { // Use task.task_status instead of task.status
       case 'IN_PROGRESS':
         inProgressTasks.push(taskBlock);
-        console.log(task.status);
         break;
       case 'TODO':
         toDoTasks.push(taskBlock);
-        console.log(task.status);
         break;
       case 'COMPLETED':
         completedTasks.push(taskBlock);
-        console.log(task.status);
         break;
       default:
-        console.log(task.status);
+        console.log(`Unknown status: ${task.task_status}`);
         break;
     }
   });
