@@ -109,14 +109,18 @@ export async function appHomeOpenedUI(userId) {
     switch (task.status) {
       case 'IN_PROGRESS':
         inProgressTasks.push(taskBlock);
+        print(task.status);
         break;
       case 'TODO':
         toDoTasks.push(taskBlock);
+        print(task.status);
         break;
       case 'COMPLETED':
         completedTasks.push(taskBlock);
+        print(task.status);
         break;
       default:
+        print(task.status);
         break;
     }
   });
