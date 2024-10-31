@@ -107,13 +107,13 @@ export async function appHomeOpenedUI(userId) {
     };
 
     switch (task.status) {
-      case 'In Progress':
+      case 'IN_PROGRESS':
         inProgressTasks.push(taskBlock);
         break;
       case 'TODO':
         toDoTasks.push(taskBlock);
         break;
-      case 'Completed':
+      case 'COMPLETED':
         completedTasks.push(taskBlock);
         break;
       default:
