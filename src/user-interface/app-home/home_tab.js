@@ -97,7 +97,7 @@ export async function appHomeOpenedUI(userId) {
       },
       accessory: {
         type: "button",
-        action_id: "view_task_button",
+        action_id: "edit_task_button",
         value: task.task_id.toString(), // Use task_id instead of taskId
         text: {
           type: "plain_text",
