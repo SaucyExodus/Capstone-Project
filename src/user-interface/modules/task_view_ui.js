@@ -15,7 +15,7 @@ export function createViewTaskModal(taskData) {
       taskStatusText = "`In Progress`";
       break;
     case 'DONE':
-      taskStatusText = "`Done`";
+      taskStatusText = "`Completed`";
       break;
     default:
       taskStatusText = 'Unknown Status';
