@@ -14,8 +14,8 @@ export async function editTaskSubmission(slackActivity, web) {
           taskStatus: view.state.values["status_input"]["status_action"].selected_option.value,
         };
 
-        await updateTaskData(taskData);
-        console.log("Extracted Task Data:", taskData);
+        await updateTaskData(updatedTaskData);
+        console.log("Extracted Task Data:", updatedTaskData);
     } catch (error) {
 
     }
