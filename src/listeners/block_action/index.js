@@ -13,6 +13,10 @@ export function blockActionListener(slackActivity, web) {
       viewTaskAction(slackActivity, web);
       break;
 
+    case "help_modal":
+      helpModal(slackActivity, web);
+      break;
+
     default:
       console.log("Couldn't find action id for view submission");
       break;
