@@ -78,9 +78,9 @@ export async function appHomeOpenedUI(userId) {
   ];
 
   // Find the index positions for each task category
-  const inProgressIndex = blocks.findIndex(block => block.text && block.text.text === "*In Progress Tasks*") + 1;
-  const toDoIndex = blocks.findIndex(block => block.text && block.text.text === "*To-Do Tasks*") + 1;
-  const completedIndex = blocks.findIndex(block => block.text && block.text.text === "*Completed Tasks*") + 1;
+  const inProgressIndex = blocks.findIndex(block => block.text && block.text.text === "*In Progress Tasks*");
+  const toDoIndex = blocks.findIndex(block => block.text && block.text.text === "*To-Do Tasks*");
+  const completedIndex = blocks.findIndex(block => block.text && block.text.text === "*Completed Tasks*");
 
   // Arrays to hold tasks by status
   const inProgressTasks = [];
@@ -125,9 +125,9 @@ export async function appHomeOpenedUI(userId) {
   });
 
   // Insert tasks into their respective sections
-  blocks.splice(inProgressIndex, 0, ...inProgressTasks);
-  blocks.splice(toDoIndex + inProgressTasks.length, 0, ...toDoTasks);
-  blocks.splice(completedIndex + inProgressTasks.length + toDoTasks.length, 0, ...completedTasks);
+  blocks.splice(inProgressIndex + 1, 0, ...inProgressTasks);
+  blocks.splice(toDoIndex + 2 + inProgressTasks.length, 0, ...toDoTasks);
+  blocks.splice(completedIndex + 3 + inProgressTasks.length + toDoTasks.length, 0, ...completedTasks);
 
   return {
     type: 'home',
