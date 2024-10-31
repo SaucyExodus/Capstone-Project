@@ -2,6 +2,7 @@ import { getSavedTasks } from '../../functions/getSavedTasks.js'; // Function to
 
 export async function appHomeOpenedUI(userId) {
   const tasks = await getSavedTasks(userId); // Fetch saved tasks assigned to the user
+
   const blocks = [
     {
       type: "header",
@@ -92,8 +93,19 @@ export async function appHomeOpenedUI(userId) {
     }
   ];
 
+  // Find the index positions for each task category
+  const inProgressIndex = blocks.findIndex(block => block.text && block.text.text === "*In Progress Tasks*") + 2;
+  const toDoIndex = blocks.findIndex(block => block.text && block.text.text === "*To-Do Tasks*") + 2;
+  const completedIndex = blocks.findIndex(block => block.text && block.text.text === "*Completed Tasks*") + 2;
+
+  // Arrays to hold tasks by status
+  const inProgressTasks = [];
+  const toDoTasks = [];
+  const completedTasks = [];
+
+  // Categorize tasks by status
   tasks.forEach(task => {
-    blocks.push({
+    const taskBlock = {
       type: "section",
       text: {
         type: "mrkdwn",
@@ -108,12 +120,27 @@ export async function appHomeOpenedUI(userId) {
           text: "View Task",
         },
       },
-    });
+    };
 
-    blocks.push({
-      type: "divider"
-    });
+    switch (task.status) {
+      case 'In Progress':
+        inProgressTasks.push(taskBlock);
+        break;
+      case 'TODO':
+        toDoTasks.push(taskBlock);
+        break;
+      case 'Completed':
+        completedTasks.push(taskBlock);
+        break;
+      default:
+        break;
+    }
   });
+
+  // Insert tasks into their respective sections
+  blocks.splice(inProgressIndex, 0, ...inProgressTasks);
+  blocks.splice(toDoIndex + inProgressTasks.length, 0, ...toDoTasks);
+  blocks.splice(completedIndex + inProgressTasks.length + toDoTasks.length, 0, ...completedTasks);
 
   return {
     type: 'home',
