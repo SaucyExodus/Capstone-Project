@@ -15,7 +15,7 @@ export function createViewTaskModal(taskData) {
       taskStatusText = "`In Progress`";
       break;
     case 'DONE':
-      taskStatusText = "`Done`";
+      taskStatusText = "`Completed`";
       break;
     default:
       taskStatusText = 'Unknown Status';
@@ -49,13 +49,6 @@ export function createViewTaskModal(taskData) {
           type: "plain_text",
           text: taskNameText,
           emoji: true,
-        },
-      },
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: taskAuthorText,
         },
       },
       {
@@ -108,6 +101,16 @@ export function createViewTaskModal(taskData) {
         text: {
           type: "mrkdwn",
           text: taskStatusText,
+        },
+      },
+      {
+        type: "divider",
+      },
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: taskAuthorText,
         },
       },
     ],
