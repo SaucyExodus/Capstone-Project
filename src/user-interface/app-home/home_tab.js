@@ -106,7 +106,7 @@ export async function appHomeOpenedUI(userId) {
       },
     };
 
-    switch (task.status) {
+    switch (task.task_status) {
       case 'IN_PROGRESS':
         inProgressTasks.push(taskBlock);
         console.log(task.status);
