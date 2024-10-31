@@ -48,22 +48,6 @@ export async function appHomeOpenedUI(userId) {
     {
       type: "section",
       text: {
-        type: "plain_text",
-        text: " ",
-        emoji: true
-      }
-    },
-    {
-      type: "section",
-      text: {
-        type: "plain_text",
-        text: " ",
-        emoji: true
-      }
-    },
-    {
-      type: "section",
-      text: {
         type: "mrkdwn",
         text: "*In Progress Tasks*"
       }
@@ -94,9 +78,9 @@ export async function appHomeOpenedUI(userId) {
   ];
 
   // Find the index positions for each task category
-  const inProgressIndex = blocks.findIndex(block => block.text && block.text.text === "*In Progress Tasks*") + 2;
-  const toDoIndex = blocks.findIndex(block => block.text && block.text.text === "*To-Do Tasks*") + 2;
-  const completedIndex = blocks.findIndex(block => block.text && block.text.text === "*Completed Tasks*") + 2;
+  const inProgressIndex = blocks.findIndex(block => block.text && block.text.text === "*In Progress Tasks*") + 1;
+  const toDoIndex = blocks.findIndex(block => block.text && block.text.text === "*To-Do Tasks*") + 1;
+  const completedIndex = blocks.findIndex(block => block.text && block.text.text === "*Completed Tasks*") + 1;
 
   // Arrays to hold tasks by status
   const inProgressTasks = [];
