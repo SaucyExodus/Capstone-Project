@@ -130,7 +130,7 @@ export async function appHomeOpenedUI(userId) {
       },
     };
 
-    console.log(`Task ID: ${task.task_id}, Status: ${task.task_status}`); // Log task ID and status
+    //console.log(`Task ID: ${task.task_id}, Status: ${task.task_status}`); // Log task ID and status
 
     switch (task.task_status) { // Use task.task_status instead of task.status
       case 'IN_PROGRESS':
