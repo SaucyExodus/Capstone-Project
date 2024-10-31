@@ -1,5 +1,6 @@
 import { createTaskAction } from "./create_task_action.js";
 import { viewTaskAction } from "./view_task_action.js";
+import { helpview } from "./help_view.js";
 
 export function blockActionListener(slackActivity, web) {
   const actionId = slackActivity.actions[0]?.action_id;
@@ -11,6 +12,10 @@ export function blockActionListener(slackActivity, web) {
 
     case "view_task_button":
       viewTaskAction(slackActivity, web);
+      break;
+
+    case "help_modal":
+      helpview(slackActivity, web);
       break;
 
     default:
