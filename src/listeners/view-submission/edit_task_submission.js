@@ -1,4 +1,6 @@
 export async function editTaskSubmission(slackActivity, web) {
+    console.log("WE ARE IN EDIT TASK SUBMISSION");
+
     try {
         const { view } = slackActivity;
         const updatedTaskData = {
