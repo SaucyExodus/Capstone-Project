@@ -1,3 +1,5 @@
+import { updateTaskData } from "../../functions/updateTaskData.js";
+
 export async function editTaskSubmission(slackActivity, web) {
     console.log("WE ARE IN EDIT TASK SUBMISSION");
 
@@ -12,7 +14,7 @@ export async function editTaskSubmission(slackActivity, web) {
           taskStatus: view.state.values["status_input"]["status_action"].selected_option.value,
         };
 
-        await updatedTaskData(taskData);
+        await updateTaskData(taskData);
         console.log("Extracted Task Data:", taskData);
     } catch (error) {
 
