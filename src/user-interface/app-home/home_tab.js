@@ -2,6 +2,7 @@ import { getSavedTasks } from '../../functions/getSavedTasks.js'; // Function to
 
 export async function appHomeOpenedUI(userId) {
   const tasks = await getSavedTasks(userId); // Fetch saved tasks assigned to the user
+
   const blocks = [
     {
       type: "header",
@@ -44,10 +45,75 @@ export async function appHomeOpenedUI(userId) {
         },
       ],
     },
+    {
+      type: "section",
+      text: {
+        type: "plain_text",
+        text: " ",
+        emoji: true
+      }
+    },
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: "*In Progress Tasks*"
+      }
+    },
+    {
+      type: "divider"
+    },
+    {
+      type: "section",
+      text: {
+        type: "plain_text",
+        text: " ",
+        emoji: true
+      }
+    },
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: "*To-Do Tasks*"
+      }
+    },
+    {
+      type: "divider"
+    },
+    {
+      type: "section",
+      text: {
+        type: "plain_text",
+        text: " ",
+        emoji: true
+      }
+    },
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: "*Completed Tasks*"
+      }
+    },
+    {
+      type: "divider"
+    }
   ];
 
+  // Find the index positions for each task category
+  const inProgressIndex = blocks.findIndex(block => block.text && block.text.text === "*In Progress Tasks*");
+  const toDoIndex = blocks.findIndex(block => block.text && block.text.text === "*To-Do Tasks*");
+  const completedIndex = blocks.findIndex(block => block.text && block.text.text === "*Completed Tasks*");
+
+  // Arrays to hold tasks by status
+  const inProgressTasks = [];
+  const toDoTasks = [];
+  const completedTasks = [];
+
+  // Categorize tasks by status
   tasks.forEach(task => {
-    blocks.push({
+    const taskBlock = {
       type: "section",
       text: {
         type: "mrkdwn",
@@ -62,12 +128,33 @@ export async function appHomeOpenedUI(userId) {
           text: "View Task",
         },
       },
-    });
+    };
 
-    blocks.push({
-      type: "divider"
-    });
+    //console.log(`Task ID: ${task.task_id}, Status: ${task.task_status}`); // Log task ID and status
+
+    switch (task.task_status) { // Use task.task_status instead of task.status
+      case 'IN_PROGRESS':
+        inProgressTasks.push(taskBlock);
+        inProgressTasks.push({ type: "divider" });
+        break;
+      case 'TODO':
+        toDoTasks.push(taskBlock);
+        toDoTasks.push({ type: "divider" });
+        break;
+      case 'DONE':
+        completedTasks.push(taskBlock);
+        completedTasks.push({ type: "divider" });
+        break;
+      default:
+        console.log(`Unknown status: ${task.task_status}`);
+        break;
+    }
   });
+
+  // Insert tasks into their respective sections
+  blocks.splice(inProgressIndex + 2, 0, ...inProgressTasks);
+  blocks.splice(toDoIndex + 2 + inProgressTasks.length, 0, ...toDoTasks);
+  blocks.splice(completedIndex + 6 + inProgressTasks.length + toDoTasks.length, 0, ...completedTasks);
 
   return {
     type: 'home',
