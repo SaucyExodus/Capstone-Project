@@ -12,7 +12,7 @@ export async function updateTaskData(taskData) {
           assigned_users = ?,
           task_notes = ?,
           task_status = ?
-      WHERE task_id = ?
+      WHERE id = ?
     `;
 
     const values = [
@@ -33,6 +33,8 @@ export async function updateTaskData(taskData) {
           resolve(results);
         });
       });
+
+      console.log("Results:", results);
 
       return results; // Return the results of the update operation
     } catch (error) {
