@@ -46,12 +46,12 @@ export async function appHomeOpenedUI(userId) {
       ],
     },
     {
-			"type": "section",
-			"text": {
-				"type": "plain_text",
-				"text": " ",
-				"emoji": true
-			}
+      type: "section",
+      text: {
+        type: "plain_text",
+        text: " ",
+        emoji: true
+      }
     },
     {
       type: "section",
@@ -64,20 +64,12 @@ export async function appHomeOpenedUI(userId) {
       type: "divider"
     },
     {
-			"type": "section",
-			"text": {
-				"type": "plain_text",
-				"text": " ",
-				"emoji": true
-			}
-    },
-    {
-			"type": "section",
-			"text": {
-				"type": "plain_text",
-				"text": " ",
-				"emoji": true
-			}
+      type: "section",
+      text: {
+        type: "plain_text",
+        text: " ",
+        emoji: true
+      }
     },
     {
       type: "section",
@@ -88,6 +80,14 @@ export async function appHomeOpenedUI(userId) {
     },
     {
       type: "divider"
+    },
+    {
+      type: "section",
+      text: {
+        type: "plain_text",
+        text: " ",
+        emoji: true
+      }
     },
     {
       type: "section",
@@ -152,9 +152,9 @@ export async function appHomeOpenedUI(userId) {
   });
 
   // Insert tasks into their respective sections
-  blocks.splice(inProgressIndex + 1, 0, ...inProgressTasks);
-  blocks.splice(toDoIndex + 2 + inProgressTasks.length, 0, ...toDoTasks);
-  blocks.splice(completedIndex + 3 + inProgressTasks.length + toDoTasks.length, 0, ...completedTasks);
+  blocks.splice(inProgressIndex + 2, 0, ...inProgressTasks);
+  blocks.splice(toDoIndex + 4 + inProgressTasks.length, 0, ...toDoTasks);
+  blocks.splice(completedIndex + 6 + inProgressTasks.length + toDoTasks.length, 0, ...completedTasks);
 
   return {
     type: 'home',
