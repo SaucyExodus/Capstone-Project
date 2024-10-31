@@ -117,7 +117,7 @@ export async function appHomeOpenedUI(userId) {
         toDoTasks.push(taskBlock);
         toDoTasks.push({ type: "divider" });
         break;
-      case 'COMPLETED':
+      case 'DONE':
         completedTasks.push(taskBlock);
         completedTasks.push({ type: "divider" });
         break;
