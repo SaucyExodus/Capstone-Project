@@ -1,28 +1,24 @@
 export function editTaskModal(taskData) {
   const taskId = taskData.id.toString();
   const taskNameText = taskData.task_name;
-  const taskAuthorText = `Author <@${taskData.created_by}>`;
   const dueDateInteger = taskData.due_date;
   const assignedUsersArray = JSON.parse(taskData.assigned_users);
   const taskNotesText = JSON.parse(taskData.task_notes);
-  
-  let taskStatusText, taskStatusValue;
+  const taskStatus = taskData.task_status;
+
+  let taskStatusText;
   switch (taskData.task_status) {
-    case 'TODO':
+    case "TODO":
       taskStatusText = "To Do";
-      taskStatusValue = "value-0";
       break;
-    case 'IN_PROGRESS':
+    case "IN_PROGRESS":
       taskStatusText = "In Progress";
-      taskStatusValue = "value-1";
       break;
-    case 'DONE':
+    case "DONE":
       taskStatusText = "Done";
-      taskStatusValue = "value-2";
       break;
     default:
-      taskStatusText = 'Unknown Status';
-      taskStatusValue = "null";
+      taskStatusText = "Unknown Status";
   }
 
   const modal = {
@@ -47,10 +43,12 @@ export function editTaskModal(taskData) {
     blocks: [
       {
         type: "input",
+        block_id: "task_name_input",
         element: {
           type: "plain_text_input",
-          action_id: "plain_text_input-action",
+          action_id: "task_name_action",
           initial_value: taskNameText,
+          max_length: 75,
         },
         label: {
           type: "plain_text",
@@ -60,10 +58,11 @@ export function editTaskModal(taskData) {
       },
       {
         type: "input",
+        block_id: "assign_user_input",
         element: {
           type: "multi_users_select",
-          action_id: "multi_users_select-action",
-          initial_users: assignedUsersArray,          
+          action_id: "assign_user_action",
+          initial_users: assignedUsersArray,
         },
         label: {
           type: "plain_text",
@@ -73,9 +72,10 @@ export function editTaskModal(taskData) {
       },
       {
         type: "input",
+        block_id: "due_datetime_input",
         element: {
           type: "datetimepicker",
-          action_id: "datetimepicker-action",
+          action_id: "due_datetime_action",
           ...(dueDateInteger && { initial_date_time: dueDateInteger }),
         },
         label: {
@@ -87,9 +87,11 @@ export function editTaskModal(taskData) {
       },
       {
         type: "input",
+        block_id: "notes_input",
         element: {
           type: "rich_text_input",
-          action_id: "rich_text_input-action",
+          action_id: "notes_action",
+          max_length: 500,
           ...(taskNotesText && { initial_value: taskNotesText }),
         },
         label: {
@@ -101,10 +103,11 @@ export function editTaskModal(taskData) {
       },
       {
         type: "input",
+        block_id: "status_input",
         element: {
           type: "static_select",
           initial_option: {
-            value: taskStatusValue,
+            value: taskStatus,
             text: {
               type: "plain_text",
               text: taskStatusText,
@@ -118,7 +121,7 @@ export function editTaskModal(taskData) {
                 text: "To Do",
                 emoji: true,
               },
-              value: "value-0",
+              value: "TODO",
             },
             {
               text: {
@@ -126,7 +129,7 @@ export function editTaskModal(taskData) {
                 text: "In Progress",
                 emoji: true,
               },
-              value: "value-1",
+              value: "IN_PROGRESS",
             },
             {
               text: {
@@ -134,10 +137,10 @@ export function editTaskModal(taskData) {
                 text: "Complete",
                 emoji: true,
               },
-              value: "value-2",
+              value: "DONE",
             },
           ],
-          action_id: "static_select-action",
+          action_id: "status_action",
         },
         label: {
           type: "plain_text",
