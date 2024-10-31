@@ -120,7 +120,7 @@ export async function appHomeOpenedUI(userId) {
         console.log(task.status);
         break;
       default:
-        print(task.status);
+        console.log(task.status);
         break;
     }
   });
