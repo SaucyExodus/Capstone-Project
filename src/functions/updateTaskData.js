@@ -2,9 +2,6 @@ import db from "../config/db.js";
 
 // Function to update task data
 export async function updateTaskData(taskData) {
-    console.log("Task Data:", taskData);
-
-
     const query = `
       UPDATE task_card
       SET task_name = ?,
@@ -33,8 +30,6 @@ export async function updateTaskData(taskData) {
           resolve(results);
         });
       });
-
-      console.log("Results:", results);
 
       return results; // Return the results of the update operation
     } catch (error) {
