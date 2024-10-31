@@ -111,12 +111,15 @@ export async function appHomeOpenedUI(userId) {
     switch (task.task_status) { // Use task.task_status instead of task.status
       case 'IN_PROGRESS':
         inProgressTasks.push(taskBlock);
+        inProgressTasks.push({ type: "divider" });
         break;
       case 'TODO':
         toDoTasks.push(taskBlock);
+        toDoTasks.push({ type: "divider" });
         break;
       case 'COMPLETED':
         completedTasks.push(taskBlock);
+        completedTasks.push({ type: "divider" });
         break;
       default:
         console.log(`Unknown status: ${task.task_status}`);
