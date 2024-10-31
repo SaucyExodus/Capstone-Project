@@ -44,6 +44,52 @@ export async function appHomeOpenedUI(userId) {
         },
       ],
     },
+    {
+      type: "section",
+      text: {
+        type: "plain_text",
+        text: " ",
+        emoji: true
+      }
+    },
+    {
+      type: "section",
+      text: {
+        type: "plain_text",
+        text: " ",
+        emoji: true
+      }
+    },
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: "*In Progress Tasks*"
+      }
+    },
+    {
+      type: "divider"
+    },
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: "*To-Do Tasks*"
+      }
+    },
+    {
+      type: "divider"
+    },
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: "*Completed Tasks*"
+      }
+    },
+    {
+      type: "divider"
+    }
   ];
 
   tasks.forEach(task => {
