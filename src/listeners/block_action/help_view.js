@@ -1,6 +1,6 @@
 import { helpModal } from "../../user-interface/modules/help_modal_ui.js";
 
-export async function helpModal(slackActivity, web) {
+export async function helpview(slackActivity, web) {
     try {
         await web.views.open({
             trigger_id: slackActivity.trigger_id,
