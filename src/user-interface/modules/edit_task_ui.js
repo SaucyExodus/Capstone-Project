@@ -15,7 +15,7 @@ export function editTaskModal(taskData) {
       taskStatusText = "In Progress";
       break;
     case "DONE":
-      taskStatusText = "Done";
+      taskStatusText = "Complete";
       break;
     default:
       taskStatusText = "Unknown Status";
