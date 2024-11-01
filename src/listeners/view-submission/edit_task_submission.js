@@ -13,6 +13,11 @@ export async function editTaskSubmission(slackActivity, web) {
       taskStatus: view.state.values["status_input"]["status_action"].selected_option.value,
     };
 
+    // Set the created_at field to the current date and time if the task status is changed to DONE
+    if (updatedTaskData.taskStatus === 'DONE') {
+      updatedTaskData.createdAt = new Date();
+    }
+
     await updateTaskData(updatedTaskData);
 
     // Update the home tab
