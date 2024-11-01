@@ -15,7 +15,7 @@ export async function editTaskSubmission(slackActivity, web) {
 
     // Add a flag to indicate the task was just completed
     let justCompletedTaskId = null;
-    if (updatedTaskData.taskStatus === 'TODO') {
+    if (updatedTaskData.taskStatus === 'DONE') {
       justCompletedTaskId = updatedTaskData.taskId;
     }
 
