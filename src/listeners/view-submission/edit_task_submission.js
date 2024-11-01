@@ -13,16 +13,10 @@ export async function editTaskSubmission(slackActivity, web) {
       taskStatus: view.state.values["status_input"]["status_action"].selected_option.value,
     };
 
-    // Add a flag to indicate the task was just completed
-    let justCompletedTaskId = null;
-    if (updatedTaskData.taskStatus === 'DONE') {
-      justCompletedTaskId = updatedTaskData.taskId;
-    }
-
     await updateTaskData(updatedTaskData);
 
     // Update the home tab
-    const homeView = await appHomeOpenedUI(user.id, justCompletedTaskId); // Fetch updated home view
+    const homeView = await appHomeOpenedUI(user.id); // Fetch updated home view
     await web.views.publish({
       user_id: user.id,
       view: homeView,

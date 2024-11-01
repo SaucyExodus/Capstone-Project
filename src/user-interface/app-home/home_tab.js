@@ -1,6 +1,6 @@
 import { getSavedTasks } from '../../functions/getSavedTasks.js'; // Function to fetch saved tasks
 
-export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
+export async function appHomeOpenedUI(userId) {
   const tasks = await getSavedTasks(userId); // Fetch saved tasks assigned to the user
 
   const blocks = [
@@ -105,7 +105,7 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
   // Find the index positions for each task category
   const inProgressIndex = blocks.findIndex(block => block.text && block.text.text === "*In Progress Tasks*");
   const toDoIndex = blocks.findIndex(block => block.text && block.text.text === "*To-Do Tasks*");
-  const completedIndex = blocks.findIndex(block => block.text && block.text.text === "*Completed Tasks*");
+  //const completedIndex = blocks.findIndex(block => block.text && block.text.text === "*Completed Tasks*");
 
   // Arrays to hold tasks by status
   let inProgressTasks = [];
@@ -139,12 +139,7 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
         toDoTasks.push({ task, taskBlock });
         break;
       case 'DONE':
-        console.log(`Task ID: ${task.task_id} was just completed: ${justCompletedTaskId}`);
-        if (task.task_id === justCompletedTaskId) {
-          completedTasks.unshift({ task, taskBlock }); // Add to the front of the array
-        } else {
-          completedTasks.push({ task, taskBlock }); // Add to the end of the array
-        }
+        completedTasks.unshift({ task, taskBlock }); 
         break;
       default:
         console.log(`Unknown status: ${task.task_status}`);
