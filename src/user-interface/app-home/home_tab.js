@@ -1,6 +1,6 @@
 import { getSavedTasks } from '../../functions/getSavedTasks.js'; // Function to fetch saved tasks
 
-export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
+export async function appHomeOpenedUI(userId) {
   const tasks = await getSavedTasks(userId); // Fetch saved tasks assigned to the user
 
   const blocks = [
@@ -110,7 +110,7 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
   // Arrays to hold tasks by status
   const inProgressTasks = [];
   let toDoTasks = [];
-  let completedTasks = [];
+  const completedTasks = [];
 
   // Categorize tasks by status
   tasks.forEach(task => {
@@ -142,8 +142,8 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
         toDoTasks.push({ task, taskBlock });
         break;
       case 'DONE':
-        completedTasks.unshift({ type: "divider" }); // Add divider after the task
-        completedTasks.unshift(taskBlock); // Add to the front of the array
+        completedTasks.push(taskBlock);
+        completedTasks.push({ type: "divider" });
         break;
       default:
         console.log(`Unknown status: ${task.task_status}`);
@@ -164,15 +164,9 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
   // Get the oldest 5 TODO tasks
   toDoTasks = toDoTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
 
-  // Reverse the completed tasks array to print the list in reverse
-  completedTasks.reverse();
-
-  // Get the 5 most recent completed tasks
-  completedTasks = completedTasks.slice(0, 10); // 5 tasks + 5 dividers
-
   // Insert tasks into their respective sections
   blocks.splice(inProgressIndex + 2, 0, ...inProgressTasks);
-  blocks.splice(toDoIndex + 2 + inProgressTasks.length, 0, ...toDoTasks);
+  blocks.splice(toDoIndex + 4 + inProgressTasks.length, 0, ...toDoTasks);
   blocks.splice(completedIndex + 6 + inProgressTasks.length + toDoTasks.length, 0, ...completedTasks);
 
   return {
