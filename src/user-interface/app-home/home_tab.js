@@ -141,7 +141,11 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
         toDoTasks.push({ task, taskBlock });
         break;
       case 'DONE':
-        completedTasks.push({ task, taskBlock });
+        if (task.task_status === justCompletedTaskId) {
+          completedTasks.unshift({ task, taskBlock }); // Add to the front of the array
+        } else {
+          completedTasks.push({ task, taskBlock }); // Add to the end of the array
+        }
         break;
       default:
         console.log(`Unknown status: ${task.task_status}`);
@@ -174,8 +178,6 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
 
   // Get the oldest 5 TODO tasks
   toDoTasks = toDoTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
-
-  completedTasks.reverse();
 
   // Get the 5 most recent completed tasks
   completedTasks = completedTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
