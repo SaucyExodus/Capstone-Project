@@ -76,7 +76,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: ":pencil: *To-Do Tasks* :pencil:"
+        text: " *To-Do Tasks* "
       }
     },
     {
