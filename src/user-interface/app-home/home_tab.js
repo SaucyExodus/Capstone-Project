@@ -142,8 +142,8 @@ export async function appHomeOpenedUI(userId) {
         toDoTasks.push({ task, taskBlock });
         break;
       case 'DONE':
-        completedTasks.unshift({ type: "divider" }); // Add divider before the task
         completedTasks.unshift(taskBlock); // Add to the front of the array
+        completedTasks.unshift({ type: "divider" }); // Add divider after the task
         break;
       default:
         console.log(`Unknown status: ${task.task_status}`);
