@@ -29,7 +29,7 @@ export async function createTaskSubmission(slackActivity, web) {
     }
 
     // Update the home tab
-    const homeView = await appHomeOpenedUI(); // Fetch updated home view
+    const homeView = await appHomeOpenedUI(user.id); // Fetch updated home view
     await web.views.publish({
       user_id: user.id,
       view: homeView,
