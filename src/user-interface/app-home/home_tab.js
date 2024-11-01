@@ -94,7 +94,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: ":white_check_mark: *Completed Tasks* :white_check_mark:"
+        text: " *Completed Tasks* "
       }
     },
     {
