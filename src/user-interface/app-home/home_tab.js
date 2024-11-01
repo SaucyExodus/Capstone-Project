@@ -142,8 +142,8 @@ export async function appHomeOpenedUI(userId) {
         toDoTasks.push({ task, taskBlock });
         break;
       case 'DONE':
-        completedTasks.push(taskBlock);
         completedTasks.push({ type: "divider" });
+        completedTasks.push(taskBlock);
         break;
       default:
         console.log(`Unknown status: ${task.task_status}`);
