@@ -142,8 +142,8 @@ export async function appHomeOpenedUI(userId) {
         toDoTasks.push({ task, taskBlock });
         break;
       case 'DONE':
-        completedTasks.push({ type: "divider" });
-        completedTasks.push(taskBlock);
+        completedTasks.unshift({ type: "divider" }); // Add divider after the task
+        completedTasks.unshift(taskBlock); // Add to the front of the array
         break;
       default:
         console.log(`Unknown status: ${task.task_status}`);
@@ -164,9 +164,8 @@ export async function appHomeOpenedUI(userId) {
   // Get the oldest 5 TODO tasks
   toDoTasks = toDoTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
 
-  completedTasks.reverse();
-
-  completedTasks = completedTasks.slice(0, 10);
+  // Get the 5 most recent completed tasks
+  completedTasks = completedTasks.slice(0, 10); // 5 tasks + 5 dividers
 
   // Insert tasks into their respective sections
   blocks.splice(inProgressIndex + 2, 0, ...inProgressTasks);
