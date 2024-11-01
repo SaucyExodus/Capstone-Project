@@ -110,7 +110,7 @@ export async function appHomeOpenedUI(userId) {
   // Arrays to hold tasks by status
   const inProgressTasks = [];
   let toDoTasks = [];
-  let completedTasks = [];
+  const completedTasks = [];
 
   // Categorize tasks by status
   tasks.forEach(task => {
