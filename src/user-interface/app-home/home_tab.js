@@ -110,7 +110,7 @@ export async function appHomeOpenedUI(userId) {
   // Arrays to hold tasks by status
   const inProgressTasks = [];
   let toDoTasks = [];
-  const completedTasks = [];
+  let completedTasks = [];
 
   // Categorize tasks by status
   tasks.forEach(task => {
@@ -163,6 +163,10 @@ export async function appHomeOpenedUI(userId) {
 
   // Get the oldest 5 TODO tasks
   toDoTasks = toDoTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
+
+  completedTasks.reverse();
+
+  completedTasks = completedTasks.slice(0, 10);
 
   // Insert tasks into their respective sections
   blocks.splice(inProgressIndex + 2, 0, ...inProgressTasks);
