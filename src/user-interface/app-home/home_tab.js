@@ -96,10 +96,10 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
         type: "mrkdwn",
         text: "*Completed Tasks*"
       }
-    },
+    }/*,
     {
       type: "divider"
-    }
+    }*/
   ];
 
   // Find the index positions for each task category
