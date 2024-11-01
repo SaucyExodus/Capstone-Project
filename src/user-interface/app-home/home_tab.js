@@ -1,6 +1,6 @@
 import { getSavedTasks } from '../../functions/getSavedTasks.js'; // Function to fetch saved tasks
 
-export async function appHomeOpenedUI(userId) {
+export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
   const tasks = await getSavedTasks(userId); // Fetch saved tasks assigned to the user
 
   const blocks = [
@@ -142,8 +142,13 @@ export async function appHomeOpenedUI(userId) {
         toDoTasks.push({ task, taskBlock });
         break;
       case 'DONE':
-        completedTasks.unshift({ type: "divider" }); // Add divider after the task
-        completedTasks.unshift(taskBlock); // Add to the front of the array
+        if (task.task_id === justCompletedTaskId) {
+          completedTasks.unshift(taskBlock); // Add to the front of the array
+          completedTasks.unshift({ type: "divider" }); // Add divider after the task
+        } else {
+          completedTasks.push(taskBlock);
+          completedTasks.push({ type: "divider" });
+        }
         break;
       default:
         console.log(`Unknown status: ${task.task_status}`);
