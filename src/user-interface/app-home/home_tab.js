@@ -105,7 +105,6 @@ export async function appHomeOpenedUI(userId) {
   // Find the index positions for each task category
   const inProgressIndex = blocks.findIndex(block => block.text && block.text.text === "*In Progress Tasks*");
   const toDoIndex = blocks.findIndex(block => block.text && block.text.text === "*To-Do Tasks*");
-  //const completedIndex = blocks.findIndex(block => block.text && block.text.text === "*Completed Tasks*");
 
   // Arrays to hold tasks by status
   let inProgressTasks = [];
@@ -173,7 +172,7 @@ export async function appHomeOpenedUI(userId) {
   // Get the oldest 5 TODO tasks
   toDoTasks = toDoTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
 
-  // Get the 5 most recent completed tasks
+  // Get the 5 most recent completed tasks (no sorting needed)
   completedTasks = completedTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
 
   // Insert tasks into their respective sections
