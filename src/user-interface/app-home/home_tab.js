@@ -1,6 +1,6 @@
 import { getSavedTasks } from '../../functions/getSavedTasks.js'; // Function to fetch saved tasks
 
-export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
+export async function appHomeOpenedUI(userId, justCompletedTaskId) {
   const tasks = await getSavedTasks(userId); // Fetch saved tasks assigned to the user
 
   const blocks = [
