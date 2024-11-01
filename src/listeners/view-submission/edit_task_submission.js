@@ -13,16 +13,11 @@ export async function editTaskSubmission(slackActivity, web) {
       taskStatus: view.state.values["status_input"]["status_action"].selected_option.value,
     };
 
-    console.log(`Updated Task Data: ${JSON.stringify(updatedTaskData)}`);
-
     // Add a flag to indicate the task was just completed
     let justCompletedTaskId = null;
     if (updatedTaskData.taskStatus === 'DONE') {
       justCompletedTaskId = updatedTaskData.taskId;
     }
-
-    console.log(`Task Status: ${updatedTaskData.taskStatus}`);
-    console.log(`Just Completed Task ID: ${justCompletedTaskId}`);
 
     await updateTaskData(updatedTaskData);
 

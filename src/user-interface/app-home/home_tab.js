@@ -1,7 +1,6 @@
 import { getSavedTasks } from '../../functions/getSavedTasks.js'; // Function to fetch saved tasks
 
 export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
-  console.log(`appHomeOpenedUI called with userId: ${userId} and justCompletedTaskId: ${justCompletedTaskId}`);
   const tasks = await getSavedTasks(userId); // Fetch saved tasks assigned to the user
 
   const blocks = [
@@ -131,8 +130,6 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
         },
       },
     };
-
-    console.log(`Task ID: ${task.task_id}, Status: ${task.task_status}`); // Log task ID and status
 
     switch (task.task_status) { // Use task.task_status instead of task.status
       case 'IN_PROGRESS':
