@@ -141,13 +141,7 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
         toDoTasks.push({ task, taskBlock });
         break;
       case 'DONE':
-        if (task.task_id === justCompletedTaskId) {
-          completedTasks.unshift(taskBlock); // Add to the front of the array
-          completedTasks.unshift({ type: "divider" }); // Add divider after the task
-        } else {
-          completedTasks.unshift(taskBlock);
-          completedTasks.unshift({ type: "divider" });
-        }
+        completedTasks.push({ task, taskBlock });
         break;
       default:
         console.log(`Unknown status: ${task.task_status}`);
@@ -184,7 +178,7 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
   completedTasks.reverse();
 
   // Get the 5 most recent completed tasks
-  completedTasks = completedTasks.slice(0, 10); // 5 tasks + 5 dividers
+  completedTasks = completedTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
 
   // Insert tasks into their respective sections
   blocks.splice(inProgressIndex + 2, 0, ...inProgressTasks);
