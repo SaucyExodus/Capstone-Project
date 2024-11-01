@@ -15,13 +15,15 @@ export async function editTaskSubmission(slackActivity, web) {
 
     await updateTaskData(updatedTaskData);
 
+    /*
     // Update the home tab
     const homeView = await appHomeOpenedUI(user.id, justCompleted ? updatedTaskData.taskId : null); // Fetch updated home view
     await web.views.publish({
       user_id: user.id,
       view: homeView,
     });
-
+    */
+   
   } catch (error) {
     console.error("Error handling view submission:", error);
   }
