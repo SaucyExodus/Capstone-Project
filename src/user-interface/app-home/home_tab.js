@@ -58,7 +58,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: " *In Progress Tasks* "
+        text: "*In Progress Tasks*"
       }
     },
     {
@@ -76,7 +76,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: " *To-Do Tasks* "
+        text: "*To-Do Tasks*"
       }
     },
     {
@@ -94,7 +94,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: " *Completed Tasks* "
+        text: "*Completed Tasks*"
       }
     },
     {
@@ -177,7 +177,7 @@ export async function appHomeOpenedUI(userId) {
   completedTasks = completedTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
 
   // Insert tasks into their respective sections
-  blocks.splice(inProgressIndex + 1, 0, ...inProgressTasks);
+  blocks.splice(inProgressIndex + 2, 0, ...inProgressTasks);
   blocks.splice(toDoIndex + 2 + inProgressTasks.length, 0, ...toDoTasks);
   blocks.splice(12 + inProgressTasks.length + toDoTasks.length, 0, ...completedTasks);
 
