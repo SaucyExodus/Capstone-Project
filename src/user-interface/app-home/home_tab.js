@@ -96,10 +96,10 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
         type: "mrkdwn",
         text: "*Completed Tasks*"
       }
-    }/*,
+    },
     {
       type: "divider"
-    }*/
+    }
   ];
 
   // Find the index positions for each task category
@@ -145,8 +145,8 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
           completedTasks.unshift({ type: "divider" }); // Add divider after the task
           completedTasks.unshift(taskBlock); // Add to the front of the array
         } else {
-          completedTasks.push({ type: "divider" });
-          completedTasks.push(taskBlock);
+          completedTasks.unshift({ type: "divider" });
+          completedTasks.unshift(taskBlock);
         }
         break;
       default:
