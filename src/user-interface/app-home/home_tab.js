@@ -142,11 +142,11 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
         break;
       case 'DONE':
         if (task.task_id === justCompletedTaskId) {
-          completedTasks.unshift(taskBlock); // Add to the front of the array
           completedTasks.unshift({ type: "divider" }); // Add divider after the task
+          completedTasks.unshift(taskBlock); // Add to the front of the array
         } else {
-          completedTasks.push(taskBlock);
           completedTasks.push({ type: "divider" });
+          completedTasks.push(taskBlock);
         }
         break;
       default:
