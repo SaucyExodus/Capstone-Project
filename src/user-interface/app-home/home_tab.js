@@ -1,6 +1,6 @@
 import { getSavedTasks } from '../../functions/getSavedTasks.js'; // Function to fetch saved tasks
 
-export async function appHomeOpenedUI(userId) {
+export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
   const tasks = await getSavedTasks(userId); // Fetch saved tasks assigned to the user
 
   const blocks = [
@@ -108,9 +108,9 @@ export async function appHomeOpenedUI(userId) {
   const completedIndex = blocks.findIndex(block => block.text && block.text.text === "*Completed Tasks*");
 
   // Arrays to hold tasks by status
-  const inProgressTasks = [];
-  const toDoTasks = [];
-  const completedTasks = [];
+  let inProgressTasks = [];
+  let toDoTasks = [];
+  let completedTasks = [];
 
   // Categorize tasks by status
   tasks.forEach(task => {
@@ -135,22 +135,54 @@ export async function appHomeOpenedUI(userId) {
 
     switch (task.task_status) { // Use task.task_status instead of task.status
       case 'IN_PROGRESS':
-        inProgressTasks.push(taskBlock);
-        inProgressTasks.push({ type: "divider" });
+        inProgressTasks.push({ task, taskBlock });
         break;
       case 'TODO':
-        toDoTasks.push(taskBlock);
-        toDoTasks.push({ type: "divider" });
+        toDoTasks.push({ task, taskBlock });
         break;
       case 'DONE':
-        completedTasks.push(taskBlock);
-        completedTasks.push({ type: "divider" });
+        if (task.task_id === justCompletedTaskId) {
+          completedTasks.unshift(taskBlock); // Add to the front of the array
+          completedTasks.unshift({ type: "divider" }); // Add divider after the task
+        } else {
+          completedTasks.push(taskBlock);
+          completedTasks.push({ type: "divider" });
+        }
         break;
       default:
         console.log(`Unknown status: ${task.task_status}`);
         break;
     }
   });
+
+  // Sort In Progress tasks by due date and then by creation date
+  inProgressTasks.sort((a, b) => {
+    const dateA = a.task.due_date ? new Date(a.task.due_date) : new Date(8640000000000000); // Max date if no due date
+    const dateB = b.task.due_date ? new Date(b.task.due_date) : new Date(8640000000000000); // Max date if no due date
+    if (dateA - dateB !== 0) return dateA - dateB;
+    const createdA = a.task.created_at ? new Date(a.task.created_at) : new Date(0); // Default to epoch if no date
+    const createdB = b.task.created_at ? new Date(b.task.created_at) : new Date(0); // Default to epoch if no date
+    return createdA - createdB;
+  });
+
+  // Sort TODO tasks by due date and then by creation date
+  toDoTasks.sort((a, b) => {
+    const dateA = a.task.due_date ? new Date(a.task.due_date) : new Date(8640000000000000); // Max date if no due date
+    const dateB = b.task.due_date ? new Date(b.task.due_date) : new Date(8640000000000000); // Max date if no due date
+    if (dateA - dateB !== 0) return dateA - dateB;
+    const createdA = a.task.created_at ? new Date(a.task.created_at) : new Date(0); // Default to epoch if no date
+    const createdB = b.task.created_at ? new Date(b.task.created_at) : new Date(0); // Default to epoch if no date
+    return createdA - createdB;
+  });
+
+  // Get the oldest 5 In Progress tasks
+  inProgressTasks = inProgressTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
+
+  // Get the oldest 5 TODO tasks
+  toDoTasks = toDoTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
+
+  // Get the 5 most recent completed tasks
+  completedTasks = completedTasks.slice(0, 10); // 5 tasks + 5 dividers
 
   // Insert tasks into their respective sections
   blocks.splice(inProgressIndex + 2, 0, ...inProgressTasks);
