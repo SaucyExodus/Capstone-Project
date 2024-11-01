@@ -58,7 +58,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: ":construction:*In Progress Tasks*:construction:"
+        text: ":construction: *In Progress Tasks* :construction:"
       }
     },
     {
@@ -76,7 +76,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: "*To-Do Tasks*"
+        text: ":pencil: *To-Do Tasks* :pencil:"
       }
     },
     {
@@ -94,7 +94,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: "*Completed Tasks*"
+        text: ":white_check_mark: *Completed Tasks* :white_check_mark:"
       }
     },
     {
