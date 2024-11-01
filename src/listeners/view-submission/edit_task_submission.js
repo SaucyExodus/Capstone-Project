@@ -19,6 +19,8 @@ export async function editTaskSubmission(slackActivity, web) {
       justCompletedTaskId = updatedTaskData.taskId;
     }
 
+    console.log(`Just Completed Task ID: ${justCompletedTaskId}`);
+
     await updateTaskData(updatedTaskData);
 
     // Update the home tab
