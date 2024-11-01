@@ -179,7 +179,7 @@ export async function appHomeOpenedUI(userId) {
   // Insert tasks into their respective sections
   blocks.splice(inProgressIndex + 6, 0, ...inProgressTasks);
   blocks.splice(toDoIndex + 10 + inProgressTasks.length, 0, ...toDoTasks);
-  blocks.splice(12 + inProgressTasks.length + toDoTasks.length, 0, ...completedTasks);
+  blocks.splice(13 + inProgressTasks.length + toDoTasks.length, 0, ...completedTasks);
 
   return {
     type: 'home',
