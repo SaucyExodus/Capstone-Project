@@ -109,7 +109,7 @@ export async function appHomeOpenedUI(userId) {
 
   // Arrays to hold tasks by status
   const inProgressTasks = [];
-  const toDoTasks = [];
+  let toDoTasks = [];
   const completedTasks = [];
 
   // Categorize tasks by status
@@ -139,8 +139,7 @@ export async function appHomeOpenedUI(userId) {
         inProgressTasks.push({ type: "divider" });
         break;
       case 'TODO':
-        toDoTasks.push(taskBlock);
-        toDoTasks.push({ type: "divider" });
+        toDoTasks.push({ task, taskBlock });
         break;
       case 'DONE':
         completedTasks.push(taskBlock);
@@ -151,6 +150,19 @@ export async function appHomeOpenedUI(userId) {
         break;
     }
   });
+
+  // Sort TODO tasks by due date and then by creation date
+  toDoTasks.sort((a, b) => {
+    const dateA = a.task.due_date ? new Date(a.task.due_date) : new Date(8640000000000000); // Max date if no due date
+    const dateB = b.task.due_date ? new Date(b.task.due_date) : new Date(8640000000000000); // Max date if no due date
+    if (dateA - dateB !== 0) return dateA - dateB;
+    const createdA = a.task.created_at ? new Date(a.task.created_at) : new Date(0); // Default to epoch if no date
+    const createdB = b.task.created_at ? new Date(b.task.created_at) : new Date(0); // Default to epoch if no date
+    return createdA - createdB;
+  });
+
+  // Get the oldest 5 TODO tasks
+  toDoTasks = toDoTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
 
   // Insert tasks into their respective sections
   blocks.splice(inProgressIndex + 2, 0, ...inProgressTasks);
