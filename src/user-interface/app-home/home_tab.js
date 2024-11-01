@@ -58,7 +58,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: "*In Progress Tasks*"
+        text: ":construction:*In Progress Tasks*:construction:"
       }
     },
     {
