@@ -110,7 +110,7 @@ export async function appHomeOpenedUI(userId) {
   // Arrays to hold tasks by status
   const inProgressTasks = [];
   let toDoTasks = [];
-  const completedTasks = [];
+  let completedTasks = [];
 
   // Categorize tasks by status
   tasks.forEach(task => {
@@ -142,8 +142,7 @@ export async function appHomeOpenedUI(userId) {
         toDoTasks.push({ task, taskBlock });
         break;
       case 'DONE':
-        completedTasks.push(taskBlock);
-        completedTasks.push({ type: "divider" });
+        completedTasks.push({ task, taskBlock });
         break;
       default:
         console.log(`Unknown status: ${task.task_status}`);
@@ -164,9 +163,19 @@ export async function appHomeOpenedUI(userId) {
   // Get the oldest 5 TODO tasks
   toDoTasks = toDoTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
 
+  // Sort completed tasks by completion date in descending order
+  completedTasks.sort((a, b) => {
+    const dateA = a.task.completed_at ? new Date(a.task.completed_at) : new Date(0); // Default to epoch if no date
+    const dateB = b.task.completed_at ? new Date(b.task.completed_at) : new Date(0); // Default to epoch if no date
+    return dateB - dateA; // Descending order
+  });
+
+  // Get the 5 most recent completed tasks
+  completedTasks = completedTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
+
   // Insert tasks into their respective sections
   blocks.splice(inProgressIndex + 2, 0, ...inProgressTasks);
-  blocks.splice(toDoIndex + 2 + inProgressTasks.length, 0, ...toDoTasks);
+  blocks.splice(toDoIndex + 4 + inProgressTasks.length, 0, ...toDoTasks);
   blocks.splice(completedIndex + 6 + inProgressTasks.length + toDoTasks.length, 0, ...completedTasks);
 
   return {
