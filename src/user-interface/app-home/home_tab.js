@@ -42,6 +42,7 @@ export async function appHomeOpenedUI(userId) {
             emoji: true,
           },
           value: "help",
+          action_id: "help_modal",
         },
       ],
     },
