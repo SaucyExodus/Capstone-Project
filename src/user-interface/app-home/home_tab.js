@@ -169,6 +169,9 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
   // Get the oldest 5 TODO tasks
   toDoTasks = toDoTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
 
+  // Reverse the completed tasks array to print the list in reverse
+  completedTasks.reverse();
+
   // Get the 5 most recent completed tasks
   completedTasks = completedTasks.slice(0, 10); // 5 tasks + 5 dividers
 
