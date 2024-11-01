@@ -141,8 +141,7 @@ export async function appHomeOpenedUI(userId, justCompletedTaskId = null) {
         toDoTasks.push({ task, taskBlock });
         break;
       case 'DONE':
-        if (task.id === justCompletedTaskId) {
-          console.log(task.id, justCompletedTaskId);
+        if (task.task_id === justCompletedTaskId) {
           completedTasks.unshift({ task, taskBlock }); // Add to the front of the array
         } else {
           completedTasks.push({ task, taskBlock }); // Add to the end of the array
