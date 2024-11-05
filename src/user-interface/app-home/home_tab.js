@@ -61,7 +61,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `:construction: *In Progress Tasks* :construction:                               *Total:* ${inProgressCount}`
+        text: `:construction: *In Progress Tasks* :construction:  |  *Total:* ${inProgressCount}`
       }
     },
     {
