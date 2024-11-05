@@ -159,8 +159,8 @@ export function editTaskModal(taskData) {
               emoji: true
             },
             style: "danger",
-            value: taskId,
-            action_id: "delete_task"
+            value: taskId, // Pass the task ID as the value
+            action_id: "delete_task" // Correct action ID
           }
         ]
       }
