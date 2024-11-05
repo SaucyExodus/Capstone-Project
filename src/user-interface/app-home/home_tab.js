@@ -3,8 +3,10 @@ import { getSavedTasks } from '../../functions/getSavedTasks.js'; // Function to
 export async function appHomeOpenedUI(userId) {
   const tasks = await getSavedTasks(userId); // Fetch saved tasks assigned to the user
 
-  // Count the number of "In Progress" tasks
+  // Count the number of tasks
   const inProgressCount = tasks.filter(task => task.task_status === 'IN_PROGRESS').length;
+  const todoCount = tasks.filter(task => task.task_status === 'TODO').length;
+  const doneCount = tasks.filter(task => task.task_status === 'DONE').length;
 
   const blocks = [
     {
@@ -61,7 +63,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `:construction: *In Progress Tasks* :construction:  |  *Total:* ${inProgressCount}`
+        text: `:construction: *In Progress Tasks* :construction:  *|  Total:* ${inProgressCount}`
       }
     },
     {
@@ -79,7 +81,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: ":pencil: *To-Do Tasks* :pencil:"
+        text: `:pencil: *To-Do Tasks* :pencil:  *|  Total:* ${todoCount}`
       }
     },
     {
@@ -97,7 +99,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: ":white_check_mark: *Completed Tasks* :white_check_mark:"
+        text: `:white_check_mark: *Completed Tasks* :white_check_mark:  *|  Total:* ${doneCount}`
       }
     },
     {
