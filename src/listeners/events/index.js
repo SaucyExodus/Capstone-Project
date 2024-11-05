@@ -3,6 +3,7 @@ import { teamJoinedEvent } from "./team_join.js";
 import { appOnlineEvent } from "./app_online.js";
 import { createTaskSubmission } from "../view-submission/create_task_submission.js"; 
 import { editTaskModal } from "../../user-interface/modules/edit_task_ui.js"; 
+import { handleDeleteTask } from "../block_action/handleDeleteTask.js"; 
 
 export function setupEventListeners(app) {
   // Listen for the app_home_opened event
@@ -36,6 +37,12 @@ export function setupEventListeners(app) {
   app.view('view_task_modal', async ({ ack, body, view, client, context }) => {
     await ack();
     // Handle the view submission here
+  });
+
+  // Listen for the delete_task action
+  app.action('delete_task', async ({ ack, body, client }) => {
+    await ack();
+    await handleDeleteTask(body, client);
   });
 }
 
