@@ -63,7 +63,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `:construction: *In Progress Tasks* :construction:  *|  Total:* ${inProgressCount}`
+        text: `:construction: *In Progress Tasks* :construction:   *|  Total:* ${inProgressCount}`
       }
     },
     {
@@ -99,7 +99,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `:white_check_mark: *Completed Tasks* :white_check_mark:  *|  Total:* ${doneCount}`
+        text: `:white_check_mark: *Completed Tasks* :white_check_mark:   *|  Total:* ${doneCount}`
       }
     },
     {
