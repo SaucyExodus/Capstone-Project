@@ -1,6 +1,7 @@
 import { createTaskAction } from "./create_task_action.js";
 import { viewTaskAction } from "./view_task_action.js";
 import { helpview } from "./help_view.js";
+import { handleDeleteTask } from "./handleDeleteTask.js";
 
 export function blockActionListener(slackActivity, web) {
   const actionId = slackActivity.actions[0]?.action_id;
@@ -16,6 +17,10 @@ export function blockActionListener(slackActivity, web) {
 
     case "help_modal":
       helpview(slackActivity, web);
+      break;
+
+    case "delete_task": 
+      handleDeleteTask(slackActivity, web);
       break;
 
     default:
