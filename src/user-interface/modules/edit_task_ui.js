@@ -148,6 +148,22 @@ export function editTaskModal(taskData) {
           emoji: true,
         },
       },
+      {
+        type: "actions",
+        elements: [
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              text: "DELETE TASK",
+              emoji: true
+            },
+            style: "danger",
+            value: "delete-button",
+            action_id: "delete-action"
+          }
+        ]
+      }
     ],
   };
   return modal;
