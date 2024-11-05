@@ -160,7 +160,7 @@ export function editTaskModal(taskData) {
             },
             style: "danger",
             value: "delete-button",
-            action_id: "delete-action"
+            action_id: "delete-task"
           }
         ]
       }
