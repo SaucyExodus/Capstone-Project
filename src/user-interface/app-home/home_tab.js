@@ -3,6 +3,9 @@ import { getSavedTasks } from '../../functions/getSavedTasks.js'; // Function to
 export async function appHomeOpenedUI(userId) {
   const tasks = await getSavedTasks(userId); // Fetch saved tasks assigned to the user
 
+  // Count the number of "In Progress" tasks
+  const inProgressCount = tasks.filter(task => task.task_status === 'IN_PROGRESS').length;
+
   const blocks = [
     {
       type: "header",
@@ -58,7 +61,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: ":construction: *In Progress Tasks* :construction:"
+        text: `:construction: *In Progress Tasks* :construction:                               *Total:* ${inProgressCount}`
       }
     },
     {
@@ -103,9 +106,8 @@ export async function appHomeOpenedUI(userId) {
   ];
 
   // Find the index positions for each task category
-  const inProgressIndex = blocks.findIndex(block => block.text && block.text.text === "*In Progress Tasks*");
-  const toDoIndex = blocks.findIndex(block => block.text && block.text.text === "*To-Do Tasks*");
-  //const completedIndex = blocks.findIndex(block => block.text && block.text.text === "*Completed Tasks*");
+  const inProgressIndex = blocks.findIndex(block => block.text && block.text.text.includes("In Progress Tasks"));
+  const toDoIndex = blocks.findIndex(block => block.text && block.text.text.includes("To-Do Tasks"));
 
   // Arrays to hold tasks by status
   let inProgressTasks = [];
@@ -177,8 +179,8 @@ export async function appHomeOpenedUI(userId) {
   completedTasks = completedTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
 
   // Insert tasks into their respective sections
-  blocks.splice(inProgressIndex + 6, 0, ...inProgressTasks);
-  blocks.splice(toDoIndex + 9 + inProgressTasks.length, 0, ...toDoTasks);
+  blocks.splice(inProgressIndex + 2, 0, ...inProgressTasks);
+  blocks.splice(toDoIndex + 2 + inProgressTasks.length, 0, ...toDoTasks);
   blocks.splice(12 + inProgressTasks.length + toDoTasks.length, 0, ...completedTasks);
 
   return {
