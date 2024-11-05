@@ -40,7 +40,7 @@ export function setupEventListeners(app) {
   });
 
   // Listen for the delete-task action
-  app.action('delete-task', async ({ ack, body, client }) => {
+  app.action('delete_task', async ({ ack, body, client }) => {
     await ack();
     await handleDeleteTask(body, client);
   });
