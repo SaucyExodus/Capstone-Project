@@ -9,9 +9,7 @@ export async function all_task_view(slackActivity, web, taskStatus) {
       trigger_id: slackActivity.trigger_id,
       view: viewAllTasks(taskStatus, tasks)
     });
-    const viewId = result.view.id; // This is the view_id you will use for updates
-    console.log("View opened with ID:", viewId);
-    
+    return result.view.id; // This is the view_id you will use for updates
   } catch (error) {
     console.error("Error opening view:", error);
   }

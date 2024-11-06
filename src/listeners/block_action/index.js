@@ -33,8 +33,8 @@ export function blockActionListener(slackActivity, web) {
       break;
 
     case "view_more_todo":
-      all_task_view(slackActivity, web, 'TODO');
-      viewTaskAction(slackActivity, web, view_id);
+      console.log(all_task_view(slackActivity, web, 'TODO'));
+      //viewTaskAction(slackActivity, web, view_id);
       break;
 
     case "view_more_completed":
