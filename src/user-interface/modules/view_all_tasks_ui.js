@@ -27,7 +27,6 @@ export function viewAllTasks(taskStatus, tasks) {
   
     const modal = {
       type: "modal",
-      external_id: view_id,
       close: {
         type: "plain_text",
         text: "Close",
