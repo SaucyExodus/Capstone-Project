@@ -6,6 +6,7 @@ import { all_task_view } from "./allTaskView.js";
 
 export async function blockActionListener(slackActivity, web) {
   const actionId = slackActivity.actions[0]?.action_id;
+  let viewId;
 
   switch (actionId) {
     case "new_task":
@@ -17,7 +18,7 @@ export async function blockActionListener(slackActivity, web) {
       break;
 
     case "view_task_button_1":
-      await viewTaskAction(slackActivity, web);
+      await viewTaskAction(slackActivity, web, viewId);
       break;
 
     case "help_modal":
@@ -33,7 +34,7 @@ export async function blockActionListener(slackActivity, web) {
       break;
 
     case "view_more_todo":
-      console.log (await all_task_view(slackActivity, web, 'TODO'));
+      viewId = await all_task_view(slackActivity, web, 'TODO');
       break;
 
     case "view_more_completed":
