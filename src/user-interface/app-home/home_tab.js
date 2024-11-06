@@ -79,6 +79,22 @@ export async function appHomeOpenedUI(userId) {
     {
       type: "section",
       text: {
+        type: "plain_text",
+        text: " ",
+        emoji: true
+      }
+    },
+    {
+      type: "section",
+      text: {
+        type: "plain_text",
+        text: " ",
+        emoji: true
+      }
+    },
+    {
+      type: "section",
+      text: {
         type: "mrkdwn",
         text: `:pencil: *To-Do Tasks* :pencil:  *|  Total:* ${todoCount}`
       }
