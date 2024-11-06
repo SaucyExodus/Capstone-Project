@@ -1,4 +1,4 @@
-export function viewAllTasks(taskStatus, tasks, view_id) {
+export function viewAllTasks(taskStatus, tasks) {
     const statusMap = {
       'IN_PROGRESS': 'In Progress',
       'TODO': 'To Do',

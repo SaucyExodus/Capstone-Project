@@ -4,12 +4,14 @@ import { getSavedTasks } from '../../functions/getSavedTasks.js';
 export async function all_task_view(slackActivity, web, taskStatus) {
   try {
     const tasks = await getSavedTasks(slackActivity.user.id); // Fetch saved tasks assigned to the user
-    const view_id = slackActivity.container.view_id;
-    await web.views.open({
+    
+    const result = await web.views.open({
       trigger_id: slackActivity.trigger_id,
-      //private_metadata: slackActivity.container.view_id,
-      view: viewAllTasks(taskStatus, tasks, view_id)
+      view: viewAllTasks(taskStatus, tasks)
     });
+    const viewId = result.view.id; // This is the view_id you will use for updates
+    console.log("View opened with ID:", viewId);
+
   } catch (error) {
     console.error("Error opening view:", error);
   }
