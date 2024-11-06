@@ -1,4 +1,4 @@
-export function viewAllTasks(taskStatus, tasks) {
+export function viewAllTasks(taskStatus, tasks, view_id) {
     const statusMap = {
       'IN_PROGRESS': 'In Progress',
       'TODO': 'To Do',
@@ -27,7 +27,7 @@ export function viewAllTasks(taskStatus, tasks) {
   
     const modal = {
       type: "modal",
-      external_id: "test",
+      external_id: view_id,
       close: {
         type: "plain_text",
         text: "Close",
