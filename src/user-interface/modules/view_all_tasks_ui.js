@@ -1,4 +1,10 @@
 export function viewAllTasks(taskStatus, tasks) {
+    const statusMap = {
+      'IN_PROGRESS': 'In Progress',
+      'TODO': 'To Do',
+      'DONE': 'Completed'
+    };
+  
     const filteredTasks = tasks.filter(task => task.task_status === taskStatus);
   
     const taskBlocks = filteredTasks.map(task => ({
@@ -27,7 +33,7 @@ export function viewAllTasks(taskStatus, tasks) {
       },
       title: {
         type: "plain_text",
-        text: `${taskStatus} Tasks`,
+        text: `${statusMap[taskStatus]} Tasks`,
         emoji: true
       },
       blocks: [
@@ -35,7 +41,7 @@ export function viewAllTasks(taskStatus, tasks) {
           type: "header",
           text: {
             type: "plain_text",
-            text: `${taskStatus} Tasks`,
+            text: `${statusMap[taskStatus]} Tasks`,
             emoji: true
           }
         },
