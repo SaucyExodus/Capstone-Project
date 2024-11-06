@@ -1,6 +1,5 @@
 import { createTaskSubmission } from "./create_task_submission.js";
 import { openEditTaskSubmission } from "./open_edit_task_submission.js";
-import { editTaskSubmission } from "./edit_task_submission.js";
 
 export function viewSubmissionListener(slackActivity, web) {
   const callbackId = slackActivity.view.callback_id;

@@ -4,7 +4,7 @@ import { helpview } from "./help_view.js";
 import { handleDeleteTask } from "./handleDeleteTask.js";
 import { all_task_view } from "./allTaskView.js";
 
-export async function blockActionListener(slackActivity, web) {
+export function blockActionListener(slackActivity, web) {
   const actionId = slackActivity.actions[0]?.action_id;
 
   switch (actionId) {
@@ -33,8 +33,7 @@ export async function blockActionListener(slackActivity, web) {
       break;
 
     case "view_more_todo":
-      const view_id = await all_task_view(slackActivity, web, 'TODO');
-      viewTaskAction(slackActivity, web, view_id);
+      all_task_view(slackActivity, web, 'TODO');
       break;
 
     case "view_more_completed":
