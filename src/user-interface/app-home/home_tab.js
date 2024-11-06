@@ -202,8 +202,8 @@ export async function appHomeOpenedUI(userId) {
   completedTasks = completedTasks.slice(0, 5).flatMap(({ taskBlock }) => [taskBlock, { type: "divider" }]);
 
   // Insert tasks into their respective sections
-  blocks.splice(inProgressIndex + 2, 0, ...inProgressTasks);
-  blocks.splice(toDoIndex +  + inProgressTasks.length, 0, ...toDoTasks);
+  blocks.splice(inProgressIndex + 3, 0, ...inProgressTasks);
+  blocks.splice(toDoIndex + 3 + inProgressTasks.length, 0, ...toDoTasks);
   blocks.splice(12 + inProgressTasks.length + toDoTasks.length, 0, ...completedTasks);
 
   return {
