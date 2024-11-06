@@ -17,11 +17,6 @@ export async function blockActionListener(slackActivity, web) {
       break;
 
     case "view_task_button":
-      viewTaskAction(slackActivity, web);
-      break;
-
-    case "view_task_button_1":
-      console.log(viewId);
       viewTaskAction(slackActivity, web, viewIdStore[userId]);
       delete viewIdStore[userId];
       break;
@@ -35,7 +30,8 @@ export async function blockActionListener(slackActivity, web) {
       break;
 
     case "view_more_in_progress":
-      all_task_view(slackActivity, web, 'IN_PROGRESS');
+      viewId = await all_task_view(slackActivity, web, 'IN_PROGRESS');
+      viewIdStore[userId] = viewId;
       break;
 
     case "view_more_todo":
@@ -44,7 +40,8 @@ export async function blockActionListener(slackActivity, web) {
       break;
 
     case "view_more_completed":
-      all_task_view(slackActivity, web, 'DONE');
+      viewId = await all_task_view(slackActivity, web, 'DONE');
+      viewIdStore[userId] = viewId;
       break;
 
     default:

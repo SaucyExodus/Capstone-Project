@@ -12,7 +12,7 @@ export async function viewTaskAction(slackActivity, web, viewId) {
                 view: createViewTaskModal(taskData)
             });
         } else {
-            const result = await web.views.open({
+            await web.views.open({
                 trigger_id: slackActivity.trigger_id,
                 view: createViewTaskModal(taskData)
             });

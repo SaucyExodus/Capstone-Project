@@ -16,7 +16,7 @@ export function viewAllTasks(taskStatus, tasks) {
       },
       accessory: {
         type: "button",
-        action_id: "view_task_button_1",
+        action_id: "view_task_button",
         value: task.task_id.toString(),
         text: {
           type: "plain_text",
