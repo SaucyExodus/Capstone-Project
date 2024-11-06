@@ -7,8 +7,8 @@ export async function viewTaskAction(slackActivity, web) {
     const taskData = await getTaskData(taskId);
 
     try {
-        await web.views.open({
-            trigger_id: slackActivity.trigger_id,
+        await web.views.update({
+            external_id: slackActivity.external_id,
             view: createViewTaskModal(taskData)
         });
     } catch(error){
