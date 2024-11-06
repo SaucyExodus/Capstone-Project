@@ -16,6 +16,10 @@ export function blockActionListener(slackActivity, web) {
       viewTaskAction(slackActivity, web);
       break;
 
+    case "view_task_button_1":
+      viewTaskAction(slackActivity, web);
+      break;
+
     case "help_modal":
       helpview(slackActivity, web);
       break;
