@@ -6,6 +6,7 @@ export function viewAllTasks(taskStatus, tasks) {
     };
   
     const filteredTasks = tasks.filter(task => task.task_status === taskStatus);
+    const taskCount = filteredTasks.length;
   
     const taskBlocks = filteredTasks.map(task => ({
       type: "section",
@@ -41,7 +42,7 @@ export function viewAllTasks(taskStatus, tasks) {
           type: "header",
           text: {
             type: "plain_text",
-            text: `${statusMap[taskStatus]} Tasks`,
+            text: `Total number of ${statusMap[taskStatus]} tasks: ${taskCount}`,
             emoji: true
           }
         },
@@ -49,9 +50,6 @@ export function viewAllTasks(taskStatus, tasks) {
           type: "divider"
         },
         ...taskBlocks,
-        {
-            type: "divider"
-        },
         {
           type: "actions",
           elements: [
