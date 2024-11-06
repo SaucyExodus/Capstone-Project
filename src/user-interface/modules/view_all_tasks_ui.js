@@ -27,6 +27,7 @@ export function viewAllTasks(taskStatus, tasks) {
   
     const modal = {
       type: "modal",
+      external_id: "test",
       close: {
         type: "plain_text",
         text: "Close",
@@ -37,7 +38,6 @@ export function viewAllTasks(taskStatus, tasks) {
         text: `${statusMap[taskStatus]} Tasks`,
         emoji: true
       },
-      private_metadata: "test",
       blocks: [
         {
           type: "header",
