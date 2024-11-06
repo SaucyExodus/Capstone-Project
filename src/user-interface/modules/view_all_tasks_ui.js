@@ -37,6 +37,7 @@ export function viewAllTasks(taskStatus, tasks) {
         text: `${statusMap[taskStatus]} Tasks`,
         emoji: true
       },
+      private_metadata: "test",
       blocks: [
         {
           type: "header",

@@ -7,7 +7,7 @@ export async function all_task_view(slackActivity, web, taskStatus) {
     console.log("Viewing ID: ", slackActivity.container.view_id);
     await web.views.open({
       trigger_id: slackActivity.trigger_id,
-      private_metadata: slackActivity.container.view_id,
+      //private_metadata: slackActivity.container.view_id,
       view: viewAllTasks(taskStatus, tasks)
     });
   } catch (error) {
