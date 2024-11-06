@@ -18,7 +18,8 @@ export async function blockActionListener(slackActivity, web) {
       break;
 
     case "view_task_button_1":
-      await viewTaskAction(slackActivity, web, viewId);
+      console.log(viewId);
+      viewTaskAction(slackActivity, web, viewId);
       break;
 
     case "help_modal":
