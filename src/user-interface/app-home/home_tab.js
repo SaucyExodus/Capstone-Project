@@ -120,6 +120,22 @@ export async function appHomeOpenedUI(userId) {
     {
       type: "section",
       text: {
+        type: "plain_text",
+        text: " ",
+        emoji: true
+      }
+    },
+    {
+      type: "section",
+      text: {
+        type: "plain_text",
+        text: " ",
+        emoji: true
+      }
+    },
+    {
+      type: "section",
+      text: {
         type: "mrkdwn",
         text: `:white_check_mark: *Completed Tasks* :white_check_mark:   *|  Total:* ${doneCount}`
       }
