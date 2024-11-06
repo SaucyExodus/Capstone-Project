@@ -77,7 +77,7 @@ export async function appHomeOpenedUI(userId) {
 						emoji: true
 					},
 					value: "click_me_123",
-					action_id: "actionId-0"
+					action_id: "view_more_in_progress"
 				}
 			]
 		},
@@ -100,6 +100,21 @@ export async function appHomeOpenedUI(userId) {
       }
     },
     {
+			type: "actions",
+			elements: [
+				{
+					type: "button",
+					text: {
+						type: "plain_text",
+						text: "View more",
+						emoji: true
+					},
+					value: "click_me_123",
+					action_id: "view_more_todo"
+				}
+			]
+		},
+    {
       type: "divider"
     },
     {
@@ -117,6 +132,21 @@ export async function appHomeOpenedUI(userId) {
         text: `:white_check_mark: *Completed Tasks* :white_check_mark:   *|  Total:* ${doneCount}`
       }
     },
+    {
+			type: "actions",
+			elements: [
+				{
+					type: "button",
+					text: {
+						type: "plain_text",
+						text: "View more",
+						emoji: true
+					},
+					value: "click_me_123",
+					action_id: "view_more_completed"
+				}
+			]
+		},
     {
       type: "divider"
     }
