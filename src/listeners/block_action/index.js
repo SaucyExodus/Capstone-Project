@@ -33,7 +33,7 @@ export function blockActionListener(slackActivity, web) {
       break;
 
     case "view_more_todo":
-      const view_id = all_task_view(slackActivity, web, 'TODO');
+      all_task_view(slackActivity, web, 'TODO');
       viewTaskAction(slackActivity, web, view_id);
       break;
 
