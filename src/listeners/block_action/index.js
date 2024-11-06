@@ -20,20 +20,20 @@ export function blockActionListener(slackActivity, web) {
       helpview(slackActivity, web);
       break;
 
-    case "delete_task": 
+    case "delete_task":
       handleDeleteTask(slackActivity, web);
       break;
 
-    case "view_more_in_progress": 
-      all_task_view(slackActivity, web);
+    case "view_more_in_progress":
+      all_task_view(slackActivity, web, 'IN_PROGRESS');
       break;
 
-    case "view_more_todo": 
-      all_task_view(slackActivity, web);
+    case "view_more_todo":
+      all_task_view(slackActivity, web, 'TODO');
       break;
-      
-    case "view_more_completed": 
-      all_task_view(slackActivity, web);
+
+    case "view_more_completed":
+      all_task_view(slackActivity, web, 'DONE');
       break;
 
     default:
