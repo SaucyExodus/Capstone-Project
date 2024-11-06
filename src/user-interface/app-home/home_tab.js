@@ -62,6 +62,21 @@ export async function appHomeOpenedUI(userId) {
       }
     },
     {
+			type: "actions",
+			elements: [
+				{
+					type: "button",
+					text: {
+						type: "plain_text",
+						text: "View more",
+						emoji: true
+					},
+					value: "click_me_123",
+					action_id: "actionId-0"
+				}
+			]
+		},
+    {
       type: "divider"
     },
     {
