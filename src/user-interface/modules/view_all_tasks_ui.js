@@ -44,6 +44,9 @@ export function viewAllTasks(taskStatus, tasks) {
         },
         ...taskBlocks,
         {
+            type: "divider"
+        },
+        {
           type: "actions",
           elements: [
             {
