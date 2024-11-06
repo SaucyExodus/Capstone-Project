@@ -4,13 +4,19 @@ import { createViewTaskModal } from "../../user-interface/modules/task_view_ui.j
 export async function viewTaskAction(slackActivity, web, viewId) {
     const taskId = slackActivity.actions[0]?.value;
     const taskData = await getTaskData(taskId);
-    console.log(viewId);
 
     try {
-        await web.views.update({
-            view_id: viewId,
-            view: createViewTaskModal(taskData)
-        });
+        if (viewId) {
+            await web.views.update({
+                view_id: viewId,
+                view: createViewTaskModal(taskData)
+            });
+        } else {
+            const result = await web.views.open({
+                trigger_id: slackActivity.trigger_id,
+                view: createViewTaskModal(taskData)
+            });
+        }
     } catch(error){
         console.error("Error opening view:", error);
     }

@@ -23,6 +23,7 @@ export async function blockActionListener(slackActivity, web) {
     case "view_task_button_1":
       console.log(viewId);
       viewTaskAction(slackActivity, web, viewIdStore[userId]);
+      delete viewIdStore[userId];
       break;
 
     case "help_modal":
