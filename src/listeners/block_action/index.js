@@ -33,8 +33,8 @@ export async function blockActionListener(slackActivity, web) {
       break;
 
     case "view_more_todo":
-      console.log(await all_task_view(slackActivity, web, 'TODO'));
-      //viewTaskAction(slackActivity, web, view_id);
+      const view_id = await all_task_view(slackActivity, web, 'TODO');
+      viewTaskAction(slackActivity, web, view_id);
       break;
 
     case "view_more_completed":
