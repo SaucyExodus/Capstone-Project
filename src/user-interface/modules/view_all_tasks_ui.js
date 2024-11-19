@@ -63,8 +63,8 @@ export function viewAllTasks(taskStatus, tasks) {
                 text: "Previous",
                 emoji: true
               },
-              value: "click_me_123",
-              action_id: "actionId-0"
+              value: "previous",
+              action_id: "previous"
             },
             {
               type: "button",
@@ -73,8 +73,8 @@ export function viewAllTasks(taskStatus, tasks) {
                 text: "Next",
                 emoji: true
               },
-              value: "click_me_123",
-              action_id: "actionId-1"
+              value: "next",
+              action_id: "next"
             }
           ]
         }
