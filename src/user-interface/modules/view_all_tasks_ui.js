@@ -1,4 +1,4 @@
-export function viewAllTasks(taskStatus, tasks) {
+export function viewAllTasks(taskStatus, tasks, pageNumber) {
     const statusMap = {
       'IN_PROGRESS': 'In Progress',
       'TODO': 'To Do',
@@ -7,13 +7,12 @@ export function viewAllTasks(taskStatus, tasks) {
   
     const filteredTasks = tasks.filter(task => task.task_status === taskStatus);
     const taskCount = filteredTasks.length;
-
     const totalPages = Math.ceil(taskCount / 5);
     console.log(totalPages);
     console.log(filteredTasks);
     console.log(paginateObjects(filteredTasks, 2));
   
-    const taskBlocks = filteredTasks.map(task => ({
+    const taskBlocks = paginateObjects(filteredTasks, pageNumber).map(task => ({
       type: "section",
       text: {
         type: "mrkdwn",
