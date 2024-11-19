@@ -39,40 +39,30 @@ export async function blockActionListener(slackActivity, web) {
 
     case "view_more_in_progress":
       pageNumberStore[userId] = 1;
-      status = 'IN_PROGRESS';
-      statusStore[userId] = status;
-      viewId = await all_task_view(slackActivity, web, statusStore[userId], pageNumberStore[userId]);
-      viewIdStore[userId] = viewId;
+      statusStore[userId] = 'IN_PROGRESS';
+      viewIdStore[userId] = await all_task_view(slackActivity, web, statusStore[userId], pageNumberStore[userId]);
       break;
 
     case "view_more_todo":
       pageNumberStore[userId] = 1;
-      status = 'TODO';
-      statusStore[userId] = status;
-      viewId = await all_task_view(slackActivity, web, statusStore[userId], pageNumberStore[userId]);
-      viewIdStore[userId] = viewId;
+      statusStore[userId] = 'TODO';
+      viewIdStore[userId] = await all_task_view(slackActivity, web, statusStore[userId], pageNumberStore[userId]);
       break;
 
     case "view_more_completed":
       pageNumberStore[userId] = 1;
-      status = 'DONE';
-      statusStore[userId] = status;
-      viewId = await all_task_view(slackActivity, web, statusStore[userId], pageNumberStore[userId]);
-      viewIdStore[userId] = viewId;
+      statusStore[userId] = 'DONE';
+      viewIdStore[userId] = await all_task_view(slackActivity, web, statusStore[userId], pageNumberStore[userId]);
       break;
 
     case "next":
-      pageNumber += 1;
-      pageNumberStore[userId] = pageNumber;
-      viewId = await all_task_view(slackActivity, web, statusStore[userId], pageNumberStore[userId], viewIdStore[userId]); // You might want to change 'IN_PROGRESS' to the appropriate task status
-      viewIdStore[userId] = viewId;
+      pageNumberStore[userId] += 1;
+      viewIdStore[userId] = await all_task_view(slackActivity, web, statusStore[userId], pageNumberStore[userId], viewIdStore[userId]); 
       break;
 
     case "previous":
-      pageNumber = Math.max(1, pageNumber - 1); // Ensure the page number does not go below 1
-      pageNumberStore[userId] = pageNumber;
-      viewId = await all_task_view(slackActivity, web, statusStore[userId], pageNumberStore[userId], viewIdStore[userId]); // You might want to change 'IN_PROGRESS' to the appropriate task status
-      viewIdStore[userId] = viewId;
+      pageNumberStore[userId] = Math.max(1, pageNumber - 1); // Ensure the page number does not go below 1
+      viewIdStore[userId] = await all_task_view(slackActivity, web, statusStore[userId], pageNumberStore[userId], viewIdStore[userId]); 
       break;
 
     default:
