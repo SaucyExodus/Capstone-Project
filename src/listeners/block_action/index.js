@@ -50,14 +50,14 @@ export async function blockActionListener(slackActivity, web) {
     case "next":
       pageNumber += 1;
       pageNumberStore[userId] = pageNumber;
-      viewId = await all_task_view(slackActivity, web, 'TODO', pageNumber); // You might want to change 'IN_PROGRESS' to the appropriate task status
+      viewId = await all_task_view(slackActivity, web, 'TODO', pageNumber, viewId); // You might want to change 'IN_PROGRESS' to the appropriate task status
       viewIdStore[userId] = viewId;
       break;
 
     case "previous":
       pageNumber = Math.max(1, pageNumber - 1); // Ensure the page number does not go below 1
       pageNumberStore[userId] = pageNumber;
-      viewId = await all_task_view(slackActivity, web, 'TODO', pageNumber); // You might want to change 'IN_PROGRESS' to the appropriate task status
+      viewId = await all_task_view(slackActivity, web, 'TODO', pageNumber, viewId); // You might want to change 'IN_PROGRESS' to the appropriate task status
       viewIdStore[userId] = viewId;
       break;
 
