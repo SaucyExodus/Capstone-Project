@@ -8,9 +8,8 @@ export function viewAllTasks(taskStatus, tasks, pageNumber) {
     const filteredTasks = tasks.filter(task => task.task_status === taskStatus);
     const taskCount = filteredTasks.length;
     const totalPages = Math.ceil(taskCount / 5);
-    console.log(totalPages);
-    console.log(filteredTasks);
-    console.log(paginateObjects(filteredTasks, 2));
+
+    console.log("Page Number: ", pageNumber);
   
     const taskBlocks = paginateObjects(filteredTasks, pageNumber).map(task => ({
       type: "section",
