@@ -8,7 +8,7 @@ export function viewAllTasks(taskStatus, tasks) {
     const filteredTasks = tasks.filter(task => task.task_status === taskStatus);
     const taskCount = filteredTasks.length;
 
-    console.log(paginateObjects(filteredTasks, 1));
+    console.log(filteredTasks);
     console.log(paginateObjects(filteredTasks, 2));
   
     const taskBlocks = filteredTasks.map(task => ({
