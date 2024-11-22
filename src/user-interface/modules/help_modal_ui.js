@@ -37,12 +37,6 @@ export function helpModal() {
                 }
             },
             {
-                type: "image",
-                image_url:
-                  "https://drive.google.com/uc?export=view&id=1MaBYCFyUSIrM7C3zTMjw1sETU-pqoBhe",
-                alt_text: "Screenshot of Create New Task button",
-            },        
-            {
                 "type": "header",
                 "text": {
                     "type": "plain_text",
@@ -57,12 +51,6 @@ export function helpModal() {
                     "text": "To change the progress state of a task, navigate to the home page and click the 'View Task' button on the right hand side of the desired task.",
                     "emoji": true
                 }
-            },
-            {
-                type: "image",
-                image_url:
-                  "https://drive.google.com/uc?export=view&id=19WXlpQid6jox8h5WkEiwIpEh_lmIIqcq",
-                alt_text: "Screenshot of View Task button",
             },
             {
                 "type": "header",
@@ -97,8 +85,21 @@ export function helpModal() {
                 }
             }
         ]
-    }
-    
-    return modal;
+    };
 
+    // Lazy load images
+    setTimeout(() => {
+        modal.blocks.splice(3, 0, {
+            type: "image",
+            image_url: "https://drive.google.com/uc?export=view&id=1MaBYCFyUSIrM7C3zTMjw1sETU-pqoBhe",
+            alt_text: "Screenshot of Create New Task button",
+        });
+        modal.blocks.splice(7, 0, {
+            type: "image",
+            image_url: "https://drive.google.com/uc?export=view&id=19WXlpQid6jox8h5WkEiwIpEh_lmIIqcq",
+            alt_text: "Screenshot of View Task button",
+        });
+    }, 1000);
+
+    return modal;
 }
