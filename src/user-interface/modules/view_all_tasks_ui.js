@@ -8,6 +8,9 @@ export function viewAllTasks(taskStatus, tasks, pageNumber) {
     const filteredTasks = tasks.filter(task => task.task_status === taskStatus);
     const taskCount = filteredTasks.length;
     const totalPages = Math.ceil(taskCount / 5);
+
+    prevStyle = pageNumber === 1 ? "danger" : "primary";
+    nextStyle = pageNumber === totalPages ? "danger" : "primary";
   
     const taskBlocks = paginateObjects(filteredTasks, pageNumber).map(task => (
       {
@@ -33,8 +36,7 @@ export function viewAllTasks(taskStatus, tasks, pageNumber) {
       close: {
         type: "plain_text",
         text: "Close",
-        emoji: true,
-        style: "danger"
+        emoji: true
       },
       title: {
         type: "plain_text",
@@ -68,7 +70,8 @@ export function viewAllTasks(taskStatus, tasks, pageNumber) {
                 emoji: true
               },
               value: "previous",
-              action_id: "previous"
+              action_id: "previous",
+              style: prevStyle
             },
             {
               type: "button",
@@ -78,7 +81,8 @@ export function viewAllTasks(taskStatus, tasks, pageNumber) {
                 emoji: true
               },
               value: "next",
-              action_id: "next"
+              action_id: "next",
+              style: nextStyle
             }
           ]
         }
