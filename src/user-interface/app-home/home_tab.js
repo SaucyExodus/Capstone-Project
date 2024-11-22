@@ -171,7 +171,7 @@ export async function appHomeOpenedUI(userId) {
 
   // Categorize tasks by status
   tasks.forEach(task => {
-    const dueDateText = taskData.due_date ? `*Due date:* <!date^${task.due_date}^{date} at {time}| Invalid Date >` : "No Due Date";
+    const dueDateText = task.due_date ? `*Due date:* <!date^${task.due_date}^{date} at {time}| Invalid Date >` : "No Due Date";
     const taskBlock = {
       type: "section",
       text: {
