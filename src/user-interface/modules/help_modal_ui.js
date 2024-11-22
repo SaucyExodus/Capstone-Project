@@ -54,9 +54,15 @@ export function helpModal() {
                 "type": "section",
                 "text": {
                     "type": "plain_text",
-                    "text": "To change the progress state of a task, navigate to the home page and click the 'Expand' button on the right hand side of the desired task.  Within the pop-up window, change the status of your task by the status dropdown section.  These changes will be reflected immediately.",
+                    "text": "To change the progress state of a task, navigate to the home page and click the 'View Task' button on the right hand side of the desired task.",
                     "emoji": true
                 }
+            },
+            {
+                type: "image",
+                image_url:
+                  "https://drive.google.com/uc?export=view&id=19WXlpQid6jox8h5WkEiwIpEh_lmIIqcq",
+                alt_text: "Screenshot of View Task button",
             },
             {
                 "type": "header",
