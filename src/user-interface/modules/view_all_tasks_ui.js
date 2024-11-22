@@ -9,8 +9,8 @@ export function viewAllTasks(taskStatus, tasks, pageNumber) {
     const taskCount = filteredTasks.length;
     const totalPages = Math.ceil(taskCount / 5);
 
-    prevStyle = pageNumber === 1 ? "danger" : "primary";
-    nextStyle = pageNumber === totalPages ? "danger" : "primary";
+    const prevStyle = pageNumber === 1 ? "danger" : "primary";
+    const nextStyle = pageNumber === totalPages ? "danger" : "primary";
   
     const taskBlocks = paginateObjects(filteredTasks, pageNumber).map(task => (
       {
