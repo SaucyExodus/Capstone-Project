@@ -171,11 +171,12 @@ export async function appHomeOpenedUI(userId) {
 
   // Categorize tasks by status
   tasks.forEach(task => {
+    const dueDateText = taskData.due_date ? `*Due date:* <!date^${task.due_date}^{date} at {time}| Invalid Date >` : "No Due Date";
     const taskBlock = {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `*Task Name:* ${task.task_name}\n*Due Date:* ${task.due_date ? task.due_date : 'No due date'}\n*Status:* ${task.task_status === 'TODO' ? 'To Do' : task.task_status === 'IN_PROGRESS' ? 'In Progress' : 'Completed'}`,
+        text: `*Task Name:* ${task.task_name}\n${dueDateText}\n*Status:* ${task.task_status === 'TODO' ? 'To Do' : task.task_status === 'IN_PROGRESS' ? 'In Progress' : 'Completed'}`,
       },
       accessory: {
         type: "button",
