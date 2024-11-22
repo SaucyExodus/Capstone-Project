@@ -29,11 +29,6 @@ export function helpModal() {
           },
         },
         {
-          type: "image",
-          image_url: "https://drive.google.com/uc?export=view&id=1MaBYCFyUSIrM7C3zTMjw1sETU-pqoBhe",
-          alt_text: "Screenshot of Create New Task button",
-        },
-        {
           type: "header",
           text: {
             type: "plain_text",
@@ -50,21 +45,11 @@ export function helpModal() {
           },
         },
         {
-          type: "image",
-          image_url: "https://drive.google.com/uc?export=view&id=19WXlpQid6jox8h5WkEiwIpEh_lmIIqcq",
-          alt_text: "Screenshot of View Task button",
-        },
-        {
           type: "section",
           text: {
             type: "mrkdwn",
             text: "Within the pop-up window, select the 'Edit Task' button on the bottom right hand side.",
           },
-        },
-        {
-          type: "image",
-          image_url: "https://drive.google.com/uc?export=view&id=1Qhf0eop2FuF3NqSgSM4N3c24A0QBTYBc",
-          alt_text: "Screenshot of Edit Task button",
         },
         {
           type: "section",
@@ -74,21 +59,11 @@ export function helpModal() {
           },
         },
         {
-          type: "image",
-          image_url: "https://drive.google.com/uc?export=view&id=1Uvau8huTm4DfzEK2qvaBxCtdQ9IFTy__",
-          alt_text: "Screenshot of Status dropdown",
-        },
-        {
           type: "section",
           text: {
             type: "mrkdwn",
             text: "Click 'Done' and these changes will be reflected immediately.",
           },
-        },
-        {
-          type: "image",
-          image_url: "https://drive.google.com/uc?export=view&id=1OcHicB0h2PNkyA1bbRIVCXe5y3vyrzE3",
-          alt_text: "Screenshot of Done button",
         },
         {
           type: "header",
@@ -107,21 +82,11 @@ export function helpModal() {
           },
         },
         {
-          type: "image",
-          image_url: "https://drive.google.com/uc?export=view&id=19WXlpQid6jox8h5WkEiwIpEh_lmIIqcq",
-          alt_text: "Screenshot of View Task button",
-        },
-        {
           type: "section",
           text: {
             type: "mrkdwn",
             text: "Within the pop-up window, select the 'Edit Task' button on the bottom right hand side.",
           },
-        },
-        {
-          type: "image",
-          image_url: "https://drive.google.com/uc?export=view&id=1Qhf0eop2FuF3NqSgSM4N3c24A0QBTYBc",
-          alt_text: "Screenshot of Edit Task button",
         },
         {
           type: "section",
@@ -131,21 +96,11 @@ export function helpModal() {
           },
         },
         {
-          type: "image",
-          image_url: "https://drive.google.com/uc?export=view&id=1Vgdn5hCbzDxbT7w4pUZduI79LH9ptHC3",
-          alt_text: "edit task view",
-        },
-        {
           type: "section",
           text: {
             type: "mrkdwn",
             text: "Once you're finished, click 'Done' to save your changes, or 'Cancel' to discard any modifications.",
           },
-        },
-        {
-          type: "image",
-          image_url: "https://drive.google.com/uc?export=view&id=1Ibg8s5F5A8AVEGYRv0LJGPGIS7-E2g6v",
-          alt_text: "cancel or done button",
         },
         {
           type: "header",
