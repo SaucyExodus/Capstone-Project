@@ -25,6 +25,7 @@ export function viewAllTasks(taskStatus, tasks, pageNumber) {
           text: "View Task",
         },
       },
+      style: "primary",
     }));
   
     const modal = {
