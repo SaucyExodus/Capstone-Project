@@ -175,7 +175,7 @@ export async function appHomeOpenedUI(userId) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `*Task Created by <@${task.created_by}>*\n*Task Name:*\n${task.task_name}`,
+        text: `*Task Name: *${task.task_name}\n*Due Date: *${task.due_date ? task.due_date : 'No due date'}\n*Status: *${task.task_status === 'TODO' ? 'To Do' : task.task_status === 'IN_PROGRESS' ? 'In Progress' : 'Completed'}`,
       },
       accessory: {
         type: "button",
