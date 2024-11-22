@@ -87,19 +87,25 @@ export function helpModal() {
         ]
     };
 
-    // Lazy load images
-    setTimeout(() => {
-        modal.blocks.splice(3, 0, {
-            type: "image",
-            image_url: "https://drive.google.com/uc?export=view&id=1MaBYCFyUSIrM7C3zTMjw1sETU-pqoBhe",
-            alt_text: "Screenshot of Create New Task button",
-        });
-        modal.blocks.splice(7, 0, {
-            type: "image",
-            image_url: "https://drive.google.com/uc?export=view&id=19WXlpQid6jox8h5WkEiwIpEh_lmIIqcq",
-            alt_text: "Screenshot of View Task button",
-        });
-    }, 1000);
-
     return modal;
 }
+
+// Function to update the modal with images
+export function updateModalWithImages(modal) {
+    modal.blocks.splice(3, 0, {
+        type: "image",
+        image_url: "https://drive.google.com/uc?export=view&id=1MaBYCFyUSIrM7C3zTMjw1sETU-pqoBhe",
+        alt_text: "Screenshot of Create New Task button",
+    });
+    modal.blocks.splice(7, 0, {
+        type: "image",
+        image_url: "https://drive.google.com/uc?export=view&id=19WXlpQid6jox8h5WkEiwIpEh_lmIIqcq",
+        alt_text: "Screenshot of View Task button",
+    });
+}
+
+// Example of how to call the functions
+const modal = helpModal();
+updateModalWithImages(modal);
+// Render the modal with the updated content
+renderModal(modal);
