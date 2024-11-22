@@ -9,11 +9,12 @@ export function viewAllTasks(taskStatus, tasks, pageNumber) {
     const taskCount = filteredTasks.length;
     const totalPages = Math.ceil(taskCount / 5);
   
-    const taskBlocks = paginateObjects(filteredTasks, pageNumber).map(task => ({
+    const taskBlocks = paginateObjects(filteredTasks, pageNumber).map(task => (
+      {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `*Task Created by <@${task.created_by}>*\n*Task Name:*\n${task.task_name}`,
+        text: `*Task Name:* ${task.task_name}\n${task.due_date ? `*Due date:* <!date^${task.due_date}^{date} at {time}| Invalid Date >` : "No Due Date"}\n*Status:* ${task.task_status === 'TODO' ? 'To Do' : task.task_status === 'IN_PROGRESS' ? 'In Progress' : 'Completed'}`,
       },
       accessory: {
         type: "button",
