@@ -14,7 +14,7 @@ export function viewAllTasks(taskStatus, tasks, pageNumber) {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `*Task Name:* ${task.task_name}\n${task.due_date ? `*Due date:* <!date^${task.due_date}^{date} at {time}| Invalid Date >` : "No Due Date"}\n*Status:* ${task.task_status === 'TODO' ? 'To Do' : task.task_status === 'IN_PROGRESS' ? 'In Progress' : 'Completed'}`,
+        text: `*Task Name:* ${task.task_name}\n${task.due_date ? `*Due date:* <!date^${task.due_date}^{date} at {time}| Invalid Date >` : "No Due Date"}`,
       },
       accessory: {
         type: "button",
