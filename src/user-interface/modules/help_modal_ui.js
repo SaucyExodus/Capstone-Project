@@ -32,10 +32,16 @@ export function helpModal() {
                 "type": "section",
                 "text": {
                     "type": "plain_text",
-                    "text": "To create a new task, locate the 'Create New Task' button located at the top of the home page",
+                    "text": "To create a new task, locate the 'Create New Task' button located at the top of the home page. Then, fill out the information in the pop-up.",
                     "emoji": true
                 }
             },
+            {
+                type: "image",
+                image_url:
+                  "https://drive.google.com/uc?export=view&id=1MaBYCFyUSIrM7C3zTMjw1sETU-pqoBhe",
+                alt_text: "Screenshot of Create New Task button",
+            },        
             {
                 "type": "header",
                 "text": {
