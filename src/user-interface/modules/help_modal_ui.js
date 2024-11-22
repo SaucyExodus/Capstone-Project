@@ -103,7 +103,3 @@ export function updateModalWithImages(modal) {
         alt_text: "Screenshot of View Task button",
     });
 }
-
-// Example of how to call the functions
-const modal = helpModal();
-updateModalWithImages(modal);
