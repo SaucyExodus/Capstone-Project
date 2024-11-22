@@ -92,7 +92,7 @@ export function helpModal() {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "You will then be able to update any details of the task (as marked by the arrows).",
+            text: "You will then be able to update any details of the task (Indicated by the fields).",
           },
         },
         {
