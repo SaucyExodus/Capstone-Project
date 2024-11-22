@@ -33,7 +33,8 @@ export function viewAllTasks(taskStatus, tasks, pageNumber) {
       close: {
         type: "plain_text",
         text: "Close",
-        emoji: true
+        emoji: true,
+        styke: "danger"
       },
       title: {
         type: "plain_text",
