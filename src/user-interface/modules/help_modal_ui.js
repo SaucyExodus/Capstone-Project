@@ -107,5 +107,3 @@ export function updateModalWithImages(modal) {
 // Example of how to call the functions
 const modal = helpModal();
 updateModalWithImages(modal);
-// Render the modal with the updated content
-renderModal(modal);
