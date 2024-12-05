@@ -1,5 +1,3 @@
-# Technical Documentation
-
 ## Steps to Start Web Server using AWS EC2 Instance
 
 ### Step 1: Create AWS Account and Log into the Console
@@ -39,13 +37,16 @@
    ```sh
    chmod 400 "path/to/KeyPair.pem"
    ```
-2. Use the following command to SSH into your instance:
+2. Find the Public IPv4 DNS:
+   - Click on your EC2 instance from the dashboard.
+   - Locate and copy the Public IPv4 DNS from the Instance Summary. It will look like:
+     ```
+     ec2-user@ec2-0-0-0-0.us-east-2.compute.amazonaws.com
+     ```
+3. Use the following command to SSH into your instance replacing the path to key and IPv4 DNS with your values:
    ```sh
    ssh -i “path/to/KeyPair.pem” ec2-user@ec2-0-0-0-0.us-east-2.compute.amazonaws.com
    ```
-3. To find the Public IPv4 DNS:
-   - Click on your EC2 instance from the dashboard.
-   - Locate and copy the Public IPv4 DNS from the Instance Summary.
 
 ## Creating AWS RDS Instance
 
@@ -87,4 +88,35 @@
    - If you encounter an error with the `request_url`, ensure it matches the regex pattern: `^https?://`.
 6. Review the summary and click "Create."
 
+### Step 2: Configure New Slack App
+
+1. Copy the Signing Secret:
+   - Locate your app's signing secret in the Slack API settings.
+   - Copy the signing secret for use in your application configuration.
+   - ![Signing Secret Example](https://github.com/user-attachments/assets/749a6d31-7f3d-4c22-877c-4b0d749f64f1)
+
+2. Install the App to Your Workspace:
+   - Navigate to the "OAuth & Permissions" page in your Slack app settings.
+   - Click the button to install your app to your workspace.
+
+3. Copy the OAuth Token:
+   - After installing the app, an OAuth token will be generated.
+   - Copy this token for use in your application configuration.
+   - ![OAuth Token Example](https://github.com/user-attachments/assets/fc36c736-77a5-45c9-954a-fe4344d5f8e9)
+
+4. Update App Endpoints
+   - Navigate to the "Interactivity & Shortcuts" page in your Slack app settings.
+   - Replace the "{endpoint}" in the Request URL field with your Public IPv4 DNS.
+   - Navigate to the "Event Subscriptions" page in your Slack app settings.
+   - Replace the "{endpoint}" in the Request URL field with your Public IPv4 DNS.
+
+6. Update Your `.env` File:
+   - Take the copied Signing Secret and OAuth Token values and add them to your `.env` file.
+   - Your `.env` file should look similar to this:
+     ```env
+     SLACK_OAUTH_TOKEN=xoxb-xxxxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx
+     SLACK_SIGNING_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+     ```
+
+     
 By following these steps, you will have set up an AWS EC2 instance, created an RDS instance, and configured a Slack app.
